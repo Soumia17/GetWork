@@ -6,4 +6,4 @@ $dbName = "pfe";
 
 
 
-$conn= mysqli_connect($dbServername,$dbUsername,$dbPassword ,$dbName) or die(mysqli_error());
+$conn= mysqli_connect($dbServername,$dbUsername,$dbPassword ,$dbName) or die(mysqli_error());           

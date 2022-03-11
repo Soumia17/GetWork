@@ -662,6 +662,7 @@ height: 35px;
 }
 .image_profil_etoile{
   width: 35px;
+  height: 35px;
 	vertical-align: middle;
   border-radius: 50px;
 }
@@ -721,6 +722,7 @@ hr{
 
 position: relative;
 width: 100%;
+padding-bottom: 1rem;
 
 }
 
@@ -800,27 +802,28 @@ width: 100%;
 .button-delete button{
   height: 100%;
   
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   width: 50%;
   font: 1em sans-serif;
 }
 
-.button-delete #but-1{
+.button-delete .but-1{
   border-right: 1px solid var(--black);
   background-color: rgb(175, 172, 172);
 }
-.button-delete #but-1:hover{
+.button-delete .but-1:hover{
  
   background-color: rgb(146, 143, 143);
 }
-.button-delete #but-2{
+.button-delete .but-2{
   border-left: 1px solid var(--black);
   background-color: rgb(247, 67, 67);
 }
-.button-delete #but-2:hover{
+.button-delete .but-2:hover{
   
   background-color: rgb(247, 51, 51);
 }
+
 
 
 .modal {
@@ -1243,3 +1246,10 @@ textarea{
   .closebtn:hover {
 	color: black;
   }
+
+  button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

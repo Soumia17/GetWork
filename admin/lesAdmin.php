@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['pseudo'])){
+  header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once 'includes/database-linck.php';
 $conn;
 
@@ -13,6 +16,7 @@ $conn;
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="Style_Administration.css">
         <link rel="stylesheet" href="Style_Administrateur.css">
+        <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
        
         
         
@@ -429,3 +433,7 @@ $admi=$info['Theadmin'];
     <script src="contol_lesAdmin.js"></script>
    
     </html>
+
+    <?php
+}
+    ?>

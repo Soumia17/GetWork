@@ -1,8 +1,12 @@
 <?php
 session_start();
+if(!isset($_SESSION['pseudo'])){
+  header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once 'includes/database-linck.php';
 $conn;
-
+$action="SELECT * FROM offers ORDER BY idOffer DESC ";
+    $offr = mysqli_query($conn,$action);
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +15,8 @@ $conn;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style_Administration.css">
+    <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>Document</title>
 </head>
 <body>   
@@ -33,7 +38,7 @@ $conn;
               </li>
               
                 <li>
-                  <a href="http://localhost/PFFE/admin/Administration.html">
+                  <a href="http://localhost/PFFE/admin/Administration.php">
                     
                     <i class="fas fa-home"></i>
                     
@@ -119,18 +124,43 @@ $conn;
           </section>
           <section class="etoile" id="etoile">
             <div class="box-etoile">
-
+            <?php
+ while($g=mysqli_fetch_assoc($offr)){
+?>
         <div class="box">
             <div class="image-etoile">
-                <img src="images_Admin/images.jpg"alt="">
+                <img src="<?php echo "../imageService/".$g['OfferImage'] ?>"alt="">
             </div>
+            
             <div>
                 <ul class="image_info">
-                    <li> <img class="image_profil_etoile"  src="images_Admin/images.jpg" alt="profile_img"></li>
-               <li>  <h3>je suis</h3></li>
+                <?php
+                    $action="SELECT * FROM userinformation WHERE psudo ='".$g['OfferPoster']."' ";
+                    $adm = mysqli_query($conn,$action);
+                    while($info=mysqli_fetch_assoc($adm)){
+                $pho=$info['image'];
+                $Theadmin=$info['Theadmin'];
+                
+                    }
+                    ?>
+                    <li> <img class="image_profil_etoile"  src="<?php echo $pho?>" alt="profile_img"></li>
+                    <?php
+                    if($_SESSION['user']!=$g['OfferPoster']){
+                    ?>
+               <li> <a href="../user/userview.php?poster=<?php echo $g['OfferPoster']?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <?php
+               }
+               else{
+               ?>
+               
+               <li> <a href="../user/userProfil.php"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               
+               <?php
+            }
+               ?>
      
              </ul>
-            <p>blabla blablablaaaaaaaaabllllllaaa</p>                  
+            <p><?php echo $g['OfferDescription']?></p>                 
                     <div class="center">
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
@@ -147,31 +177,50 @@ $conn;
                     </div>
                 </div>
   <hr>
-                <div class="etoil-favorit">
+  <div class="etoil-favorit">
                     <ul>
                         <li><i class="fas fa-bookmark" ></i></li>
                         <li>
-                            le prix <label for="">1000 DZ</label>
+                            le prix <label for=""><?php echo $g['OfferPrix']?> DZ</label>
                         </li>
                     </ul>
-                  </div>
+                </div>
                  <hr>
+                 <?php
+                 if($Theadmin!=0){
+                 ?>
                     <div class="button-delete">
                        
-                        <button  id="but-1" class="openModal">supprimer l'offre</button>
-                         <button id="but-2" class="openModal2">bloqué client</button>
+                        <button onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='block'"  class="but-1">supprimer l'offre</button>
+                         <button onclick="document.getElementById('<?php echo $g['idOffer'] ?>h').style.display='block'" class="but-2">bloqué client</button>
                      </div>
 
-                     <div class="modal">
+                     <?php
+                     }else{           
+                     ?>
+                     <div class="button-delete">
+                       
+                       <button disabled onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='block'"  class="but-1">supprimer l'offre</button>
+                        <button disabled onclick="document.getElementById('<?php echo $g['idOffer'] ?>h').style.display='block'" class="but-2">bloqué client</button>
+                    </div>
+                    <?php
+                     }
+                    ?>
+
+
+
+                    
+
+                     <!-- <div class="modal">
                       <div class="modalContent">
                       <span class="close">×</span>
                       <p>Êtes-vous sûr de vouloir supprimer l'offre</p>
                      <a href=""> <button class="del" onclick="hideModal()">Supprimer</button></a>
                       <button class="cancel" onclick="hideModal()">Annuler</button>
                       </div>
-                      </div>
+                      </div> -->
 
-                      <div class="modal2">
+                    <!--  <div class="modal2">
                         <div class="modalContent2">
                         <span class="close2">×</span>
                         <div class="select-box">
@@ -209,11 +258,51 @@ $conn;
                       </div>
                       
                         </div>
-                        </div>
+                        </div>-->
 
                       
                       
                   </div>
+
+                  <div id="<?php echo $g['idOffer'] ?>" class="modal">
+                     
+                     <div class="modalContent">
+                     <span onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='none'" class="close">×</span>
+                     <div class="icon-box">
+                      <span>!</span>
+                    
+                   </div>	
+                     <p>Êtes-vous sûr de vouloir supprimer loffre</p>
+                     
+                     <a name="delet_ad" href="offreDel.php?offreDel=<?php echo $g['idOffer']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                     
+                     <button type="button"  class="cancel" onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='none'">Annuler</button>
+                     </div>
+                      </div>
+
+                      <div id="<?php echo $g['idOffer'] ?>h" class="modal">
+                     
+                     <div class="modalContent">
+                     <span onclick="document.getElementById('<?php echo $g['idOffer'] ?>h').style.display='none'" class="close">×</span>
+                     <div class="icon-box">
+                      <span>!</span>
+                    
+                   </div>	
+                     <p>Êtes-vous sûr de vouloir blocker utilisateur</p>
+                     
+                     <a name="delet_ad" href="blockUtil.php?blockUtil=<?php echo $g['OfferPoster']?>"><button   class="del" onclick="hideModal()">Blocker</button></a>
+                     
+                     <button type="button"  class="cancel" onclick="document.getElementById('<?php echo $g['idOffer'] ?>h').style.display='none'">Annuler</button>
+                     </div>
+                      </div>
+
+                 
+
+                  <?php
+ }
+            ?>
+
+            
                 </div>
                 </section>
             
@@ -224,3 +313,7 @@ $conn;
 <script src="Control-Administration.js"></script>
 <script src="Control_Admin.js"></script>
 </html>
+
+<?php
+}
+?>

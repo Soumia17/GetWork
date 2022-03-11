@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+if(!isset($_SESSION['pseudo'])){
+    header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once '../includes/database-linck.php';
 $conn;
 
@@ -16,5 +19,5 @@ if(isset($_POST['save'])){
     header('location: http://localhost/PFFE/user/addOffer.php');
 }
 
-
+}
 ?>

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['pseudo'])){
+    header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once '../includes/database-linck.php';
 $conn;
 
@@ -44,12 +47,19 @@ if(isset($_POST['up'])){
     SET  psudo= '".$_POST['newPseudo']."'
     WHERE email='".$_SESSION['pseudo']."'";
     $res = mysqli_query($conn,$re);
+    
+    $re="UPDATE offers
+    SET  OfferPoster= '".$_POST['newPseudo']."'
+    WHERE OfferPoster='".$_SESSION['user']."'";
+    $res = mysqli_query($conn,$re);
     $_SESSION['user']=$_POST['newPseudo'];
 }
 }}
 
-$Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
+$Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
             $Offer_run=mysqli_query($conn,$Offer);
+           
+            
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,10 +68,11 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
+    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
    <!-- <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="style_profil.css">
-    <link rel="stylesheet" href="../admin/StyleService.css">
+    <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>Document</title>
    
 </head>
@@ -248,7 +259,9 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
 
             <?php
             
+            
             if(mysqli_num_rows($Offer_run)==0){
+
             ?>
            <div class="">
                 <div class="profile-content">
@@ -362,3 +375,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
 <script src="https://kit.fontawesome.com/6f2f9c8fbf.js" ></script>
 </body>
 </html>
+
+<?php
+}
+?>

@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['pseudo'])){
+    header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once '../includes/database-linck.php';
 $conn;
 $Poster=$_GET['poster'];
@@ -16,6 +20,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                 $date=$info['userDate'];
                 
                     }   
+                    $_SESSION['post']=$psudo;
                     
                     $ofnum="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
             $ofnum_run=mysqli_query($conn,$ofnum); 
@@ -31,6 +36,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
    <!-- <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="style_profil.css">
     <link rel="stylesheet" href="../admin/StyleService.css">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>Document</title>
    
 </head>
@@ -229,7 +235,10 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                 <a href="addOffer.php"> <button class="button1" > <i class="fas fa-plus"></i> Enregistrer</button></a>
                 <div class="Evaleuer">
                 <p >Donner une Evaleuation </p>
+                <form action="rating.php" method="POST">
+               
                 <div class="center">
+              
                         
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
@@ -246,6 +255,8 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
 
                         
                     </div>
+                    <button> confirmer</button>
+                    </form>
                 </div>
                 <?php
                 
@@ -331,10 +342,14 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-<script src="Control-Administration.js"></script>
+
 <!--<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>-->
 <script src="../admin/Control-Administration.js"></script>
 <script src="Control_profil.js"></script>
 <script src="https://kit.fontawesome.com/6f2f9c8fbf.js" ></script>
 </body>
 </html>
+
+<?php
+}
+?>

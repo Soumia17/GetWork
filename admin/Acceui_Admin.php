@@ -1,8 +1,11 @@
 <?php
 session_start();
+if(!isset($_SESSION['pseudo'])){
+    header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once 'includes/database-linck.php';
 $conn;
-$action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."' ";
+$action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."'";
     $adm = mysqli_query($conn,$action);
     while($info=mysqli_fetch_assoc($adm)){
 $admi=$info['Theadmin'];
@@ -13,7 +16,7 @@ $_SESSION['phone']=$info['phone'];
 
     }
 
-    $action="SELECT * FROM offers ";
+    $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     $offr = mysqli_query($conn,$action);
     
 ?>
@@ -24,9 +27,12 @@ $_SESSION['phone']=$info['phone'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style_AccuiAdmin.css">
-    
+    <link rel="stylesheet" href="Style_AccuiAdmin.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>Document</title>
+
+
+
 </head>
 <body>
     <header class="header">
@@ -123,8 +129,8 @@ $_SESSION['phone']=$info['phone'];
       <div class="service_i_bien">
       <div class="bien">
 
-         <center> <h2>Bien venu <?php echo ($_SESSION['user']);?> <span></span></h2>
-          <span>hhhhhhhhhhkhjfgjhgfjtgdj,gggg,tft,jhg</span></center>
+         <center> <h2>Bienvenu <?php echo ($_SESSION['user']);?> <span></span></h2>
+          </center>
       </div>
       <div class="services_bien">
       <?php
@@ -190,8 +196,8 @@ $_SESSION['phone']=$info['phone'];
 
             
                 
-                    
-                    <div class="center">
+            <div class="center">
+                        
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
                             <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
@@ -204,6 +210,8 @@ $_SESSION['phone']=$info['phone'];
                             <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
                             <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
                         </fieldset>
+
+                        
                     </div>
         
                 </div>
@@ -240,3 +248,7 @@ $_SESSION['phone']=$info['phone'];
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <script src="Control-Administration.js"></script>
 </html>
+
+<?php
+} 
+?>

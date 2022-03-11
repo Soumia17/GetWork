@@ -1,9 +1,9 @@
 .icon-box {
 	width: 100px;
 	height: 100px;
-	margin: 0 auto;
+	
 	border-radius: 50%;
-	z-index: 9;
+	
 	text-align: center;
 	border: 3px solid #f15e5e;
     

@@ -207,7 +207,10 @@ margin-right: 500px;
   font-size: 15px;
   margin-top: 3px;
 }
-
+.image_profil{
+	height: 35px;
+	width: 	35px;
+}
 
 .image-etoile img{
   height: 100%;
@@ -219,7 +222,12 @@ margin-right: 500px;
   border-radius: 50px;
 }
 #shield{
-	background-color: #000;
+	/*background-color: #000;*/
+	background-color: transparent;
+	color: #000;
+}
+#shield:hover{
+	color: #8a068f;
 }
 
 .image_info {

@@ -1,7 +1,9 @@
 <?php
 
 session_start();
-
+if(!isset($_SESSION['pseudo'])){
+    header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once '../includes/database-linck.php';
 $conn;
 if(isset($_POST['save'])){
@@ -22,7 +24,7 @@ if(isset($_POST['save'])){
     $res = mysqli_query($conn,$re);
     }
 
-   header('location: http://localhost/PFFE/user/modifierOffer.php');
+   header('location: http://localhost/PFFE/user/modifierOffer.php?OffMO='.$_SESSION['off'].'');
 
 }
 
@@ -31,5 +33,5 @@ if(isset($_POST['dellet'])){
     $res = mysqli_query($conn,$re);
     header('location: http://localhost/PFFE/user/userProfil.php');
 }
-
+}
 ?>

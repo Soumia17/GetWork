@@ -44,6 +44,11 @@ $email_query="SELECT * FROM userinformation WHERE email ='$email'";
 $psudo_suery="SELECT * FROM userinformation WHERE psudo ='$userName'";
 $psudo_suery_run=mysqli_query($conn,$psudo_suery);
 $email_query_run=mysqli_query($conn,$email_query);
+while($info=mysqli_fetch_assoc($email_query_run)){
+    $block=$info['block'];
+    
+    
+        }
 if(mysqli_num_rows($email_query_run)>0 || mysqli_num_rows($psudo_suery_run)>0 ){
     if(mysqli_num_rows($email_query_run)>0){
     ?>

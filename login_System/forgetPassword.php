@@ -10,6 +10,7 @@ include_once 'includes/database-linck.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleFormulair.css">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>Document</title>
 </head>
 <body>
@@ -79,9 +80,6 @@ $mail->addReplyTo('reply@soumia.com', 'soumia');
 $conn;
 if(isset($_POST['suub'])){
 $emailPass = $_POST['emailPass'];
-
-
-
 $emailPass_suery="SELECT * FROM userinformation WHERE email ='$emailPass'";
 $user=  "SELECT nom FROM userinformation WHERE email ='$emailPass'";
 $res= mysqli_query($conn,$user);
@@ -117,7 +115,7 @@ $mail->addAddress($emailPass);
 $mail->isHTML(true); 
  
 // Mail subject 
-$mail->Subject = 'Email from Localhost by soumia'; 
+$mail->Subject = 'Email from GetWork by Administration'; 
  
 // Mail body content 
 $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" .
@@ -137,7 +135,7 @@ $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16p
 "                  \n" .
 "                    </td>\n" .
 "                    <td style=\"font-size:28px;line-height:1.315789474;Margin-top:4px;padding-left:10px\">\n" .
-"                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">modifier mote de passe</span>\n" .
+"                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">modifier mot de passe</span>\n" .
 "                    </td>\n" .
 "                  </tr>\n" .
 "                </tbody></table>\n" .
@@ -175,7 +173,7 @@ $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16p
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" .
 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" .
 "        \n" .
-"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " . implode('|',$userName)  . "  ,</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Veuillez cliquer sur le lien ci-dessous pour modifier les mots de passe : </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"http://localhost/PFFE/login_System/modifierMoteDePasse.php?token=".$token."\"" . "\">modifier les mote de passe</a> </p></blockquote> <p>See you soon</p>" .
+"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " . implode('|',$userName)  . "  ,</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Veuillez cliquer sur le lien ci-dessous pour modifier le mots de passe : </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"http://localhost/PFFE/login_System/modifierMoteDePasse.php?token=".$token."\"" . "\">modifier les mote de passe</a> </p></blockquote> <p>See you soon</p>" .
 "        \n" .
 "      </td>\n" .
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" .

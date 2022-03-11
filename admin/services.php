@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['pseudo'])){
+  header('location:http://localhost/PFFE/login_System/regester.php');
+}else{
 include_once 'includes/database-linck.php';
 $conn;
 
@@ -14,8 +17,9 @@ $del="";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style_Administration.css">
-    <link rel="stylesheet" href="StyleService.css">
+    <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="StyleService.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     
 
     <title>Document</title>
@@ -227,3 +231,7 @@ $del="";
 <script src="Control_Admin.js"></script>
 <script src="controlService.js"></script>
 </html>
+
+<?php
+}
+?>
