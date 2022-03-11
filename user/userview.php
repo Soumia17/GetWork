@@ -24,6 +24,9 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                     
                     $ofnum="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
             $ofnum_run=mysqli_query($conn,$ofnum); 
+
+            $ofnum="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
+            $ofnum_run=mysqli_query($conn,$ofnum); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,11 +35,12 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
+    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
    <!-- <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="style_profil.css">
-    <link rel="stylesheet" href="../admin/StyleService.css">
+    <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title>Document</title>
    
 </head>
@@ -242,15 +246,15 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                         
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
-                            <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
+                            <!--<input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>-->
                             <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
-                            <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
+                           <!-- <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>-->
                             <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
-                            <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
+                           <!-- <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>-->
                             <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
-                            <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
+                           <!-- <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>-->
                             <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
-                            <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
+                           <!-- <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>-->
                         </fieldset>
 
                         
@@ -285,23 +289,19 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                    <div class="title">
                        
                     <span class="spn">Evaluation :</span>
-                    <div class="center">
+                   
+                    
                         
-                        <fieldset class="rating">
-                            <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
-                            <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
-                            <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
-                            <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
-                            <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
-                            <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
-                            <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
-                            <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
-                            <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
-                            <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
-                        </fieldset>
+                    <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
 
                         
-                    </div>
+                  
  
                    </div>
                    <div class="des">

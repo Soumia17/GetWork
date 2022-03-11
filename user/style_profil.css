@@ -840,3 +840,13 @@ textarea{
   color: #fff;
   border-color: transparent;
 }
+
+.stars i{
+
+font-size: 2.75em;
+
+}
+
+.star{
+  color: #00A300;
+}
