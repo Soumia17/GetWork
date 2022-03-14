@@ -3,23 +3,16 @@ session_start();
 if(!isset($_SESSION['pseudo'])){
     header('location:http://localhost/PFFE/login_System/regester.php');
 }else{
-include_once 'includes/database-linck.php';
+include_once '../includes/database-linck.php';
 $conn;
-$action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."'";
-    $adm = mysqli_query($conn,$action);
-    while($info=mysqli_fetch_assoc($adm)){
-$admi=$info['Theadmin'];
-$_SESSION['user']=$info['psudo'];
-$_SESSION['img']=$info['image'];
-$_SESSION['dat']=$info['userDate'];
-$_SESSION['phone']=$info['phone'];
 
-    }
-
-    $action="SELECT * FROM offers ORDER BY idOffer DESC ";
-    $offr = mysqli_query($conn,$action);
-
+    $ree=$_SESSION['user'];
     
+   
+    
+  
+
+
         
         
         if(isset($_POST['saveOff'])){
@@ -54,7 +47,7 @@ $_SESSION['phone']=$info['phone'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style_AccuiAdmin.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -133,7 +126,7 @@ $_SESSION['phone']=$info['phone'];
                                 <ul>
                                    <a href="../user/userProfil.php"> <li>Profil</li></a>   
                                   <!-- <a href="Administration.php"> <li>Administration</li></a>-->
-                                   <a href="../user/favorites.php"> <li>Favorites</li> </a>               
+                                   <a href=""> <li>Favoris</li> </a>               
                                    <a href="../user/Parametres.php"> <li>Paramètres</li> </a>
                                    <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
                                     
@@ -154,82 +147,69 @@ $_SESSION['phone']=$info['phone'];
       
    
   </header>
-  <section class="Bien_venu">
-      <div class="service_i_bien">
-      <div class="bien">
-
-         <center> <h2>Bienvenu <?php echo ($_SESSION['user']);?> <span></span></h2>
-          </center>
-      </div>
-      <div class="services_bien">
-      <?php
-      $sql="SELECT * FROM services";
-      $res = mysqli_query($conn,$sql);
-      while($g=mysqli_fetch_assoc($res)){
-      ?>
-      
-          <a href=""><div class="service_i">
-              <img src="<?php echo ($g['serviceIcon'])?>" alt="">
-    
-       
-        <hr>
-        <span><?php echo ($g['serviceName'])?></span>
-    </div></a>
-    <?php
-      }
-    ?>
-    
-
-    </dive>
+  <section style="hight=60vh;">
 
   </section>
+ 
 
 
   <section class="etoile" id="etoile">
             <div class="box-etoile">
+                
 <?php
+
+ $action="SELECT * FROM favori where idOffer =22 ";
+ $of = mysqli_query($conn,$action);
+ echo mysqli_num_rows($of);
+ echo $_SESSION['user'];
+while($B=mysqli_fetch_assoc($of)){
+    $idoff=$B['idOffer'];
+    $action="SELECT * FROM offers where saveforH='".$idoff."'";
+    $offr = mysqli_query($conn,$action);
  while($g=mysqli_fetch_assoc($offr)){
+
+
     $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$g['OfferPoster']."'";
-    $ofstar_run=mysqli_query($conn,$ofstar);
-    if(mysqli_num_rows($ofstar_run)>0){
-    $w=$t=$th=$f=$fi=$max=0;
-    while($star=mysqli_fetch_assoc($ofstar_run)){
-        if($star['Eval']==1)
-        $w=$w+1;
-        else
-        if($star['Eval']==2)
-        $t=$t+1;
-        else
-        if($star['Eval']==3)
-        $th=$th+1;
-        else
-        if($star['Eval']==4)
-        $f=$f+1;
-        else
-        if($star['Eval']==5)
-        $fi=$fi+1;
+            $ofstar_run=mysqli_query($conn,$ofstar);
+            if(mysqli_num_rows($ofstar_run)>0){
+            $w=$t=$th=$f=$fi=$max=0;
+            while($star=mysqli_fetch_assoc($ofstar_run)){
+                if($star['Eval']==1)
+                $w=$w+1;
+                else
+                if($star['Eval']==2)
+                $t=$t+1;
+                else
+                if($star['Eval']==3)
+                $th=$th+1;
+                else
+                if($star['Eval']==4)
+                $f=$f+1;
+                else
+                if($star['Eval']==5)
+                $fi=$fi+1;
 
 
 
-    } 
-    if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
-        $max=1;
-    }
-     else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
-        $max=2;
-    }
-   else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
-        $max=3;
-    }
-    else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
-        $max=4;
-    }
-    else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
-        $max=5;
-    }
-}
-else
-$max=0;
+            } 
+            if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
+                $max=1;
+            }
+             else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
+                $max=2;
+            }
+           else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
+                $max=3;
+            }
+            else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
+                $max=4;
+            }
+            else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
+                $max=5;
+            }
+        }
+        else
+        $max=0;  
 ?>
         <div class="box">
             <div class="image-etoile">
@@ -375,7 +355,7 @@ $max=0;
                 </div>
 
                <?php
- }
+ }}
                ?>
 
 
@@ -390,7 +370,7 @@ $max=0;
 
 </body>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-<script src="Control-Administration.js"></script>
+<script src="../admin/Control-Administration.js"></script>
 </html>
 
 <?php

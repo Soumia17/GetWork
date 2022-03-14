@@ -14,6 +14,8 @@ $evalFrom=$_SESSION['user'];
 $ins="INSERT INTO evaleuation(Eval,EvalTo,EvalFrom)VALUE('$eval','$evalTo','$evalFrom')";
 $insr=mysqli_query($conn,$ins);
 
+header('location:http://localhost/PFFE/user/userview.php');
+
 
 }
 }

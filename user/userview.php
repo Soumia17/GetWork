@@ -8,6 +8,17 @@ include_once '../includes/database-linck.php';
 $conn;
 $Poster=$_GET['poster'];
 $offerid=$_GET['idPOS'];
+/*$_SESSION['Poster']=$_GET['poster'];
+$_SESSION['offerid']=$_GET['idPOS'];
+$Poster=$_SESSION['Poster'];
+$offerid=$_SESSION['offerid'];*/
+if(!empty($_POST['rating'])&& isset($_POST['yes'])){
+    $eval=$_POST['rating'];
+    $evalTo=$_SESSION['post'];
+    $evalFrom=$_SESSION['user'];
+    
+    $ins="INSERT INTO evaleuation(Eval,EvalTo,EvalFrom)VALUE('$eval','$evalTo','$evalFrom')";
+    $insr=mysqli_query($conn,$ins);}
 $Offer="SELECT * FROM offers WHERE idOffer ='".$offerid."'";
             $Offer_run=mysqli_query($conn,$Offer);
 $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
@@ -25,8 +36,50 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                     $ofnum="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
             $ofnum_run=mysqli_query($conn,$ofnum); 
 
-            $ofnum="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
-            $ofnum_run=mysqli_query($conn,$ofnum); 
+            $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$Poster."'";
+            $ofstar_run=mysqli_query($conn,$ofstar);
+            if(mysqli_num_rows($ofstar_run)>0){
+            $w=$t=$th=$f=$fi=$max=0;
+            while($star=mysqli_fetch_assoc($ofstar_run)){
+                if($star['Eval']==1)
+                $w=$w+1;
+                else
+                if($star['Eval']==2)
+                $t=$t+1;
+                else
+                if($star['Eval']==3)
+                $th=$th+1;
+                else
+                if($star['Eval']==4)
+                $f=$f+1;
+                else
+                if($star['Eval']==5)
+                $fi=$fi+1;
+
+
+
+            } 
+            if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
+                $max=1;
+            }
+             else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
+                $max=2;
+            }
+           else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
+                $max=3;
+            }
+            else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
+                $max=4;
+            }
+            else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
+                $max=5;
+            }
+        }
+        else
+        $max=0;
+        
+            
+            
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -238,8 +291,14 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                 <div class="main">
                 <a href="addOffer.php"> <button class="button1" > <i class="fas fa-plus"></i> Enregistrer</button></a>
                 <div class="Evaleuer">
+                    <?php
+                     $ofstarFrom="SELECT Eval FROM evaleuation WHERE EvalTo ='".$Poster."' AND EvalFrom ='".$_SESSION['user']."'";
+                     $ofstarFrom_run=mysqli_query($conn,$ofstarFrom);
+                     if(mysqli_num_rows($ofstarFrom_run)==0){
+                    ?>
+                    
                 <p >Donner une Evaleuation </p>
-                <form action="rating.php" method="POST">
+                <form action="" method="POST">
                
                 <div class="center">
               
@@ -259,8 +318,86 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
 
                         
                     </div>
-                    <button> confirmer</button>
+                    <button name="yes"> confirmer</button>
                     </form>
+                    <?php
+                     }else{
+                        while($sta=mysqli_fetch_assoc($ofstarFrom_run)){
+                            $st=$sta['Eval'];
+                        }
+
+                         ?>
+                          <?php
+                    if($st==0){
+                    ?>
+                        
+                    <div class="stars">
+            <i class="lar la-star " data-value="1"></i>
+            <i class="lar la-star " data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($st==1){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star " data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($st==2){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($st==3){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($st==4){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($st==5){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star star" data-value="4"></i>
+            <i class="lar la-star star" data-value="5"></i>
+        </div>
+        <?php
+        } 
+        ?>
+        
+
+                         
+                         
+                         <?php
+                     }
+                    ?>
                 </div>
                 <?php
                 
@@ -290,15 +427,70 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                        
                     <span class="spn">Evaluation :</span>
                    
-                    
+                    <?php
+                    if($max==0){
+                    ?>
                         
                     <div class="stars">
+            <i class="lar la-star " data-value="1"></i>
+            <i class="lar la-star " data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==1){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star " data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==2){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==3){
+        ?>
+                <div class="stars">
             <i class="lar la-star star" data-value="1"></i>
             <i class="lar la-star star" data-value="2"></i>
             <i class="lar la-star star" data-value="3"></i>
             <i class="lar la-star" data-value="4"></i>
             <i class="lar la-star" data-value="5"></i>
         </div>
+        <?php
+        } else if($max==4){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==5){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star star" data-value="4"></i>
+            <i class="lar la-star star" data-value="5"></i>
+        </div>
+        <?php
+        } 
+        ?>
 
                         
                   

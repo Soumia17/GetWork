@@ -83,8 +83,8 @@ if(mysqli_num_rows($email_query_run)>0 || mysqli_num_rows($psudo_suery_run)>0 ){
 
 
 else{
-
-$req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo) values('$nom','$prenom','$email','$hashd_password','$userName')";
+    $date=date("j, n, Y");
+$req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo,userDate) values('$nom','$prenom','$email','$hashd_password','$userName','$date')";
 
 if($conn->query($req)===TRUE){
     $_SESSION['pseudo'] = $email;
