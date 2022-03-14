@@ -158,7 +158,7 @@ $conn;
                 
 <?php
 
- $action="SELECT * FROM favori where idOffer =22 ";
+ $action="SELECT * FROM favori where saveforH ='".$_SESSION['user']."'";
  $of = mysqli_query($conn,$action);
  echo mysqli_num_rows($of);
  echo $_SESSION['user'];
