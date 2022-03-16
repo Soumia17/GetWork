@@ -157,15 +157,17 @@ $conn;
             <div class="box-etoile">
                 
 <?php
+$us=$_SESSION['user'];
 
- $action="SELECT * FROM favori where saveforH ='".$_SESSION['user']."'";
+ $action="SELECT * FROM favori where saveforH ='$us'";
  $of = mysqli_query($conn,$action);
- echo mysqli_num_rows($of);
- echo $_SESSION['user'];
+ 
+ 
 while($B=mysqli_fetch_assoc($of)){
     $idoff=$B['idOffer'];
-    $action="SELECT * FROM offers where saveforH='".$idoff."'";
+    $action="SELECT * FROM offers where idOffer='".$idoff."'";
     $offr = mysqli_query($conn,$action);
+   
  while($g=mysqli_fetch_assoc($offr)){
 
 
@@ -325,19 +327,19 @@ while($B=mysqli_fetch_assoc($of)){
                         //saveof='".$g['OfferPoster']."' AND
                         $us=$_SESSION['user'];
                         //echo $us;
-                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH =' $us'";
+                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH ='$us'";
                         $rqST=mysqli_query($conn,$S);
                        // echo mysqli_num_rows($rqST);
                         if(mysqli_num_rows($rqST)==0){
 
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
+                        <form action="favorites.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
                         <li> <button name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
                         </form>
                         <?php
                         }else{
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
+                        <form action="favorites.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
                         <li> <button name="NOsaveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark red " ></i></button></li>
                         </form>
 

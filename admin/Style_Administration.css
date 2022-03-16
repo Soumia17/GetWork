@@ -1253,3 +1253,14 @@ button[disabled]{
   background-color: #cccccc;
   color: #666666;
 }
+
+.icon{
+  height: 100px;
+  width: 100px;
+  color: #f23b26;
+  border: 3px solid #f23b26;
+  border-radius: 50%;
+  line-height: 97px;
+  font-size: 50px;
+  margin-left: 40%;
+}

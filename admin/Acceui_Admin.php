@@ -27,7 +27,7 @@ $_SESSION['phone']=$info['phone'];
             $fav=$_GET['fav'];
             $favof=$_GET['favof'];
             $favfor=$_SESSION['user'];
-            $rqFav="INSERT INTO favori(idOffer,saveof,saveforH) VALUE('$fav','$favof',' $favfor')";
+            $rqFav="INSERT INTO favori(idOffer,saveof,saveforH) VALUE('$fav','$favof','$favfor')";
             mysqli_query($conn,$rqFav);
             
 
@@ -41,7 +41,7 @@ $_SESSION['phone']=$info['phone'];
             $favfor=$_SESSION['user'];
 
            
-            $rqFav="DELETE from favori where idOffer='".$fav."' AND saveforH =' $us'";
+            $rqFav="DELETE from favori where idOffer='".$fav."' AND saveforH ='$us'";
             mysqli_query($conn,$rqFav);
 
         }
@@ -345,7 +345,7 @@ $max=0;
                         //saveof='".$g['OfferPoster']."' AND
                         $us=$_SESSION['user'];
                         //echo $us;
-                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH =' $us'";
+                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH ='$us'";
                         $rqST=mysqli_query($conn,$S);
                        // echo mysqli_num_rows($rqST);
                         if(mysqli_num_rows($rqST)==0){

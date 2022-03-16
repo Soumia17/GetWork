@@ -157,10 +157,9 @@ $del="";
                      
                      <div class="modalContent">
                      <span onclick="document.getElementById('<?php echo $g['id'] ?>').style.display='none'" class="close">×</span>
-                     <div class="icon-box">
-                      <span>!</span>
-                    
-                   </div>	
+                     <div class="icon">
+          <i class="fas fa-exclamation"></i>
+        </div>
                      <p>Êtes-vous sûr de vouloir supprimer le service</p>
                      
                      <a name="delet" href="isertServis.php?del=<?php echo $g['id']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>

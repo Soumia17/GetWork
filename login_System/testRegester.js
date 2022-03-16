@@ -45,7 +45,7 @@ mySForm.addEventListener('submit',function(e){
         jsT.style.border="1px solid red";
         jsT.style.backgroundColor="#FFCCCC";
         document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez d'au moins six character";
+        jsTest.innerHTML="Entrez au moins six character";
         Pseu.style.border="2px solid red";
         e.preventDefault();
 
