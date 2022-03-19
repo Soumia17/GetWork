@@ -20,6 +20,7 @@ $conn;
     <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../user/Style_param.css?v=<?php echo time(); ?>">
+  
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
@@ -192,7 +193,53 @@ $conn;
                             </div>
                         </div>
                         <button class="btn_par">envoyer</button>
-                        </form>   
+                        </form>  
+                        <br>
+                         
+                
+
+                        
+                <div class="form-row">
+                    
+                            <div class="name">DÉSACTIVATION DU COMPTE</div>
+                            <button onclick="document.getElementById('con').style.display='block'" class="btn_par_des">Desactiver</button>
+                        </div>
+                        <div id="con" class="modal_condition">
+
+                  
+                  
+                        <form action=" ">
+                    <div class="display_condition">
+                      <span onclick="document.getElementById('con').style.display='none';document.getElementById('new_admin').style.display='none'" class="close" title="Close Modal">×</span> 
+                      <h3>Attention</h3>
+                    <div class="condition" onscroll="myFunction()" id="myDIV">
+                      
+                     <p> L'ajout d'un nouvel administrateur peut entraîner des dangers !</p>
+                      <ul>
+                       <p> Le nouvel administrateur peut:</p>
+                        <li>. Ajoute un nouvel admin .</li>
+                        <li>. blocke un contacte .</li>
+                        <li>. sepprime et ajoute un service .</li>
+                        <li>. sepprime un offer .</li>
+                        <li>. repondre aux message .</li>
+                        Tout cela peut arriver sans votre consentement.
+                      </ul>
+                        <hr>
+                        
+    <div>
+                        <input onchange="document.getElementById('block').disabled = !this.checked;" type="checkbox" id="scales" name="scales" value="scales">
+                      <label for="scales">J'accepte et continuer.</label> <br>
+      </div>
+    </div>
+     
+      <button id="block" onclick="block()" disabled class="but_condition" name="confirme"> J'accepte</button>
+                      </div>
+                    
+                     
+                    
+                </div>
+                        
+                        </form> 
             </div>
         </div>
     </div>

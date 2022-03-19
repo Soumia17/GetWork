@@ -79,15 +79,22 @@ if(mysqli_num_rows($email_query_run)>0 || mysqli_num_rows($psudo_suery_run)>0 ){
 
 else{
     $date=date("j, n, Y");
-                 $addby=$_SESSION['pseudo'];
+                 $addby=$_SESSION['user'];
 
-$req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo,admin) values('$nom','$prenom','$email','$hashd_password','$userName',1)";
+$req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo,theadmin) values('$nom','$prenom','$email','$hashd_password','$userName',1)";
 $re="INSERT INTO  admin(pseudoo,adminDate,addBy)values('$userName','$date','$addby')";
 $res = mysqli_query($conn,$re);
+$res = mysqli_query($conn,$req);
 
 
-if($conn->query($req)===TRUE){
+
+if($res){
 
     header('location:http://localhost/PFFE/admin/lesAdmin.php');
-}}
+}else{
+    echo "non";
+}
+
+}
+
 ?>

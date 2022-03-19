@@ -15,7 +15,7 @@ $conn;
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="Style_Administration.css">
-        <link rel="stylesheet" href="Style_Administrateur.css">
+        <link rel="stylesheet" href="Style_Administrateur.css?v=<?php echo time(); ?>">
         <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
        
         
@@ -178,7 +178,7 @@ $admi=$info['Theadmin'];
    
    while($infoAdmin=mysqli_fetch_assoc($admin)){?>
                     <div class="card">
-                        <img src="<?php echo ($_SESSION['img']);?>" alt="Avatar" style="width:100%">
+                        <img src="<?php echo ($infoAdmin['img']);?>" alt="Avatar" style="width:100%">
                         <div class="card-container">
                          <a href=""> <h4><b><?php echo ($infoAdmin["pseudoo"]);?></b></h4> </a>
                           <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["adminDate"]);?> </p>
