@@ -49,7 +49,7 @@ $conn;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title>Document</title>
 
@@ -61,9 +61,9 @@ $conn;
   
     <div class="wrapper">
         <div class="navbar">
-            <div class="logo">
-                <a href="#">LOGO</a>
-            </div>
+        <div class="logo">
+                    <a href="../admin/Acceui_Admin.php">getWork</a>
+                </div>
             <div>
             <form action="">
                 <div class="box-recherch">
@@ -153,7 +153,7 @@ $conn;
  
 
 
-  <section class="etoile" id="etoile">
+  <section class="fav" id="">
             <div class="box-etoile">
                 
 <?php
@@ -215,7 +215,7 @@ while($B=mysqli_fetch_assoc($of)){
 ?>
         <div class="box">
             <div class="image-etoile">
-                <img src="<?php echo "../imageService/".$g['OfferImage'] ?>"alt="">
+                <img src="<?php echo "../user/".$g['OfferImage'] ?>"alt="">
             </div>
             <div>
                 <ul class="image_info">

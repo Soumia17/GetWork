@@ -191,7 +191,7 @@
      letter-spacing: 1px;
      cursor: pointer;
      transition: all 0.3s ease;
-     background: #22a6b3
+     background: #22a6b3;
    }
    form .button input:hover{
     /* transform: scale(0.99); */

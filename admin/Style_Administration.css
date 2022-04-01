@@ -623,6 +623,7 @@ height: 35px;
 .etoile{
   padding: 2rem;
 }
+
 .box-etoile{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -630,6 +631,9 @@ height: 35px;
   
  margin-left: 2rem;
 
+}
+.box_ut{
+  
 }
 .box{
   height: 22rem;
@@ -793,7 +797,7 @@ padding-bottom: 1rem;
 .button-delete{
   position: relative;
   display: flex;
-  height: 3rem;
+  height: 3.3rem;
   padding: 0rem;
   
 
@@ -802,7 +806,7 @@ padding-bottom: 1rem;
 .button-delete button{
   height: 100%;
   
-  padding: 0.5rem 2rem;
+
   width: 50%;
   font: 1em sans-serif;
 }
@@ -1263,4 +1267,35 @@ button[disabled]{
   line-height: 97px;
   font-size: 50px;
   margin-left: 40%;
+}
+
+.stars i{
+
+  font-size: 2.15em;
+  
+  }
+  
+  .star{
+    color: #d6ee03;
+  }
+
+ .button-delete button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+.button-delete button:hover:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.car-img{
+  height: 180px;
+}
+.car-img img{
+  height: 100%;
 }

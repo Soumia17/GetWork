@@ -89,7 +89,7 @@ if(isset($_POST['envoyer'])){
     <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../user/Style_param.css?v=<?php echo time(); ?>">
-  
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
@@ -102,8 +102,8 @@ if(isset($_POST['envoyer'])){
   
         <div class="wrapper">
             <div class="navbar">
-                <div class="logo">
-                    <a href="#">getWork</a>
+            <div class="logo">
+                    <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
                 <form action="">
@@ -160,12 +160,12 @@ if(isset($_POST['envoyer'])){
                                 </div>
                                 <div class="dd_right">
                                     <ul>
-                                       <a href="userProfil.php"> <li>Profil</li></a>   
-                                      <!-- <a href="Administration.php"> <li>Administration</li></a>-->
-                                       <a href=""> <li>Favorites</li> </a>               
-                                       <a href=""> <li>Settings</li> </a>
-                                       <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
-                                        
+                                    <a href="../user/userProfil.php"> <li>Profil</li></a>   
+                                  <!-- <a href="Administration.php"> <li>Administration</li></a>-->
+                                   <a href="../user/favorites.php"> <li>Favorites</li> </a>               
+                                   <a href="../user/Parametres.php"> <li>Paramètres</li> </a>
+                                   <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
+                                    
                                     </ul>
                                 </div>
                             </div>

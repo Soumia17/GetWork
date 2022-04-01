@@ -25,7 +25,7 @@
 }
 
 
-.navbar .logo a{
+/* .navbar .logo a{
 	display: block;
 	text-decoration: none;
 	
@@ -33,7 +33,7 @@
 	letter-spacing: 2px;
 	font-size: 25px;
 	text-transform: uppercase;
-}
+} */
 
 .navbar .nav_right > ul{
 	display: flex;
@@ -218,6 +218,7 @@ margin-right: 500px;
 }
 .image_profil_etoile{
   width: 35px;
+  height: 35px;
 	vertical-align: middle;
   border-radius: 50px;
 }
@@ -442,4 +443,8 @@ hr{
 	.etoil-favorit ul li .red{
 		color: red;
 		
+	}
+
+	.fav{
+		margin-top: 15%;
 	}

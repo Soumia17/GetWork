@@ -22,7 +22,7 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once 'includes/database-linck.php';
 $conn;
-
+if(!empty($_GET['send'])){
 $msg=$_GET['send'];
 $upd="UPDATE messages set lire=1 where emetteur='".$msg."'";
 mysqli_query($conn,$upd);
@@ -151,6 +151,7 @@ if($mail->send()) { ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="style_messages.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
    
 
 
@@ -167,7 +168,7 @@ if($mail->send()) { ?>
               <!--<a href="">LOGO</a>-->
               <center> <div class="left">
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
-                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  <img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
               <li class="menu-heading">
 
@@ -257,14 +258,18 @@ if($mail->send()) { ?>
                <div class="card-body">
                  <div class="media mb-3">
                  <?php
-                                        $mess="SELECT * FROM messages where emetteur='".$msg."'  ";
+                                        $mess="SELECT * FROM messages where idemail='".$msg."'  ";
                                         $mess = mysqli_query($conn,$mess);
                                         
                                         while($mes=mysqli_fetch_assoc($mess)){
-                                           
+                                          $mesimg="SELECT * FROM userinformation where psudo='".$mes['emetteur']."'  ";
+                                          $m = mysqli_query($conn,$mesimg);
+                                          while($me=mysqli_fetch_assoc($m)){
+                                            $img=$me['image'];
+                                          }
                                         
                                         ?>
-                   <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-3 mail-img shadow" alt="media image"  width="100" height="100">
+                   <img src="../user/<?php echo $img?>" class="rounded-circle mr-3 mail-img shadow" alt="media image"  width="100" height="100">
                      <div class="media-body">
                         <span class="media-meta float-right"><?php echo $mes['dateMess']  ?></span>
                         <h4 class="text-primary m-0"><?php echo $mes['emetteur'] ?></h4>
@@ -284,7 +289,7 @@ if($mail->send()) { ?>
 <form action="" method="POST">
                   <div class="media mt-3">
                       <a href="javascript:void();" class="media-left">
-                          <img alt="" src="<?php echo ($_SESSION['img']);?>" width="50" height="50">
+                          <img alt="" src="../user/<?php echo ($_SESSION['img']);?>" width="50" height="50">
                       </a>
                    
                       <div class="media-body">
@@ -315,4 +320,10 @@ if($mail->send()) { ?>
 
 <?php
 }
+else{
+  header("Location:../ind.html"); 
+}
+
+}
+
 ?>

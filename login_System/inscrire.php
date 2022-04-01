@@ -89,6 +89,16 @@ $req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo,userDate) value
 if($conn->query($req)===TRUE){
     $_SESSION['pseudo'] = $email;
     $_SESSION['admin']=2;
+    $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."'";
+    $adm = mysqli_query($conn,$action);
+    while($info=mysqli_fetch_assoc($adm)){
+$admi=$info['Theadmin'];
+$_SESSION['user']=$info['psudo'];
+$_SESSION['img']=$info['image'];
+$_SESSION['dat']=$info['userDate'];
+$_SESSION['phone']=$info['phone'];
+
+    }
     header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
 
 }

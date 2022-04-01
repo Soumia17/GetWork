@@ -73,9 +73,9 @@ h1,h2 {
   text-transform:uppercase ;
   border: 1px solid black;
  
-  position: relative;
+
   height: 39px;
-  background-color:black ;
+  background-color:rgb(224, 22, 22) ;
   font-family: 'Raleway', sans-serif;
   color: white;
   font-size: 11px;
@@ -90,7 +90,7 @@ h1,h2 {
 	background-color: white;
 
 
-margin-left: 20px;
+margin-right: 500px;
 	display: flex;
   height: 40px;
 
@@ -125,8 +125,8 @@ margin-left: 20px;
 
 }
 #button-Rechercher:hover{
-  border: 1px solid rgb(51, 110, 221);
-  background:rgb(51, 110, 221);
+  border: 1px solid rgb(18, 18, 19);
+  background:rgb(18, 18, 19);
 }
 
 .navbar{
@@ -183,6 +183,7 @@ header.sticky{
 
 header.sticky .box-recherch{
   display: block;
+
 }
 
 header.sticky .logo{
@@ -492,7 +493,7 @@ header.sticky{
 }
 
 .row .col50 p{
-    color: white;
+    color: black;
 }
 
 .row .col50 img{

@@ -20,6 +20,7 @@ $del="";
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="StyleService.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     
 
     <title>Document</title>
@@ -38,7 +39,7 @@ $del="";
             <ul class="admin-menu">
             <center> <div class="left">
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
-                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  <img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
               <li class="menu-heading">
 

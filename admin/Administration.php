@@ -18,6 +18,8 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>Document</title>
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 <body>   
         <header class="page-header">
@@ -30,7 +32,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
               <!--<a href="">LOGO</a>-->
               <center> <div class="left">
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
-                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  <img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
               <li class="menu-heading">
 
@@ -126,10 +128,52 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
             <div class="box-etoile">
             <?php
  while($g=mysqli_fetch_assoc($offr)){
+  $ofstar="SELECT Eval FROM evaleuation WHERE  numoff ='".$g['idOffer']."'";
+  $ofstar_run=mysqli_query($conn,$ofstar);
+  if(mysqli_num_rows($ofstar_run)>0){
+  $w=$t=$th=$f=$fi=$max=0;
+  while($star=mysqli_fetch_assoc($ofstar_run)){
+      if($star['Eval']==1)
+      $w=$w+1;
+      else
+      if($star['Eval']==2)
+      $t=$t+1;
+      else
+      if($star['Eval']==3)
+      $th=$th+1;
+      else
+      if($star['Eval']==4)
+      $f=$f+1;
+      else
+      if($star['Eval']==5)
+      $fi=$fi+1;
+
+
+
+  } 
+  if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
+      $max=1;
+  }
+   else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
+      $max=2;
+  }
+ else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
+      $max=3;
+  }
+  else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
+      $max=4;
+  }
+  else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
+      $max=5;
+  }
+}
+else
+$max=0;   
+
 ?>
         <div class="box">
             <div class="image-etoile">
-                <img src="<?php echo "../imageService/".$g['OfferImage'] ?>"alt="">
+                <img src="<?php echo "../user/".$g['OfferImage'] ?>"alt="">
             </div>
             
             <div>
@@ -143,11 +187,11 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                 
                     }
                     ?>
-                    <li> <img class="image_profil_etoile"  src="<?php echo $pho?>" alt="profile_img"></li>
+                    <li> <img class="image_profil_etoile"  src="../user/<?php echo $pho?>" alt="profile_img"></li>
                     <?php
                     if($_SESSION['user']!=$g['OfferPoster']){
                     ?>
-               <li> <a href="../user/userview.php?poster=<?php echo $g['OfferPoster']?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <li> <a href="../user/usrVBA.php?poster=<?php echo $g['OfferPoster']?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
                <?php
                }
                else{
@@ -162,24 +206,77 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
              </ul>
             <p><?php echo $g['OfferDescription']?></p>                 
                     <div class="center">
-                        <fieldset class="rating">
-                            <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
-                            <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
-                            <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
-                            <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
-                            <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
-                            <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
-                            <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
-                            <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
-                            <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
-                            <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
-                        </fieldset>
+                    <?php
+                    if($max==0){
+                    ?>
+                        
+                    <div class="stars">
+            <i class="lar la-star " data-value="1"></i>
+            <i class="lar la-star " data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==1){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star " data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==2){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star " data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==3){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==4){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star star" data-value="4"></i>
+            <i class="lar la-star" data-value="5"></i>
+        </div>
+        <?php
+        } else if($max==5){
+        ?>
+                <div class="stars">
+            <i class="lar la-star star" data-value="1"></i>
+            <i class="lar la-star star" data-value="2"></i>
+            <i class="lar la-star star" data-value="3"></i>
+            <i class="lar la-star star" data-value="4"></i>
+            <i class="lar la-star star" data-value="5"></i>
+        </div>
+        <?php
+        } 
+        ?>
+       
                     </div>
                 </div>
   <hr>
   <div class="etoil-favorit">
                     <ul>
-                        <li><i class="fas fa-bookmark" ></i></li>
+                        
                         <li>
                             le prix <label for=""><?php echo $g['OfferPrix']?> DZ</label>
                         </li>
@@ -268,10 +365,10 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                      
                      <div class="modalContent">
                      <span onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='none'" class="close">×</span>
-                     <div class="icon-box">
-                      <span>!</span>
-                    
-                   </div>	
+                     <div class="icon">
+          <i class="fas fa-exclamation"></i>
+        </div>	
+        <br>
                      <p>Êtes-vous sûr de vouloir supprimer loffre</p>
                      
                      <a name="delet_ad" href="offreDel.php?offreDel=<?php echo $g['idOffer']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
@@ -284,10 +381,10 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                      
                      <div class="modalContent">
                      <span onclick="document.getElementById('<?php echo $g['idOffer'] ?>h').style.display='none'" class="close">×</span>
-                     <div class="icon-box">
-                      <span>!</span>
-                    
-                   </div>	
+                     <div class="icon">
+          <i class="fas fa-exclamation"></i>
+        </div>	
+        <br>	
                      <p>Êtes-vous sûr de vouloir blocker utilisateur</p>
                      
                      <a name="delet_ad" href="blockUtil.php?blockUtil=<?php echo $g['OfferPoster']?>"><button   class="del" onclick="hideModal()">Blocker</button></a>

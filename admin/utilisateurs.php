@@ -14,8 +14,9 @@ $conn;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style_Administration.css">
-    <link rel="stylesheet" href="Style_Administrateur.css">
+    <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="Style_Administrateur.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
 </head>
 <body>   
@@ -28,7 +29,7 @@ $conn;
       <ul class="admin-menu">
       <center> <div class="left">
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
-                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  <img class="image_profil"  src=" ../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
         <li class="menu-heading">
 
@@ -134,6 +135,7 @@ $conn;
      </div>
      </form>
      <br>
+     
      <div class="box-etoile">
             
             <?php
@@ -147,17 +149,19 @@ $conn;
             while($info=mysqli_fetch_assoc($adm)){
             ?>
               <div class="card">
-                <img src="<?php echo($info['image'])?>" alt="Avatar" style="width:100%">
+                <div class="car-img">
+                <img src="../user/<?php echo($info['image'])?>" alt="Avatar" style="width:100%">
+                </div>
                 <div class="card-container">
-                 <a href=""> <h4><b><?php echo($info['psudo'])?></b></h4> </a>
+                 <a href="../user/usrVBA.php?poster=<?php echo $info['psudo']?>"> <h4><b><?php echo($info['psudo'])?></b></h4> </a>
                    
                 </div>
                 <button id="but_card" onclick="document.getElementById('<?php echo $info['psudo'] ?>').style.display='block'">bloqué utilisateur</button>
 
-                <div id="<?php echo $info['psudo'] ?>" class="modal">
+                <!-- <div id="<?php //echo $info['psudo'] ?>" class="modal">
                      
                      <div class="modalContent">
-                     <span onclick="document.getElementById('<?php echo $info['psudo'] ?>').style.display='none'" class="close">×</span>
+                     <span onclick="document.getElementById('<?php //echo $info['psudo'] ?>').style.display='none'" class="close">×</span>
                      <div class="icon-box">
                       <span>!</span>
 
@@ -165,11 +169,25 @@ $conn;
                    </div>	
                      <p>Êtes-vous sûr de vouloir blocker utilisateur</p>
                      
-                     <a name="delet_ad" href="blockerutilisateur.php?blok_uti=<?php echo $info['psudo']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                     <a name="delet_ad" href="blockerutilisateur.php?blok_uti=<?php //echo $info['psudo']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
                      
                      <button type="button"  class="cancel" onclick="hideModal()">Annuler</button>
 
+                     </div> -->
+                     <div id="<?php echo $info['psudo'] ?>" class="modal">
+                     
+                     <div class="modalContent">
+                     <span onclick="document.getElementById('<?php echo $info['psudo'] ?>').style.display='none'" class="close">×</span>
+                     <div class="icon">
+          <i class="fas fa-exclamation"></i>
+        </div>
+                     <p>Êtes-vous sûr de vouloir bloqué utilisateur</p>
+                     
+                     <a name="delet_ad" href="blockerutilisateur.php?blok_uti=<?php echo $info['psudo']?>"><button   class="del" onclick="hideModal()">bloqué</button></a>
+                    
+                     <button type="button"  class="cancel" onclick="hideModal()">Annuler</button>
                      </div>
+            </div>
                 
 
 
@@ -178,13 +196,14 @@ $conn;
               <?php
               
             }}
+            
             else {
             ?>
         <span class="noResult">aucun resultat trouver</span>
         <?php
 }
               ?>
-              </div>
+              </div>  
          </section>          
         </section>
 

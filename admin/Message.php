@@ -8,7 +8,7 @@ $conn;
 $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     $offr = mysqli_query($conn,$action);
 
-    if(isset($_POST['delet']))
+    if(isset($_POST['delet']) && !empty($_POST['mess_delete_id']))
 {
     $all_id = $_POST['mess_delete_id'];
     $extract_id = implode(',' , $all_id);
@@ -31,6 +31,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="style_messages.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
 </head>
 <body>   
@@ -44,7 +45,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
               <!--<a href="">LOGO</a>-->
               <center> <div class="left">
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
-                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  <img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
               <li class="menu-heading">
 
@@ -170,7 +171,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                                                 <button name="delet" class="btn btn-circle btn-danger text-white" >
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                                <span class="ml-2 font-normal text-dark">Delete</span>
+                                                <span class="ml-2 font-normal text-dark">supprimer</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -213,14 +214,27 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                                             <!-- Message -->
                                             <td class="mess">
                                                 <div class="mess">
-                                                <a class="link" href="reponse.php?send=<?php echo $mes['emetteur'] ?>">
+                                                <a class="link" href="reponse.php?send=<?php echo $mes['idemail'] ?>">
                                                    
                                                     <span class="text-dark"><?php  echo substr($mes['messag'],1,44) ?>....</span>
                                                 </a>
                                                 </div>
                                             </td>
                                             <!-- Attachment -->
+                                            <?php
+                                             if($mes['lire']==0){
+                                            ?>
                                             <td><i class="fa fa-paperclip text-muted"></i></td>
+                                            <?php
+                                             }
+                                             else{
+
+                                             
+                                            ?>
+                                            <td></td>
+                                            <?php
+                                             }
+                                            ?>
                                             <!-- Time -->
                                             <td class="text-muted"><?php echo $mes['dateMess']  ?></td>
                                         </tr>
@@ -228,6 +242,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                                         }
                                        ?>
                                        </form>
+                                      
                                        <?php
                                        }
                                        else{

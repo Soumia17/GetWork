@@ -42,6 +42,7 @@ $conn;
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+                    <link rel="stylesheet" href="../login_System/logoStyle.css">
                     <title>Document</title>
                 </head>
                 <body>
@@ -66,6 +67,16 @@ $conn;
             $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['passW'] = $passwo;
         $_SESSION['admin']=1;
+        $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."'";
+    $adm = mysqli_query($conn,$action);
+    while($info=mysqli_fetch_assoc($adm)){
+$admi=$info['Theadmin'];
+$_SESSION['user']=$info['psudo'];
+$_SESSION['img']=$info['image'];
+$_SESSION['dat']=$info['userDate'];
+$_SESSION['phone']=$info['phone'];
+
+    }
         header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
         echo"yesssss";
         exit();
@@ -76,6 +87,16 @@ $conn;
         $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['passW'] = $passwo;
         $_SESSION['admin']=0;
+        $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."'";
+    $adm = mysqli_query($conn,$action);
+    while($info=mysqli_fetch_assoc($adm)){
+$admi=$info['Theadmin'];
+$_SESSION['user']=$info['psudo'];
+$_SESSION['img']=$info['image'];
+$_SESSION['dat']=$info['userDate'];
+$_SESSION['phone']=$info['phone'];
+
+    }
         header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
         echo"yesssss";
         exit();

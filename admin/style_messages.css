@@ -29,9 +29,19 @@
     padding: .9375rem .4rem;
     vertical-align: top;
     border-top: 1px solid rgba(120,130,140,.13);
+   border: 1px solid transparent;
 
 }
+.table-responsive{
+    border: 1px solid black;
+    
 
+}
+.table-responsive table{
+    width:100%;
+    
+
+}
 .font-light {
     font-weight: 300;
 }

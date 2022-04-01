@@ -15,11 +15,14 @@ include_once 'includes/database-linck.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleFormulair.css">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
 </head>
 <body >
 <header class="header">
-  <a href="" >LOGO</a>
+<div class="logo">
+<a href="../login_System/accueil.html">getWork</a>
+                </div>
   <form action="formulair.php" method="POST">
   <ul class="navbar">
     <li><input placeholder="entre pseudo ou email" name="pseudo" class="inpForgotPass"  type="text"></li>

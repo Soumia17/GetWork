@@ -34,6 +34,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
     <link rel="stylesheet" href="style_profil.css">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -41,8 +42,8 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
   
         <div class="wrapper">
             <div class="navbar">
-                <div class="logo">
-                    <a href="#">getWork</a>
+            <div class="logo">
+                    <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
                 <form action="">
@@ -99,12 +100,12 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                                 </div>
                                 <div class="dd_right">
                                     <ul>
-                                       <a href="userProfil.php"> <li>Profil</li></a>   
-                                       <!-- <a href="Administration.php"> <li>Administration</li></a>-->
-                                       <a href=""> <li>Favorites</li> </a>               
-                                       <a href=""> <li>Settings</li> </a>
-                                       <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
-                                        
+                                    <a href="../user/userProfil.php"> <li>Profil</li></a>   
+                                  <!-- <a href="Administration.php"> <li>Administration</li></a>-->
+                                   <a href="../user/favorites.php"> <li>Favorites</li> </a>               
+                                   <a href="../user/Parametres.php"> <li>Paramètres</li> </a>
+                                   <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
+                                    
                                     </ul>
                                 </div>
                             </div>

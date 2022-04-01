@@ -5,23 +5,30 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once 'includes/database-linck.php';
 $conn;
-$action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."'";
-    $adm = mysqli_query($conn,$action);
-    while($info=mysqli_fetch_assoc($adm)){
-$admi=$info['Theadmin'];
-$_SESSION['user']=$info['psudo'];
-$_SESSION['img']=$info['image'];
-$_SESSION['dat']=$info['userDate'];
-$_SESSION['phone']=$info['phone'];
+// $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."'";
+//     $adm = mysqli_query($conn,$action);
+//     while($info=mysqli_fetch_assoc($adm)){
+// $admi=$info['Theadmin'];
+// $_SESSION['user']=$info['psudo'];
+// $_SESSION['img']=$info['image'];
+// $_SESSION['dat']=$info['userDate'];
+// $_SESSION['phone']=$info['phone'];
 
-    }
+//     }
 
     $action="SELECT * FROM offers ORDER BY idOffer DESC ";
+    if(isset($_GET['search']) and !empty($_GET['search'])){
+        $q = htmlspecialchars($_GET['search']);
+        $action="SELECT * FROM offers WHERE OfferPoster LIKE '%".$q."%' OR OfferCategore LIKE '%".$q."%' ";
+       
+
+      }
+    
     $offr = mysqli_query($conn,$action);
 
     
         
-        
+       
         if(isset($_POST['saveOff'])){
            
             $fav=$_GET['fav'];
@@ -32,6 +39,7 @@ $_SESSION['phone']=$info['phone'];
             
 
         }
+       
 
         if(isset($_POST['NOsaveOff'])){
             
@@ -56,7 +64,7 @@ $_SESSION['phone']=$info['phone'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style_AccuiAdmin.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title>Document</title>
 
@@ -68,14 +76,14 @@ $_SESSION['phone']=$info['phone'];
   
     <div class="wrapper">
         <div class="navbar">
-            <div class="logo">
-                <a href="#">LOGO</a>
-            </div>
+        <div class="logo">
+                    <a href="../admin/Acceui_Admin.php">getWork</a>
+                </div>
             <div>
             <form action="">
                 <div class="box-recherch">
               <i class="fa fa-search" aria-hidden="true"></i>
-                <input placeholder="trouver des services" id="input-Rechercher" type="text">
+                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
                 <button id="button-Rechercher">Rechercher</button>
               </div>
                 
@@ -113,9 +121,10 @@ $_SESSION['phone']=$info['phone'];
        $image= $L['image'];
 
       }*/
+      
       ?>
 
-                        <img class="image_profil"  src="<?php echo $_SESSION['img']?>" alt="profile_img">
+<img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                         
                         <div class="dd_menu">
                             <div class="dd_left">
@@ -188,8 +197,9 @@ $_SESSION['phone']=$info['phone'];
   <section class="etoile" id="etoile">
             <div class="box-etoile">
 <?php
+if(mysqli_num_rows($offr)>0){
  while($g=mysqli_fetch_assoc($offr)){
-    $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$g['OfferPoster']."'";
+    $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$g['OfferPoster']."' and numoff='".$g['idOffer']."'";
     $ofstar_run=mysqli_query($conn,$ofstar);
     if(mysqli_num_rows($ofstar_run)>0){
     $w=$t=$th=$f=$fi=$max=0;
@@ -233,7 +243,7 @@ $max=0;
 ?>
         <div class="box">
             <div class="image-etoile">
-                <img src="<?php echo "../imageService/".$g['OfferImage'] ?>"alt="">
+                <img src="<?php echo "../user/".$g['OfferImage'] ?>"alt="">
             </div>
             <div>
                 <ul class="image_info">
@@ -245,7 +255,7 @@ $max=0;
                 
                     }
                     ?>
-                    <li> <img class="image_profil_etoile"  src="<?php echo $pho?>" alt="profile_img"></li>
+                    <li> <img class="image_profil_etoile"  src=" ../user/<?php  echo $pho?>" alt="profile_img"></li>
                     <?php
                     if($_SESSION['user']!=$g['OfferPoster']){
                     ?>
@@ -328,10 +338,12 @@ $max=0;
             <i class="lar la-star star" data-value="3"></i>
             <i class="lar la-star star" data-value="4"></i>
             <i class="lar la-star star" data-value="5"></i>
+            
         </div>
         <?php
         } 
         ?>
+         
 
                         
                     </div>
@@ -345,21 +357,22 @@ $max=0;
                         //saveof='".$g['OfferPoster']."' AND
                         $us=$_SESSION['user'];
                         //echo $us;
-                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH ='$us'";
+                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH ='$us' and idOffer='".$g['idOffer']."'";
                         $rqST=mysqli_query($conn,$S);
                        // echo mysqli_num_rows($rqST);
                         if(mysqli_num_rows($rqST)==0){
 
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
-                        <li> <button name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
+                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST" id="myform">
+                        <li> <button id="insert" name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
                         </form>
                         <?php
                         }else{
                         ?>
                         <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
-                        <li> <button name="NOsaveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark red " ></i></button></li>
+                        <li> <button type="submit" name="NOsaveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark red " ></i></button></li>
                         </form>
+                        
 
                         <?php
                         }
@@ -375,6 +388,11 @@ $max=0;
                 </div>
 
                <?php
+ }}
+ else{
+     ?>
+     <h1 class="noResult">aucun resultat trouver</h1>
+     <?php
  }
                ?>
 
@@ -391,6 +409,7 @@ $max=0;
 </body>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <script src="Control-Administration.js"></script>
+
 </html>
 
 <?php

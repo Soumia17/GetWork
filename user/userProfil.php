@@ -6,7 +6,7 @@ if(!isset($_SESSION['pseudo'])){
 include_once '../includes/database-linck.php';
 $conn;
 
-if(isset($_POST['upPH'])){
+/*if(isset($_POST['upPH'])){
     if($_POST['newImag']!=""){
         $img="../admin/images_Admin/".$_POST['newImag'];
         $re="UPDATE userinformation
@@ -15,7 +15,23 @@ if(isset($_POST['upPH'])){
     $res = mysqli_query($conn,$re);
     $_SESSION['img']=$img;
     }
-}
+}*/
+if(isset($_POST['upPH'])){
+    if(!empty($_FILES['newImag']['name'])){
+        $file=$_FILES['newImag']['name'];
+        $re="UPDATE userinformation
+    SET  image='".$file."'
+    WHERE email='".$_SESSION['pseudo']."'";
+    $res = mysqli_query($conn,$re);
+    move_uploaded_file($_FILES['newImag']['tmp_name'],$file);
+    $re="SELECT image FROM userinformation WHERE email='".$_SESSION['pseudo']."'";
+    $res = mysqli_query($conn,$re);
+    while($f=mysqli_fetch_assoc($res)){
+        $m=$f['image'];
+    }
+    $_SESSION['img']=$m;
+    
+}}
 
 if(isset($_POST['up'])){
     if($_POST['newPseudo']!=""){
@@ -62,47 +78,47 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
             $Offer_run=mysqli_query($conn,$Offer);
 
 
-            $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$_SESSION['user']."'";
-            $ofstar_run=mysqli_query($conn,$ofstar);
-            if(mysqli_num_rows($ofstar_run)>0){
-            $w=$t=$th=$f=$fi=$max=0;
-            while($star=mysqli_fetch_assoc($ofstar_run)){
-                if($star['Eval']==1)
-                $w=$w+1;
-                else
-                if($star['Eval']==2)
-                $t=$t+1;
-                else
-                if($star['Eval']==3)
-                $th=$th+1;
-                else
-                if($star['Eval']==4)
-                $f=$f+1;
-                else
-                if($star['Eval']==5)
-                $fi=$fi+1;
+        //     $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$_SESSION['user']."'";
+        //     $ofstar_run=mysqli_query($conn,$ofstar);
+        //     if(mysqli_num_rows($ofstar_run)>0){
+        //     $w=$t=$th=$f=$fi=$max=0;
+        //     while($star=mysqli_fetch_assoc($ofstar_run)){
+        //         if($star['Eval']==1)
+        //         $w=$w+1;
+        //         else
+        //         if($star['Eval']==2)
+        //         $t=$t+1;
+        //         else
+        //         if($star['Eval']==3)
+        //         $th=$th+1;
+        //         else
+        //         if($star['Eval']==4)
+        //         $f=$f+1;
+        //         else
+        //         if($star['Eval']==5)
+        //         $fi=$fi+1;
 
 
 
-            } 
-            if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
-                $max=1;
-            }
-             else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
-                $max=2;
-            }
-           else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
-                $max=3;
-            }
-            else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
-                $max=4;
-            }
-            else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
-                $max=5;
-            }
-        }
-        else
-        $max=0;   
+        //     } 
+        //     if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
+        //         $max=1;
+        //     }
+        //      else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
+        //         $max=2;
+        //     }
+        //    else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
+        //         $max=3;
+        //     }
+        //     else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
+        //         $max=4;
+        //     }
+        //     else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
+        //         $max=5;
+        //     }
+        // }
+        // else
+        // $max=0;   
            
             
 ?>
@@ -119,6 +135,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
     <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
    
 </head>
@@ -129,7 +146,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
         <div class="wrapper">
             <div class="navbar">
                 <div class="logo">
-                    <a href="#">getWork</a>
+                    <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
                 <form action="">
@@ -186,12 +203,12 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
                                 </div>
                                 <div class="dd_right">
                                     <ul>
-                                       <a href="userProfil.php"> <li>Profil</li></a>   
-                                      <!-- <a href="Administration.php"> <li>Administration</li></a>-->
-                                       <a href=""> <li>Favorites</li> </a>               
-                                       <a href=""> <li>Settings</li> </a>
-                                       <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
-                                        
+                                    <a href="../user/userProfil.php"> <li>Profil</li></a>   
+                                  <!-- <a href="Administration.php"> <li>Administration</li></a>-->
+                                   <a href="../user/favorites.php"> <li>Favorites</li> </a>               
+                                   <a href="../user/Parametres.php"> <li>Paramètres</li> </a>
+                                   <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
+                                    
                                     </ul>
                                 </div>
                             </div>
@@ -231,7 +248,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
                            
                             <div class="card-block">
                                 <div  class="user-image">
-                                    <form action="userProfil.php" method="POST">
+                                    <form action="userProfil.php" method="POST" enctype="multipart/form-data">
                                     <img  src="<?php echo $_SESSION['img'];?>" id="photo">
                                     <input name="newImag" onclick="document.getElementById('upPhoto').style.display='block';" type="file" id="file">
                                     <label for="file" id="uploadBtn">Choisir une Photo</label>
@@ -334,7 +351,49 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
                 
 
                 while($g=mysqli_fetch_assoc($Offer_run)){
+                    $ofstar="SELECT Eval FROM evaleuation WHERE  numoff ='".$g['idOffer']."'";
+                    $ofstar_run=mysqli_query($conn,$ofstar);
+                    if(mysqli_num_rows($ofstar_run)>0){
+                    $w=$t=$th=$f=$fi=$max=0;
+                    while($star=mysqli_fetch_assoc($ofstar_run)){
+                        if($star['Eval']==1)
+                        $w=$w+1;
+                        else
+                        if($star['Eval']==2)
+                        $t=$t+1;
+                        else
+                        if($star['Eval']==3)
+                        $th=$th+1;
+                        else
+                        if($star['Eval']==4)
+                        $f=$f+1;
+                        else
+                        if($star['Eval']==5)
+                        $fi=$fi+1;
+        
+        
+        
+                    } 
+                    if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
+                        $max=1;
+                    }
+                     else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
+                        $max=2;
+                    }
+                   else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
+                        $max=3;
+                    }
+                    else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
+                        $max=4;
+                    }
+                    else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
+                        $max=5;
+                    }
+                }
+                else
+                $max=0;   
                 ?>
+                
 
                                         
 
@@ -346,7 +405,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
                    <div class="card">
                    
                    <div class="image">
-                      <img src="<?php echo "../imageService/".$g['OfferImage'] ?>">
+                      <img src="../user/<?php echo $g['OfferImage'] ?>">
                    </div>
                    <div class="des">
                     <span class="spn">Description :</span>

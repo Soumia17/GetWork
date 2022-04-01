@@ -16,6 +16,7 @@ $conn;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
     <link rel="stylesheet" href="style_profil.css">
+    <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,8 +24,8 @@ $conn;
   
         <div class="wrapper">
             <div class="navbar">
-                <div class="logo">
-                    <a href="#">getWork</a>
+            <div class="logo">
+                    <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
                 <form action="">
@@ -101,7 +102,7 @@ $conn;
       <section id="newService_Formulair" class="newService_Formulair">
             
               
-        <form id="enviar" action="isertOffre.php" method="POST" >
+        <form id="enviar" action="isertOffre.php" method="POST" enctype="multipart/form-data" >
 
          
          

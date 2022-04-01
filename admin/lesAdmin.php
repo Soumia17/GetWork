@@ -14,9 +14,10 @@ $conn;
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" rel="stylesheet" href="Style_Administration.css">
+        <link type="text/css" rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="Style_Administrateur.css?v=<?php echo time(); ?>">
         <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+        <link rel="stylesheet" href="../login_System/logoStyle.css">
        
         
         
@@ -34,7 +35,7 @@ $conn;
                 <ul class="admin-menu">
                 <center> <div class="left">
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
-                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  <img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
                   <li class="menu-heading">
     
@@ -50,7 +51,7 @@ $conn;
                       </a>
                     </li>
                     <li>
-                    <a href="http://localhost/PFFE/admin/Administrateurs.php">
+                    <a href="http://localhost/PFFE/admin/lesAdmin.php">
                       
                       <i class="fas fa-user-shield"></i>
                       
@@ -176,9 +177,22 @@ $admi=$info['Theadmin'];
     }
     
    
-   while($infoAdmin=mysqli_fetch_assoc($admin)){?>
+   while($infoAdmin=mysqli_fetch_assoc($admin)){
+     
+
+    $action="SELECT * FROM userinformation WHERE psudo ='".$infoAdmin["pseudoo"]."' ";
+    $adm = mysqli_query($conn,$action);
+    while($info=mysqli_fetch_assoc($adm)){
+$img=$info['image'];
+
+
+
+    }
+     ?>
+   
                     <div class="card">
-                        <img src="<?php echo ($infoAdmin['img']);?>" alt="Avatar" style="width:100%">
+                        <img src="../user/<?php echo ($img);?>" alt="Avatar" style="width:100%">
+                        
                         <div class="card-container">
                          <a href=""> <h4><b><?php echo ($infoAdmin["pseudoo"]);?></b></h4> </a>
                           <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["adminDate"]);?> </p>
@@ -211,15 +225,15 @@ $admi=$info['Theadmin'];
                      
                      <div class="modalContent">
                      <span onclick="document.getElementById('<?php echo $infoAdmin['pseudoo'] ?>').style.display='none'" class="close">×</span>
-                     <div class="icon-box">
-                      <span>!</span>
-                    
-                   </div>	
+                     <div class="icon">
+          <i class="fas fa-exclamation"></i>
+        </div>	
+        <br>
                      <p>Êtes-vous sûr de vouloir retirer ladmin</p>
                      
                      <a name="delet_ad" href="delet_Adm.php?del_ad=<?php echo $infoAdmin["pseudoo"]?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
                      
-                     <button type="button"  class="cancel" onclick="hideModal()">Annuler</button>
+                     <button type="button"  class="cancel" onclick="document.getElementById('<?php echo $infoAdmin['pseudoo'] ?>').style.display='none'">Annuler</button>
                      </div>
                       </div>
 
@@ -278,7 +292,8 @@ $admi=$info['Theadmin'];
 
                <section id="new_admin" >
                <?php if($admi==0){
-                        ?>
+                       
+                       ?>
                         
                <div id="con" class="modal_condi">
 
@@ -332,7 +347,7 @@ $admi=$info['Theadmin'];
                  
                     <div class="card">
                       
-                        <img src="<?php echo($infoAdmin["image"]) ?>" alt="Avatar" style="width:100%">
+                        <img src="../user/<?php echo($infoAdmin["image"]) ?>" alt="Avatar" style="width:100%">
                         <div class="card-container">
                          <a href=""> <h4><b><?php echo($infoAdmin["psudo"]) ?> </b></h4> </a>
                           <p> <br>   <?php /*echo date("j, n, Y");*/ ?> </p>
