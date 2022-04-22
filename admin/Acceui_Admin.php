@@ -109,9 +109,9 @@ $conn;
 
                     ?>
                    
-                    <li class="nr_li">
+                    <!-- <li class="nr_li">
                         <i class="fas fa-envelope-open-text"></i>
-                    </li>
+                    </li> -->
                     
                     <li class="nr_li dd_main">
                     <?php

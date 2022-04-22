@@ -14,8 +14,8 @@ $conn;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
-    <link rel="stylesheet" href="style_profil.css">
+    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
 </head>
@@ -28,14 +28,14 @@ $conn;
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
-                <form action="">
-                    <div class="box-recherch">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                    <input placeholder="trouver des services" id="input-Rechercher" type="text">
-                    <button id="button-Rechercher">Rechercher</button>
-                  </div>
-                    
-                </form>
+                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+                <div class="box-recherch">
+              <i class="fa fa-search" aria-hidden="true"></i>
+                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
+                <button id="button-Rechercher">Rechercher</button>
+              </div>
+                
+            </form>
             </div>
                 <div class="nav_right">
                     <ul>
@@ -59,9 +59,7 @@ $conn;
                     ?>
                         
                        
-                        <li class="nr_li">
-                            <i class="fas fa-envelope-open-text"></i>
-                        </li>
+                       
                         
                         <li class="nr_li dd_main">
                   
@@ -158,7 +156,7 @@ $conn;
                       <input name="OfferImage" id="fileUpload" type="file" name="myFile" class="drop-zone__input">
                     </div>
 
-                    <button type="submit"  name="save">sauver</button>
+                    <button type="submit"  name="save">sauvegarder</button>
     
         </form>
 

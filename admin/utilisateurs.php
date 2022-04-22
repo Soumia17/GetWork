@@ -5,8 +5,8 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once 'includes/database-linck.php';
 $conn;
-
-
+$action="SELECT * FROM userinformation WHERE theadmin =2 and block =0";
+$util=mysqli_query($conn,$action);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,8 +117,19 @@ $conn;
           </section>
           <section class="grid">
        
-            <article></article>
-            <article></article>
+          <article>
+                    <div class="admin_num">
+                        <div class="admin_num_1"> 
+                            <span><?php echo mysqli_num_rows($util)?></span><br>
+
+                            <label for="">utilisateurs</label>
+                        </div>
+                        <div class="admin_num_2">
+                           <img src="images_Admin/icons8-travailler-avec-un-ordinateur-portable-90.png" alt="">
+                        </div>
+
+                    </div>
+                </article>
            
           </section>
          <section class="etoile" id="etoile">

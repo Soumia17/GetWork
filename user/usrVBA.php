@@ -6,6 +6,7 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once '../includes/database-linck.php';
 $conn;
+if(!empty($_GET['poster'])){
 $Poster=$_GET['poster'];
 
 /*$_SESSION['Poster']=$_GET['poster'];
@@ -60,14 +61,14 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
-                <form action="">
-                    <div class="box-recherch">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                    <input placeholder="trouver des services" id="input-Rechercher" type="text">
-                    <button id="button-Rechercher">Rechercher</button>
-                  </div>
-                    
-                </form>
+                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+                <div class="box-recherch">
+              <i class="fa fa-search" aria-hidden="true"></i>
+                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
+                <button id="button-Rechercher">Rechercher</button>
+              </div>
+                
+            </form>
             </div>
                 <div class="nav_right">
                     <ul>
@@ -91,9 +92,9 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                     ?>
                         
                        
-                        <li class="nr_li">
+                        <!-- <li class="nr_li">
                             <i class="fas fa-envelope-open-text"></i>
-                        </li>
+                        </li> -->
                         
                         <li class="nr_li dd_main">
                   
@@ -429,5 +430,12 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
 </html>
 
 <?php
+
 }
+else{
+  header("Location:../error.html"); 
+}
+}
+
+
 ?>

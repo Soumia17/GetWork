@@ -21,7 +21,7 @@ include_once 'includes/database-linck.php';
 <body >
 <header class="header">
 <div class="logo">
-<a href="../login_System/accueil.html">getWork</a>
+<a href="../login_System/accueil.php">getWork</a>
                 </div>
   <form action="formulair.php" method="POST">
   <ul class="navbar">
@@ -143,7 +143,7 @@ include_once 'includes/database-linck.php';
 
 
 
-<script src="testRegester.js"></script>
+<script src="testInscription.js"></script>
  
   
 </body>

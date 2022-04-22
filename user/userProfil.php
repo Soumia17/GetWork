@@ -149,14 +149,14 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
-                <form action="">
-                    <div class="box-recherch">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                    <input placeholder="trouver des services" id="input-Rechercher" type="text">
-                    <button id="button-Rechercher">Rechercher</button>
-                  </div>
-                    
-                </form>
+                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+                <div class="box-recherch">
+              <i class="fa fa-search" aria-hidden="true"></i>
+                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
+                <button id="button-Rechercher">Rechercher</button>
+              </div>
+                
+            </form>
             </div>
                 <div class="nav_right">
                     <ul>
@@ -180,9 +180,9 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
                     ?>
                         
                        
-                        <li class="nr_li">
+                        <!-- <li class="nr_li">
                             <i class="fas fa-envelope-open-text"></i>
-                        </li>
+                        </li> -->
                         
                         <li class="nr_li dd_main">
                   

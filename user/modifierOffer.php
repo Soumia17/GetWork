@@ -5,6 +5,7 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once '../includes/database-linck.php';
 $conn;
+if(!empty($_GET['OffMO'])){
 $id=$_GET['OffMO'];
 $_SESSION['off']=$id;
 //$id= $_SESSION['off'];
@@ -31,8 +32,8 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
-    <link rel="stylesheet" href="style_profil.css">
+    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
@@ -46,14 +47,14 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
-                <form action="">
-                    <div class="box-recherch">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                    <input placeholder="trouver des services" id="input-Rechercher" type="text">
-                    <button id="button-Rechercher">Rechercher</button>
-                  </div>
-                    
-                </form>
+                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+                <div class="box-recherch">
+              <i class="fa fa-search" aria-hidden="true"></i>
+                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
+                <button id="button-Rechercher">Rechercher</button>
+              </div>
+                
+            </form>
             </div>
                 <div class="nav_right">
                     <ul>
@@ -69,7 +70,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                    
 
                     <li class="nr_li">
-                      <a href="Administration.php">  <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php">  <i class="fas fa-user-shield hii"></i></a>
                     </li>
                     <?php
                     }
@@ -77,9 +78,9 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                     ?>
                         
                        
-                        <li class="nr_li">
+                        <!-- <li class="nr_li">
                             <i class="fas fa-envelope-open-text"></i>
-                        </li>
+                        </li> -->
                         
                         <li class="nr_li dd_main">
                   
@@ -125,7 +126,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
            <div class="cardd">
            
            <div class="image">
-              <img src="<?php echo "../imageService/".$OfferImage ?>">
+              <img src="<?php echo "../user/".$OfferImage ?>">
            </div>
            <div class="des">
             <span class="spn">Description :</span>
@@ -155,11 +156,20 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
       <section id="newService_Formulair" class="newService_Formulair">
             
               
-              <div class="but_Hors_Service">
+              <!-- <div class="but_Hors_Service">
               <form action="">
-               <button>Metre Hors service</button>
+              <div class="select">
+   <select name="format" id="format">
+      <option selected disabled>Choose a book format</option>
+      <option value="pdf">PDF</option>
+      <option value="txt">txt</option>
+      <option value="epub">ePub</option>
+      <option value="fb2">fb2</option>
+      <option value="mobi">mobi</option>
+   </select>
+</div>
                </form>
-      </div>
+      </div> -->
               
         <form id="enviar" action="updOfer.php" method="POST" >
 
@@ -218,7 +228,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                       <input name="OfferImage" id="fileUpload" type="file" name="myFile" class="drop-zone__input">
                     </div>
 
-                    <button type="submit"  name="save">sauver</button>
+                    <button type="submit"  name="save">sauvegarder</button>
     
         </form>
 
@@ -240,5 +250,10 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
 
 </html>
 <?php
+
+}
+else{
+  header("Location:../error.html"); 
+}
 }
 ?>

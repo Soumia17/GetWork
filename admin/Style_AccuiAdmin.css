@@ -47,7 +47,9 @@
 	cursor: pointer;	
 	font-size: 20px;
 	position: relative;
+
 }
+
 
 .navbar .nav_right ul li.nr_li:hover {
     color: #8a068f;
@@ -300,7 +302,7 @@ width: 100%;
 .etoil-favorit ul li .fas:hover{
   color: red;
 }
-
+ 
 
 /*styling star rating*/
 .rating{
@@ -448,3 +450,12 @@ hr{
 	.fav{
 		margin-top: 15%;
 	}
+
+	.yourf{
+margin-left: 3%;
+margin-top: 7%;
+position: absolute;
+font-size: 35px;
+
+	}
+

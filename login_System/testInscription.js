@@ -10,47 +10,75 @@ let jsTest=document.getElementById('jsTest');
 let jsT=document.getElementById('jsT');
 mySForm.addEventListener('submit',function(e){
 
-    if(nom.value==""){
-        jsT.style.border="1px solid red";
-        jsT.style.backgroundColor="#FFCCCC";
-        document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez votre nom";
-        nom.style.border="2px solid red";
-        e.preventDefault();
-
-
-    }
-    if(preNom.value==""){
-        jsT.style.border="1px solid red";
-        jsT.style.backgroundColor="#FFCCCC";
-        document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez votre prenom";
-        preNom.style.border="2px solid red";
-        e.preventDefault();
-
-
-    }
-    if(Pseu.value==""){
-        jsT.style.border="1px solid red";
-        jsT.style.backgroundColor="#FFCCCC";
-        document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez votre pseudo";
-        Pseu.style.border="2px solid red";
-        e.preventDefault();
-
-
-    }
-    if(Pseu.value<4){
-        jsT.style.border="1px solid red";
-        jsT.style.backgroundColor="#FFCCCC";
-        document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez au moins 4 character";
-        Pseu.style.border="2px solid red";
-        e.preventDefault();
-
-
-    }
     
+    
+    
+    
+   
+    
+    
+    
+    
+    if(motPasseCo.value==""){
+        jsT.style.border="1px solid red";
+        jsT.style.backgroundColor="#FFCCCC";
+        document.getElementById('img').src="icons8-xbox-x-50.png";
+        jsTest.innerHTML="confirmer le mote de passe";
+        motPasseCo.style.border="2px solid red";
+        
+        e.preventDefault();
+
+
+    }
+    else
+    if(motPasse.value!=motPasseCo.value && motPasse.value!="" &&motPasseCo.value!="" ){
+        jsT.style.border="1px solid red";
+        jsT.style.backgroundColor="#FFCCCC";
+        document.getElementById('img').src="icons8-xbox-x-50.png";
+        jsTest.innerHTML="confirmer le mote de passe";
+        motPasseCo.style.border="2px solid red";
+        motPasse.style.border="2px solid red";
+        e.preventDefault();
+
+
+    }
+
+
+    if(motPasse.value==""){
+        jsT.style.border="1px solid red";
+        jsT.style.backgroundColor="#FFCCCC";
+        document.getElementById('img').src="icons8-xbox-x-50.png";
+        jsTest.innerHTML="Entrez le mote de passe  ";
+        motPasse.style.border="2px solid red";
+        e.preventDefault();
+
+
+    }
+    else
+    if(motPasse.value.length<6){
+        jsT.style.border="1px solid red";
+        jsT.style.backgroundColor="#FFCCCC";
+        document.getElementById('img').src="icons8-xbox-x-50.png";
+        jsTest.innerHTML="Entrez une combinaison d'au moins d'au moins six character";
+        motPasse.style.border="2px solid red";
+        motPasseCo.style.border="2px solid red";
+        e.preventDefault();
+        
+
+
+
+    }
+
+    // if(nom.value=="" && preNom.value=="" && Pseu.value=="" && email.value=="" && motPasse.value=="" && motPasseCo.value==""){
+    //     nom.style.border="2px solid red";
+    //     preNom.style.border="2px solid red";
+    //     Pseu.style.border="2px solid red";
+    //     email.style.border="2px solid red";
+    //     motPasseCo.style.border="2px solid red";
+    //     motPasse.style.border="2px solid red";
+    //     e.preventDefault();
+    // }
+
     if(email.value==""){
         
         jsT.style.border="1px solid red";
@@ -74,66 +102,49 @@ mySForm.addEventListener('submit',function(e){
         e.preventDefault();
 
     }
-    
-    
-    if(motPasse.value==""){
+
+    if(Pseu.value==""){
         jsT.style.border="1px solid red";
         jsT.style.backgroundColor="#FFCCCC";
         document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez une combinaison d'au moins six character ";
-        motPasse.style.border="2px solid red";
-        e.preventDefault();
-
-
-    }
-    else
-    if(motPasse.value.length<6){
-        jsT.style.border="1px solid red";
-        jsT.style.backgroundColor="#FFCCCC";
-        document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez une combinaison d'au moins six chiffres , lettres et signes de ponctuation";
-        motPasse.style.border="2px solid red";
-        e.preventDefault();
-        
-
-
-
-    }
-    
-    // if(motPasseCo.value==""){
-    //     jsT.style.border="1px solid red";
-    //     jsT.style.backgroundColor="#FFCCCC";
-    //     document.getElementById('img').src="icons8-xbox-x-50.png";
-    //     jsTest.innerHTML="confirmer le mote de passe";
-    //     motPasseCo.style.border="2px solid red";
-        
-    //     e.preventDefault();
-
-
-    // }
-    // if(motPasse.value!=motPasseCo.value && motPasse.value!="" &&motPasseCo.value!="" ){
-    //     jsT.style.border="1px solid red";
-    //     jsT.style.backgroundColor="#FFCCCC";
-    //     document.getElementById('img').src="icons8-xbox-x-50.png";
-    //     jsTest.innerHTML="confirmer le mote de passe";
-    //     motPasseCo.style.border="2px solid red";
-    //     motPasse.style.border="2px solid red";
-    //     e.preventDefault();
-
-
-    // }
-
-    if(nom.value=="" && preNom.value=="" && Pseu.value=="" && email.value=="" && motPasse.value=="" && motPasseCo.value==""){
-        nom.style.border="2px solid red";
-        preNom.style.border="2px solid red";
+        jsTest.innerHTML="Entrez votre pseudo";
         Pseu.style.border="2px solid red";
-        email.style.border="2px solid red";
-        motPasseCo.style.border="2px solid red";
-        motPasse.style.border="2px solid red";
         e.preventDefault();
+
+
+    }
+   else if(Pseu.value.length<4){
+        jsT.style.border="1px solid red";
+        jsT.style.backgroundColor="#FFCCCC";
+        document.getElementById('img').src="icons8-xbox-x-50.png";
+        jsTest.innerHTML="Entrez au moins 4 character";
+        Pseu.style.border="2px solid red";
+        e.preventDefault();
+
+
     }
     
+    if(preNom.value==""){
+        jsT.style.border="1px solid red";
+        jsT.style.backgroundColor="#FFCCCC";
+        document.getElementById('img').src="icons8-xbox-x-50.png";
+        jsTest.innerHTML="Entrez votre prenom";
+        preNom.style.border="2px solid red";
+        e.preventDefault();
 
+
+    }
+
+    if(nom.value==""){
+        jsT.style.border="1px solid red";
+        jsT.style.backgroundColor="#FFCCCC";
+        document.getElementById('img').src="icons8-xbox-x-50.png";
+        jsTest.innerHTML="Entrez votre nom";
+        nom.style.border="2px solid red";
+        e.preventDefault();
+
+
+    }
 
  
 
@@ -149,7 +160,7 @@ function onmous(){
         motPasse.style.border="2px solid green";
     }
 
-    if(motPasseCo.value!="" && motPasse.value==motPasseCo.value){
+    if(motPasseCo.value!="" && motPasse.value==motPasseCo.value && motPasse.value.length>=6){
         motPasseCo.style.border="2px solid green";
 
     }
@@ -163,7 +174,7 @@ function onmous(){
         preNom.style.border="2px solid green";
     }
 
-    if(Pseu.value!=""){
+    if(Pseu.value!="" && Pseu.value.length>=4){
         Pseu.style.border="2px solid green";
 
     }

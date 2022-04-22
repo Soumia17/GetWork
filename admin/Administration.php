@@ -120,8 +120,20 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
           </section>
           <section class="grid">
        
-            <article></article>
-            <article></article>
+            <!-- <article></article> -->
+            <article>
+                    <div class="admin_num">
+                        <div class="admin_num_1"> 
+                            <span><?php echo mysqli_num_rows($offr)?></span><br>
+
+                            <label for="">Offres</label>
+                        </div>
+                        <div class="admin_num_2">
+                           <img src="images_Admin/icons8-travailler-avec-un-ordinateur-portable-90.png" alt="">
+                        </div>
+
+                    </div>
+                </article>
             
           </section>
           <section class="etoile" id="etoile">

@@ -6,7 +6,8 @@ if(!isset($_SESSION['pseudo'])){
 include_once 'includes/database-linck.php';
 $conn;
 
-
+$searsh="SELECT * FROM admin ";
+$admin = mysqli_query($conn,$searsh);
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -127,7 +128,7 @@ $conn;
                 <article>
                     <div class="admin_num">
                         <div class="admin_num_1"> 
-                            <span>10</span><br>
+                            <span><?php echo mysqli_num_rows($admin)?></span><br>
 
                             <label for="">Admin</label>
                         </div>
@@ -137,7 +138,7 @@ $conn;
 
                     </div>
                 </article>
-                <article>
+                <!-- <article>
                     <div class="admin_num">
                         <div class="admin_num_1"> 
                             <span>10</span><br>
@@ -149,7 +150,7 @@ $conn;
                         </div>
 
                     </div>
-                </article>
+                </article> -->
                 </section>
                 <section class="Add_Service">
                    <!-- <div class="but_Add_Service">

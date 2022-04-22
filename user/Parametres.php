@@ -69,9 +69,35 @@ if(isset($_POST['envoyer'])){
         $sen=$_SESSION['user'];
         $today = date("F j, g:i a");
 
-        $mess="INSERT INTO messages(emetteur,messag,dateMess) values('$sen','$message','$today') ";
+        $mess="INSERT INTO messages(emetteur,messag,dateMess,emailEmeteur) values('$sen','$message','$today','".$_SESSION['pseudo']."') ";
         mysqli_query($conn,$mess);
 
+    }
+    if(mysqli_query($conn,$mess)){
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+         
+         <script  >
+            //alert("email existe deja");
+            swal({
+  title: "Message envoye ",
+  text: "Merci de nous avoir contacté Votre question sera répondue par e-mail",
+  icon: "success",
+  button: "Dacord",
+});
+         </script>
+        </body>
+        </html>
+        <?php
     }
     
 }
@@ -106,14 +132,14 @@ if(isset($_POST['envoyer'])){
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <div>
-                <form action="">
-                    <div class="box-recherch">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                    <input placeholder="trouver des services" id="input-Rechercher" type="text">
-                    <button id="button-Rechercher">Rechercher</button>
-                  </div>
-                    
-                </form>
+                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+                <div class="box-recherch">
+              <i class="fa fa-search" aria-hidden="true"></i>
+                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
+                <button id="button-Rechercher">Rechercher</button>
+              </div>
+                
+            </form>
             </div>
                 <div class="nav_right">
                     <ul>
@@ -137,9 +163,9 @@ if(isset($_POST['envoyer'])){
                     ?>
                         
                        
-                        <li class="nr_li">
+                        <!-- <li class="nr_li">
                             <i class="fas fa-envelope-open-text"></i>
-                        </li>
+                        </li> -->
                         
                         <li class="nr_li dd_main">
                   

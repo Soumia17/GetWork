@@ -24,13 +24,21 @@ include_once 'includes/database-linck.php';
 $conn;
 if(!empty($_GET['send'])){
 $msg=$_GET['send'];
-$upd="UPDATE messages set lire=1 where emetteur='".$msg."'";
+$upd="UPDATE messages set lire=1 where idemail ='".$msg."'";
 mysqli_query($conn,$upd);
-$action="SELECT * FROM userinformation where psudo='".$msg."'";
+// $action="SELECT * FROM userinformation where psudo='".$msg."'";
+//     $offr = mysqli_query($conn,$action);
+//     while($email=mysqli_fetch_assoc($offr)){
+
+// $eml=$email['email'];
+
+//     }
+
+$action="SELECT * FROM messages where idemail='".$msg."'";
     $offr = mysqli_query($conn,$action);
     while($email=mysqli_fetch_assoc($offr)){
 
-$eml=$email['email'];
+$eml=$email['emailEmeteur'];
 
     }
 
@@ -262,18 +270,25 @@ if($mail->send()) { ?>
                                         $mess = mysqli_query($conn,$mess);
                                         
                                         while($mes=mysqli_fetch_assoc($mess)){
-                                          $mesimg="SELECT * FROM userinformation where psudo='".$mes['emetteur']."'  ";
-                                          $m = mysqli_query($conn,$mesimg);
-                                          while($me=mysqli_fetch_assoc($m)){
-                                            $img=$me['image'];
-                                          }
+                                          // $mesimg="SELECT * FROM userinformation where psudo='".$mes['emetteur']."'  ";
+                                          // $m = mysqli_query($conn,$mesimg);
+                                          // while($me=mysqli_fetch_assoc($m)){
+                                          //   $img=$me['image'];
+                                          // }
                                         
                                         ?>
-                   <img src="../user/<?php echo $img?>" class="rounded-circle mr-3 mail-img shadow" alt="media image"  width="100" height="100">
+                   <!-- <img src="../user/<?php //echo $img?>" class="rounded-circle mr-3 mail-img shadow" alt="media image"  width="100" height="100"> -->
                      <div class="media-body">
+                       
                         <span class="media-meta float-right"><?php echo $mes['dateMess']  ?></span>
+                        <h1>Message</h1>
                         <h4 class="text-primary m-0"><?php echo $mes['emetteur'] ?></h4>
+                       <br>
+                       
+                       
                         
+                       
+                        <br>
                       </div>
                   </div> <!-- media -->
 
@@ -321,7 +336,7 @@ if($mail->send()) { ?>
 <?php
 }
 else{
-  header("Location:../ind.html"); 
+  header("Location:../error.html"); 
 }
 
 }

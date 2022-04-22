@@ -144,7 +144,7 @@ $del="";
             <article>
 
                 <div class="card">
-                    <img src="<?php echo ($g['serviceIcon'])?>" alt="Avatar">
+                    <img src="../admin/<?php echo ($g['serviceIcon'])?>" alt="Avatar">
                     <div class="card-container">
                      <h4><b><?php echo ($g['serviceName'])?></b></h4>
                       <p><?php echo ($g['serviceDescription'])?>
@@ -187,7 +187,7 @@ $del="";
           <section id="newService_Formulair" class="newService_Formulair">
             
               
-              <form id="enviar" action="isertServis.php" method="POST">
+              <form id="enviar" action="isertServis.php" method="POST" enctype="multipart/form-data">
 
                
                

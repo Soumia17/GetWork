@@ -15,26 +15,17 @@ $conn;
 
         
         
-        if(isset($_POST['saveOff'])){
-           
-            $fav=$_GET['fav'];
-            $favof=$_GET['favof'];
-            $favfor=$_SESSION['user'];
-            $rqFav="INSERT INTO favori(idOffer,saveof,saveforH) VALUE('$fav','$favof',' $favfor')";
-            mysqli_query($conn,$rqFav);
-            
-
-        }
+       
 
         if(isset($_POST['NOsaveOff'])){
             
             $us=$_SESSION['user'];
             $fav=$_GET['fav'];
-            $favof=$_GET['favof'];
+            
             $favfor=$_SESSION['user'];
 
            
-            $rqFav="DELETE from favori where idOffer='".$fav."' AND saveforH =' $us'";
+            $rqFav="DELETE from favori where idFavori='".$fav."'";
             mysqli_query($conn,$rqFav);
 
         }
@@ -65,10 +56,10 @@ $conn;
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
             <div>
-            <form action="">
+            <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
                 <div class="box-recherch">
               <i class="fa fa-search" aria-hidden="true"></i>
-                <input placeholder="trouver des services" id="input-Rechercher" type="text">
+                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
                 <button id="button-Rechercher">Rechercher</button>
               </div>
                 
@@ -148,6 +139,7 @@ $conn;
    
   </header>
   <section style="hight=60vh;">
+  <h1 class="yourf" >Votre favoris :</h1>
 
   </section>
  
@@ -323,29 +315,13 @@ while($B=mysqli_fetch_assoc($of)){
 
                 <div class="etoil-favorit">
                     <ul>
-                        <?php
-                        //saveof='".$g['OfferPoster']."' AND
-                        $us=$_SESSION['user'];
-                        //echo $us;
-                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH ='$us'";
-                        $rqST=mysqli_query($conn,$S);
-                       // echo mysqli_num_rows($rqST);
-                        if(mysqli_num_rows($rqST)==0){
-
-                        ?>
-                        <form action="favorites.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
-                        <li> <button name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
-                        </form>
-                        <?php
-                        }else{
-                        ?>
-                        <form action="favorites.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
+                     
+                        
+                        <form action="favorites.php?fav=<?php echo $B['idFavori']?> " method="POST">
                         <li> <button name="NOsaveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark red " ></i></button></li>
                         </form>
 
-                        <?php
-                        }
-                        ?>
+                        
                         <li>
                             le prix <label for=""><?php echo $g['OfferPrix']?> DZ</label>
                         </li>

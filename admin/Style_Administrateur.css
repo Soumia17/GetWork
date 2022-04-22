@@ -2,15 +2,16 @@
 
 
 .admin_num{
-    width: 100%;
-    display:flex;
-    padding: 0 1rem;
-    
-    align-items: center;   
+  width: 100%;
+  display:flex;
+  padding: 0 1rem;
+  margin-left: 30%;
+  
+  align-items: center;   
 }
 
 .admin_num_1{
-    width: 70%;
+  width: 30%;
 }
 
 .admin_num_1 span{

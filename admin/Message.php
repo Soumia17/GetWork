@@ -16,9 +16,11 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
 
     $query = "DELETE FROM messages WHERE idemail IN($extract_id) ";
     $query_run = mysqli_query($conn, $query);
-
+   
    
 }
+$mess="SELECT * FROM messages ORDER BY 	idemail DESC ";
+$mess = mysqli_query($conn,$mess);
 
 ?>
 <!DOCTYPE html>
@@ -133,8 +135,19 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
           </section>
           <section class="grid">
        
-            <article></article>
-            <article></article>
+          <article>
+                    <div class="admin_num">
+                        <div class="admin_num_1"> 
+                            <span><?php echo mysqli_num_rows($mess)?></span><br>
+
+                            <label for="">Messags</label>
+                        </div>
+                        <div class="admin_num_2">
+                           <img src="images_Admin/icons8-communication-90.png" alt="">
+                        </div>
+
+                    </div>
+                </article>
             
           </section>
           <div class="">
