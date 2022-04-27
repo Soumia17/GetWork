@@ -39,9 +39,7 @@ $conn;
             </div>
                 <div class="nav_right">
                     <ul>
-                    <li class="nr_li">
-                           <!-- <i class="fas fa-plus"></i>-->
-                        </li>
+                    
                        
     
                         <?php
@@ -106,10 +104,10 @@ $conn;
          
           <h2>Ajouter un nouveau Offre</h2>
 
-         <center> <div class="alert" id="alert" >
+         <div class="alert" id="alert" >
 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
 <span id="echoAlertt"></span>
-</div></center>
+</div>
               
               
                   <label for=""> Description du service</label>
@@ -122,7 +120,7 @@ $conn;
                   <div class="boxx">
             
                     <select id="test" name="OfferCategore" >
-                      <option value=" ">Selectionne le type</option>
+                      <option value="">Selectionne le type</option>
                       <?php 
                       $req="SELECT serviceName  FROM services";
                       $res = mysqli_query($conn,$req);
@@ -140,7 +138,7 @@ $conn;
                   
                     <label >Le prix:</label><br>
                     <div id="prix">
-                    <input type="text" class="inpPrix" placeholder="donne un prix" name="OfferPrix"  ><span>DZ</span>
+                    <input id="prixx" type="text" class="inpPrix" placeholder="donne un prix" name="OfferPrix"  ><span>DZ</span>
                 </div>
                  
 
@@ -169,7 +167,7 @@ $conn;
 <script src="../admin/Control-Administration.js"></script>
 
 <script src="https://kit.fontawesome.com/6f2f9c8fbf.js" ></script>
-<script src="ControlAddOfer.js"></script>
+<script src="ControlNewOffre.js"></script>
 <script src="../admin/controlService.js"></script>
 
 
