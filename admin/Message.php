@@ -62,6 +62,11 @@ $mess = mysqli_query($conn,$mess);
                     <span>Accueil</span>
                   </a>
                 </li>
+                <?php
+                if ($_SESSION['admn']==0) {
+                  
+                
+                ?>
                 <li>
                 <a href="http://localhost/PFFE/admin/lesAdmin.php">
                   
@@ -70,6 +75,9 @@ $mess = mysqli_query($conn,$mess);
                   <span>Administrateurs</span>
                 </a>
               </li>
+              <?php
+              }
+              ?>
               <li>
                 <a href="http://localhost/PFFE/admin/utilisateurs.php">
                   <i class="fas fa-users"></i>

@@ -32,7 +32,7 @@ if(isset($_POST['sub'])){
 
 <header class="header">
   <div class="logo">
-    <a href="../login_System/accueil.html">getWork</a>
+    <a href="../login_System/accueil.php">getWork</a>
    
   <!-- <div>
       <form action="">
@@ -96,30 +96,49 @@ if(isset($_POST['sub'])){
   
   <div class="titre">
     <h2 class="titre-texte">Nos <span>S</span>ervices</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. </p>
+   
 </div>
+<div class="services_bien">
+      <?php
+      $sql="SELECT * FROM services";
+      $res = mysqli_query($conn,$sql);
+      while($g=mysqli_fetch_assoc($res)){
+      ?>
+      
+        <div class="service_i">
+              <img src="../admin/<?php echo ($g['serviceIcon'])?>" alt="hiii">
+    
+       
+        <hr>
+        <span><?php echo ($g['serviceName'])?></span>
+    </div>
+    <?php
+      }
+    ?>
+    
 
-
+    </div>
+<!-- 
 <button class="pre-btn"><img src="images/icons8-next-64.png" alt=""></button>
         <button class="nxt-btn"><img src="images/icons8-next-64.png" alt=""></button>
         <?php 
-        $sql="SELECT * FROM services";
-        $res = mysqli_query($conn,$sql);
-        while($g=mysqli_fetch_assoc($res)){
+        // $sql="SELECT * FROM services";
+        // $res = mysqli_query($conn,$sql);
+        // while($g=mysqli_fetch_assoc($res)){
         ?>
         
         <div class="product-container">
             <div class="product-card">
                 <div class="product-image">
-                    <span class="discount-tag"><?php echo ($g['serviceName'])?></span>
-                   <img src="../user/<?php echo ($g['serviceIcon'])?>" class="product-thumb" alt="">
+                    <span class="discount-tag"><?php // ($g['serviceName'//])?></span>
+                   <img src="../admin/<?php// echo ($g['serviceIcon'])?>" class="product-thumb" alt="">
                    
                 </div>
                
             </div>
             <?php
-        }
-            ?>
+        // }
+            ?> -->
             <!-- <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag">service1</span>
@@ -175,11 +194,17 @@ if(isset($_POST['sub'])){
 <section class="propos" id="propos">
   <div class="row">
     <div class="col50">
-          <h2 class="titre-texte"><span>A</span> Propos De Nous</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <h2 class="titre-texte"><span class="spt">A</span><span class="titre-sp">Propos De Nous</span> </h2>
+          <p>
+          Bienvenue sur getWork, votre source numéro un pour trouver des offres. Nous nous engageons à vous offrir le meilleur des offres
+          , en mettant l'accent sur le service express.
           </p>
+          <br>
+          
+          <p>
+          Fondée en 2022 par Ait belkacem Soumia et Bouchakour Sara , getWork a parcouru un long chemin depuis ses débuts à l'Université Mustapha Stambouli. Quand le binôme a débuté, leurs passion pour le freelancer l'a poussé à faire des tonnes de recherches pour que getWork puisse vous proposer des offreqs intéressantes. Nous servons maintenant des clients partout dans l'Algérie et nous sommes ravis de pouvoir transformer notre passion en notre propre site Web.
+          </p>
+          <p>nous espérons que vous apprécierez nos services autant que nous aimons vous les offrir. Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter.</p>
         </div>
           <div class="col50">
           <div class="img">
@@ -194,7 +219,7 @@ if(isset($_POST['sub'])){
 
   <div class="titre noir">
     <h2 class="titre-text"><span>C</span>ontact</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+    
 </div>
 <div class="contactform">
     <h3>Envoyer un message</h3>
@@ -216,7 +241,7 @@ if(isset($_POST['sub'])){
 </section>
 
 <div class="copyright">
-  <p>copyright 2022 <a href="#">de</a> Mustapha stamboli mascara</p>
+  <p>copyright 2022 - Universite de Mascara : Mustapha Stambouli -avec Ait belkacem soumia et Bouchakor sara</p>
 </div>
 
 

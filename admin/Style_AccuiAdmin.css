@@ -354,9 +354,10 @@ width: 100%;
 /*Section Bien_venu*/
 
 .Bien_venu{
-  height: 70vh;
+ 
   justify-content: center;
   align-items: center;
+ 
   
   
 }
@@ -428,6 +429,7 @@ hr{
 	
 	
 	}
+	
 	
 	.star{
 	  color: #f0e10c;

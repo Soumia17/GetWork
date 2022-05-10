@@ -70,10 +70,10 @@ if(isset($_POST['envoyer'])){
         $today = date("F j, g:i a");
 
         $mess="INSERT INTO messages(emetteur,messag,dateMess,emailEmeteur) values('$sen','$message','$today','".$_SESSION['pseudo']."') ";
-        mysqli_query($conn,$mess);
-
+       $cop= mysqli_query($conn,$mess);
+        $_POST['message']=" ";
     }
-    if(mysqli_query($conn,$mess)){
+    if($cop){
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -100,6 +100,14 @@ if(isset($_POST['envoyer'])){
         <?php
     }
     
+}
+
+if(isset($_POST['confirme'])){
+    $del="DELETE FROM userinformation where email ='".$_SESSION['pseudo']."'";
+       $cop= mysqli_query($conn,$del);
+       $del="DELETE FROM messages where emailEmeteur ='".$_SESSION['pseudo']."'";
+       $cop= mysqli_query($conn,$del);
+       header('location:http://localhost/PFFE/login_System/regester.php');
 }
      
 ?>
@@ -246,7 +254,7 @@ if(isset($_POST['envoyer'])){
            
             <div class="page-wrapper bg-dark p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
-            <div class=" card-6">
+            <div class="card-6">
                 <div class="card-heading">
                     <h2 class="title">Paramètres</h2>
                 </div>
@@ -296,10 +304,12 @@ if(isset($_POST['envoyer'])){
                          
                 
 
-                        
+                        <div class="card-heading">
+                    <h2 class="title">DÉSACTIVATION DU COMPTE</h2>
+                </div>
                 <div class="form-row">
                     
-                            <div class="name">DÉSACTIVATION DU COMPTE</div>
+                            <div class="name">désactiver le compte</div>
                             <button onclick="document.getElementById('con').style.display='block'" class="btn_par_des">Desactiver</button>
                         </div>
                         <div id="con" class="modal_condition">
@@ -312,15 +322,15 @@ if(isset($_POST['envoyer'])){
                       <h3>Attention</h3>
                     <div class="condition" onscroll="myFunction()" id="myDIV">
                       
-                     <p> L'ajout d'un nouvel administrateur peut entraîner des dangers !</p>
+                     <p> La supprition de compte :</p>
                       <ul>
-                       <p> Le nouvel administrateur peut:</p>
-                        <li>. Ajoute un nouvel admin .</li>
-                        <li>. blocke un contacte .</li>
-                        <li>. sepprime et ajoute un service .</li>
-                        <li>. sepprime un offer .</li>
-                        <li>. repondre aux message .</li>
-                        Tout cela peut arriver sans votre consentement.
+                       
+                        <li>. Toutes vos offres seront supprimées .</li>
+                        <li>. Vous ne pourrez pas récupérer votre compte .</li>
+                        <li>. Vous ne pourrez pas récupérer vos offres .</li>
+                        <li>. Les clients peuvent vous contacter en utilisant vos informations .</li>
+                        <li>. Vous pouvez ouvrir un nouveau compte en utilisant les mêmes informations .</li>
+                       
                       </ul>
                         <hr>
                         

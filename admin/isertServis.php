@@ -14,6 +14,7 @@ $serviceName=$_POST['serviceName'];
                 
                 mysqli_query($conn,$req);
                 move_uploaded_file($_FILES['serviceIcon']['tmp_name'],$file);
+                header('location: http://localhost/PFFE/admin/services.php');
             }
 
 
@@ -22,7 +23,7 @@ $serviceName=$_POST['serviceName'];
                  
               
 
-                 $req="DELETE FROM services WHERE id='$del'";
+                 $req="DELETE FROM services WHERE serviceName='$del'";
                  $res = mysqli_query($conn,$req);
                  header('location: http://localhost/PFFE/admin/services.php');
                 }

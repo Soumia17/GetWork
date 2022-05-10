@@ -14,7 +14,7 @@ if(isset($_POST['save'])){
     $OfferPrix=$_POST['OfferPrix'];
     //$OfferImage=$_POST['OfferImage'];
     $file=$_FILES['OfferImage']['name'];
-    $OfferPoster=$_SESSION['user'];
+    $OfferPoster=$_SESSION['pseudo'];
     $req="INSERT INTO offers(OfferDescription,OfferCategore,OfferPrix,OfferImage,OfferPoster) values('$OfferDescription','$OfferCategore','$OfferPrix','$file','$OfferPoster')";
     mysqli_query($conn,$req);
     move_uploaded_file($_FILES['OfferImage']['tmp_name'],$file);

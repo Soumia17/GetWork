@@ -5,9 +5,13 @@ $conn;
                  
                  $newAd=$_GET['newAD'];
                  $date=date("j, n, Y");
-                 $addby=$_SESSION['user'];
-             
-                 $req="SELECT pseudoo from admin WHERE pseudoo='".$newAd."' ";
+               //   $addby=$_SESSION['user'];
+               $req="SELECT email from userinformation WHERE 	psudo='".$newAd."' ";
+               $res = mysqli_query($conn,$req);
+               while($infoAdmin=mysqli_fetch_assoc($res)){
+                  $eml=$infoAdmin['email'];
+               }
+                 $req="SELECT emailAD from admin WHERE emailAD='".$eml."' ";
                  $res = mysqli_query($conn,$req);
 
 if(mysqli_num_rows($res)>0){
@@ -38,7 +42,7 @@ if(mysqli_num_rows($res)>0){
 
             }
             else{
-               $req="INSERT INTO  admin(pseudoo,adminDate,addBy)values('$newAd','$date','$addby')";
+               $req="INSERT INTO  admin(emailAD,adminDate)values('$eml','$date')";
                $res = mysqli_query($conn,$req);
                $req="UPDATE userinformation
                SET Theadmin =1

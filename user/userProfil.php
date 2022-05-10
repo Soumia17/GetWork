@@ -74,7 +74,7 @@ if(isset($_POST['up'])){
 }
 }}
 
-$Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
+$Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
             $Offer_run=mysqli_query($conn,$Offer);
 
 
@@ -413,7 +413,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['user']."'";
                    
                    </div>
 
-                   <div class="title">
+                   <div class="titl">
                        
                     <span class="spn">Evaluation :</span>
                     <?php

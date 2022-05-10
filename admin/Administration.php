@@ -7,6 +7,14 @@ include_once 'includes/database-linck.php';
 $conn;
 $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     $offr = mysqli_query($conn,$action);
+    $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."' ";
+                    $adm = mysqli_query($conn,$action);
+                    while($info=mysqli_fetch_assoc($adm)){
+                
+                $_SESSION['admn']=$info['Theadmin'];
+                
+                
+                    }
 
 ?>
 <!DOCTYPE html>
@@ -47,6 +55,11 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                     <span>Accueil</span>
                   </a>
                 </li>
+                <?php
+                if ($_SESSION['admn']==0) {
+                  
+                
+                ?>
                 <li>
                 <a href="http://localhost/PFFE/admin/lesAdmin.php">
                   
@@ -55,6 +68,9 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
                   <span>Administrateurs</span>
                 </a>
               </li>
+              <?php
+              }
+              ?>
               <li>
                 <a href="http://localhost/PFFE/admin/utilisateurs.php">
                   <i class="fas fa-users"></i>
@@ -191,25 +207,26 @@ $max=0;
             <div>
                 <ul class="image_info">
                 <?php
-                    $action="SELECT * FROM userinformation WHERE psudo ='".$g['OfferPoster']."' ";
+                    $action="SELECT * FROM userinformation WHERE email ='".$g['OfferPoster']."' ";
                     $adm = mysqli_query($conn,$action);
                     while($info=mysqli_fetch_assoc($adm)){
                 $pho=$info['image'];
                 $Theadmin=$info['Theadmin'];
+                $poster=$info['psudo'];
                 
                     }
                     ?>
                     <li> <img class="image_profil_etoile"  src="../user/<?php echo $pho?>" alt="profile_img"></li>
                     <?php
-                    if($_SESSION['user']!=$g['OfferPoster']){
+                    if($_SESSION['pseudo']!=$g['OfferPoster']){
                     ?>
-               <li> <a href="../user/usrVBA.php?poster=<?php echo $g['OfferPoster']?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <li> <a href="../user/usrVBA.php?poster=<?php echo $poster?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $poster?></h3></a></li>
                <?php
                }
                else{
                ?>
                
-               <li> <a href="../user/userProfil.php"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <li> <a href="../user/userProfil.php"> <h3><?php echo $poster?></h3></a></li>
                
                <?php
             }
@@ -296,7 +313,7 @@ $max=0;
                 </div>
                  <hr>
                  <?php
-                 if($Theadmin!=0){
+                 if($Theadmin!=0 && $_SESSION['pseudo']!=$g['OfferPoster'] ){
                  ?>
                     <div class="button-delete">
                        

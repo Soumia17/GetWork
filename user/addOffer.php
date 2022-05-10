@@ -20,80 +20,88 @@ $conn;
     <title>Document</title>
 </head>
 <body>
-    <header class="header">
+   
+<header class="header">
   
-        <div class="wrapper">
-            <div class="navbar">
-            <div class="logo">
-                    <a href="../admin/Acceui_Admin.php">getWork</a>
-                </div>
-                <div>
-                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
-                <div class="box-recherch">
-              <i class="fa fa-search" aria-hidden="true"></i>
-                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
-                <button id="button-Rechercher">Rechercher</button>
-              </div>
-                
-            </form>
-            </div>
-                <div class="nav_right">
-                    <ul>
-                    
-                       
-    
-                        <?php
-                    
-                    if($_SESSION['admin']==1){
-                    ?>
-                   
+  <div class="wrapper">
+      <div class="navbar">
+      <div class="logo">
+              <a href="../admin/Acceui_Admin.php">getWork</a>
+          </div>
+          <div>
+          <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+          <div class="box-recherch">
+        <i class="fa fa-search" aria-hidden="true"></i>
+          <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
+          <button id="button-Rechercher">Rechercher</button>
+        </div>
+          
+      </form>
+      </div>
+          <div class="nav_right">
+              <ul>
+                  <li class="nr_li">
+                      <!--<i class="fas fa-plus"></i>-->
+                  </li>
+                 
 
-                    <li class="nr_li">
-                      <a href="Administration.php">  <i class="fas fa-user-shield"></i></a>
-                    </li>
-                    <?php
-                    }
+                  <?php
+              
+              if($_SESSION['admin']==1){
+              ?>
+             
 
-                    ?>
-                        
-                       
-                       
-                        
-                        <li class="nr_li dd_main">
+              <li class="nr_li">
+                <a href="../admin/Administration.php">  <i class="fas fa-user-shield"></i></a>
+              </li>
+              <?php
+              }
+
+              ?>
                   
-    
-                            <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
-                            
-                            <div class="dd_menu">
-                                <div class="dd_left">
-                                    <ul>
-                                        <li><i class="far fa-user"></i></li>
-                                        <!-- <li><i class="fas fa-user-shield"></i></li>-->
-                                        <li><i class="fas fa-bookmark"></i></li>
-                                        
-                                        <li><i class="fas fa-cog"></i></li>
-                                        
-                                        <li><i class="fas fa-sign-out-alt"></i></li>
-                                    </ul>
-                                </div>
-                                <div class="dd_right">
-                                    <ul>
-                                       <a href="userProfil.php"> <li>Profil</li></a>   
- <!-- <a href="Administration.php"> <li>Administration</li></a>-->
-                                       <a href=""> <li>Favorites</li> </a>               
-                                       <a href=""> <li>Settings</li> </a>
-                                       <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
+                 
+                  <!-- <li class="nr_li">
+                      <i class="fas fa-envelope-open-text"></i>
+                  </li> -->
+                  
+                  <li class="nr_li dd_main">
+            
+
+                      <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
                       
-                    </ul>
-                </div>
-            </div>
-        </div>	   
-      </header>
+                      <div class="dd_menu">
+                          <div class="dd_left">
+                              <ul>
+                                  <li><i class="far fa-user"></i></li>
+                                 <!-- <li><i class="fas fa-user-shield"></i></li>-->
+                                  <li><i class="fas fa-bookmark"></i></li>
+                                  
+                                  <li><i class="fas fa-cog"></i></li>
+                                  
+                                  <li><i class="fas fa-sign-out-alt"></i></li>
+                              </ul>
+                          </div>
+                          <div class="dd_right">
+                              <ul>
+                              <a href="../user/userProfil.php"> <li>Profil</li></a>   
+                            <!-- <a href="Administration.php"> <li>Administration</li></a>-->
+                             <a href="../user/favorites.php"> <li>Favorites</li> </a>               
+                             <a href="../user/Parametres.php"> <li>Paramètres</li> </a>
+                             <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
+                              
+                              </ul>
+                          </div>
+                      </div>
+                  </li>
+                
+              </ul>
+          </div>
+      </div>
+  </div>	
+
+    
+  </header>
+
 
       <section id="newService_Formulair" class="newService_Formulair">
             

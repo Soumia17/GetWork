@@ -6,7 +6,7 @@ $conn;
 $admin_del=$_GET['del_ad'];
 
 
-    $req="DELETE  from admin where pseudoo ='$admin_del'";
+    $req="DELETE  from admin where emailAD ='$admin_del'";
    $res = mysqli_query($conn,$req);
    if($res){
        echo ('yess');

@@ -81,11 +81,11 @@ else{
     $date=date("j, n, Y");
                  $addby=$_SESSION['user'];
 
-$req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo,theadmin) values('$nom','$prenom','$email','$hashd_password','$userName',1)";
-$re="INSERT INTO  admin(pseudoo,adminDate,addBy)values('$userName','$date','$addby')";
-$res = mysqli_query($conn,$re);
-$res = mysqli_query($conn,$req);
+$req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo,theadmin,userDate) values('$nom','$prenom','$email','$hashd_password','$userName',1,'$date')";
+$re="INSERT INTO  admin(emailAD,adminDate)values('$email','$date')";
 
+$res = mysqli_query($conn,$req);
+$res = mysqli_query($conn,$re);
 
 
 if($res){

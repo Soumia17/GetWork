@@ -10,8 +10,7 @@ let jsTest=document.getElementById('jsTest');
 let jsT=document.getElementById('jsT');
 mySForm.addEventListener('submit',function(e){
 
-    
-    
+   
     
     
    
@@ -135,6 +134,9 @@ mySForm.addEventListener('submit',function(e){
 
     }
 
+    
+
+  
     if(nom.value==""){
         jsT.style.border="1px solid red";
         jsT.style.backgroundColor="#FFCCCC";
@@ -145,8 +147,6 @@ mySForm.addEventListener('submit',function(e){
 
 
     }
-
- 
 
 
 } );

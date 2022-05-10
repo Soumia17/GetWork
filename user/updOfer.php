@@ -24,7 +24,7 @@ if(isset($_POST['save'])){
     $res = mysqli_query($conn,$re);
     }
 
-   header('location: http://localhost/PFFE/user/modifierOffer.php?OffMO='.$_SESSION['off'].'');
+ //  header('location: http://localhost/PFFE/user/modifierOffer.php?OffMO='.$_SESSION['off'].'');
 
 }
 

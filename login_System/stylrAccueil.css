@@ -246,16 +246,16 @@ header.sticky{
     align-items: center;
     flex-direction: column;
 }
-.titre-texte{
+.titre-sp{
     color: #000;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 300px;
-    text-transform: capitalize;
+    
 }
 
-.titre-texte span{
+.spt{
     color: #8a068f;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 700px;
 }
 
@@ -440,10 +440,11 @@ header.sticky{
   /*a propos*/
 
   .propos{
-    height: 90vh;
-    background-size: cover;
     
-    background-image:  url("/admin/images_Admin/desktop_main_banner.jpg");
+    background-size: cover;
+    text-align: center;
+    margin-bottom: 10%;
+    background: url("../admin/desktop_main_banner.jpg");
     
 }
 .why .contenu{
@@ -486,6 +487,7 @@ header.sticky{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-left: 25%;
   
 }
 
@@ -565,14 +567,14 @@ header.sticky{
     font-size: 1em;
     font-weight: 700;
     color: #8A068F;
-    background: black;
+    border: 1px solid black;
     display: inline-block;
     cursor: pointer;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 2px;
     outline: none;
-    border: none;
+   border-radius: 6px;
     transition: 0.5s;
     max-width: 120px;
     align-items: center;
@@ -675,3 +677,48 @@ header.sticky{
   transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
   
 }
+
+
+.services_bien{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap:0.5rem;
+  
+ margin-left: 9rem;
+ padding: 2rem;
+ 
+}
+.services_bien img{
+size: 5rem;
+
+
+}
+ #fa-music{
+   
+  font-size: 1.5rem;
+  }
+.service_i{
+  width: 7rem;
+  color: #000;
+  text-align: center;
+}
+.service_i img{
+	width: 100%;
+	
+
+}
+
+ 
+
+hr{
+  color: #8a068f;
+  border-top: 3px solid;
+  margin-top: 0.2rem;
+
+}
+.services_bien a{
+	text-decoration: none;
+}
+
+
+	

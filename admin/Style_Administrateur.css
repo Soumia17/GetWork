@@ -91,7 +91,10 @@
     
 }
 
-
+.imgC{
+  height: 130px;
+  width: 100%;
+}
  #new_admin label{
     padding-bottom: 2rem;
     font-size: 22px;
@@ -324,4 +327,6 @@
       }
      
       
- 
+      .jsT span{
+        margin-top: 10%;
+      }

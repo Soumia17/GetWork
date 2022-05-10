@@ -51,14 +51,22 @@ $admin = mysqli_query($conn,$searsh);
                         <span>Accueil</span>
                       </a>
                     </li>
-                    <li>
-                    <a href="http://localhost/PFFE/admin/lesAdmin.php">
-                      
-                      <i class="fas fa-user-shield"></i>
-                      
-                      <span>Administrateurs</span>
-                    </a>
-                  </li>
+                    <?php
+                if ($_SESSION['admn']==0) {
+                  
+                
+                ?>
+                <li>
+                <a href="http://localhost/PFFE/admin/lesAdmin.php">
+                  
+                  <i class="fas fa-user-shield"></i>
+                  
+                  <span>Administrateurs</span>
+                </a>
+              </li>
+              <?php
+              }
+              ?>
                   <li>
                     <a href="http://localhost/PFFE/admin/utilisateurs.php">
                       <i class="fas fa-users"></i>
@@ -181,10 +189,11 @@ $admi=$info['Theadmin'];
    while($infoAdmin=mysqli_fetch_assoc($admin)){
      
 
-    $action="SELECT * FROM userinformation WHERE psudo ='".$infoAdmin["pseudoo"]."' ";
+    $action="SELECT * FROM userinformation WHERE email ='".$infoAdmin['emailAD']."' ";
     $adm = mysqli_query($conn,$action);
     while($info=mysqli_fetch_assoc($adm)){
 $img=$info['image'];
+$usr=$info['psudo'];
 
 
 
@@ -192,18 +201,18 @@ $img=$info['image'];
      ?>
    
                     <div class="card">
-                        <img src="../user/<?php echo ($img);?>" alt="Avatar" style="width:100%">
+                        <img class="imgC" src="../user/<?php echo ($img);?>" alt="Avatar" >
                         
                         <div class="card-container">
-                         <a href=""> <h4><b><?php echo ($infoAdmin["pseudoo"]);?></b></h4> </a>
+                         <a href=""> <h4><b><?php echo ($usr);?></b></h4> </a>
                           <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["adminDate"]);?> </p>
-                          <p> Ajouter par: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["addBy"]);?> </p>
+                          
                           
                         </div>
                         <?php
-                        if($admi==0 && $infoAdmin["pseudoo"]!=$_SESSION['user'] ){
+                        if($admi==0 && $infoAdmin['emailAD']!=$_SESSION['pseudo'] ){
                         ?>
-                        <button class="but_admin_delet" onclick="document.getElementById('<?php echo $infoAdmin['pseudoo'] ?>').style.display='block'" >Retirer</button>
+                        <button class="but_admin_delet" onclick="document.getElementById('<?php echo $infoAdmin['emailAD'] ?>').style.display='block'" >Retirer</button>
                         <?php
                         }
                         else
@@ -222,19 +231,19 @@ $img=$info['image'];
 
                         
                         </div>
-                        <div id="<?php echo $infoAdmin["pseudoo"] ?>" class="modal">
+                        <div id="<?php echo $infoAdmin['emailAD'] ?>" class="modal">
                      
                      <div class="modalContent">
-                     <span onclick="document.getElementById('<?php echo $infoAdmin['pseudoo'] ?>').style.display='none'" class="close">×</span>
+                     <span onclick="document.getElementById('<?php echo $infoAdmin['emailAD'] ?>').style.display='none'" class="close">×</span>
                      <div class="icon">
           <i class="fas fa-exclamation"></i>
         </div>	
         <br>
                      <p>Êtes-vous sûr de vouloir retirer ladmin</p>
                      
-                     <a name="delet_ad" href="delet_Adm.php?del_ad=<?php echo $infoAdmin["pseudoo"]?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                     <a name="delet_ad" href="delet_Adm.php?del_ad=<?php echo $infoAdmin['emailAD']?>"><button   class="del" onclick="hideModal()">retirer</button></a>
                      
-                     <button type="button"  class="cancel" onclick="document.getElementById('<?php echo $infoAdmin['pseudoo'] ?>').style.display='none'">Annuler</button>
+                     <button type="button"  class="cancel" onclick="document.getElementById('<?php echo $infoAdmin['emailAD'] ?>').style.display='none'">Annuler</button>
                      </div>
                       </div>
 
@@ -309,7 +318,7 @@ $img=$info['image'];
  <p> L'ajout d'un nouvel administrateur peut entraîner des dangers !</p>
   <ul>
    <p> Le nouvel administrateur peut:</p>
-    <li>. Ajoute un nouvel admin .</li>
+    
     <li>. blocke un contacte .</li>
     <li>. sepprime et ajoute un service .</li>
     <li>. sepprime un offer .</li>
@@ -380,35 +389,37 @@ $img=$info['image'];
 
                             <label for="">cree un copmte administrateur :</label>
 
-
+                            <div id="jsT">
+    <img id="img" src="">
+        <label id="jsTest"></label></div>
                              
-                            <form action="http://localhost/PFFE/admin/newAdmin.php" method="POST">
+                            <form action="http://localhost/PFFE/admin/newAdmin.php" method="POST" id="form2">
                                 <div class="user-details">
                                   <div class="input-box">
                                     <span class="details">Nom</span>
-                                    <input type="text" name="nom"  required>
+                                    <input type="text" name="nom"  id="nom">
                                   </div>
                                   <div class="input-box">
                                     <span class="details"> Prenom</span>
-                                    <input type="text" name="prenom" required>
+                                    <input type="text" name="prenom"  id="prenom">
                                   </div>
                                   <div class="input-box">
                                     <span class="details">pseudo</span>
-                                    <input type="text" name="userName" required>
+                                    <input type="text" name="userName" id="pseudo1">
                                   </div>
                                   <div class="input-box">
                                     <span class="details">email</span>
-                                    <input type="email" name="email"  required>
+                                    <input type="email" name="email" id="email" >
                                   </div>
                                   <div class="input-box">
                                     <span class="details">mote de passe</span>
                                    
-                                    <input type="password" name="password" id="password"  required>
+                                    <input type="password" name="password" id="password1"  >
                                     <i class="password-toggle far fa-eye-slash" id="password-toggle" onclick="passwordToggle()"></i>
                                   </div>
                                   <div class="input-box">
                                     <span class="details"> confirme le mote de passe</span>
-                                    <input type="password" id="Cpassword"  required>
+                                    <input type="password" id="Copassword"  >
                                     <i class="password-toggle far fa-eye-slash" id="Cpassword-toggle" onclick="CpasswordToggle()"></i>
                                     
                                   </div>
@@ -447,7 +458,7 @@ $img=$info['image'];
     <script src="Control_Admin.js"></script>
     <script src="/login_System/testRegester.js"></script>
     <script src="contol_lesAdmin.js"></script>
-   
+    <script src="../login_System/testInscription.js"></script>
     </html>
 
     <?php

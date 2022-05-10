@@ -78,16 +78,14 @@ $conn;
                    
 
                     <li class="nr_li">
-                      <a href="Administration.php" id="shield">  <i  class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield">  <i  class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
 
                     ?>
                    
-                    <li class="nr_li">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </li>
+                    
                     
                     <li class="nr_li dd_main">
                     <?php
@@ -139,8 +137,17 @@ $conn;
    
   </header>
   <section style="hight=60vh;">
-  <h1 class="yourf" >Votre favoris :</h1>
+  <?php
+$us=$_SESSION['pseudo'];
 
+ $action="SELECT * FROM favori where saveforH ='$us'";
+ $of = mysqli_query($conn,$action);
+ 
+ if(mysqli_num_rows($of)>0){?>
+  <h1 class="yourf" >Votre favoris :</h1>
+  <?php
+ }
+?>
   </section>
  
 
@@ -149,12 +156,12 @@ $conn;
             <div class="box-etoile">
                 
 <?php
-$us=$_SESSION['user'];
+$us=$_SESSION['pseudo'];
 
  $action="SELECT * FROM favori where saveforH ='$us'";
  $of = mysqli_query($conn,$action);
  
- 
+ if(mysqli_num_rows($of)>0){
 while($B=mysqli_fetch_assoc($of)){
     $idoff=$B['idOffer'];
     $action="SELECT * FROM offers where idOffer='".$idoff."'";
@@ -163,7 +170,7 @@ while($B=mysqli_fetch_assoc($of)){
  while($g=mysqli_fetch_assoc($offr)){
 
 
-    $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$g['OfferPoster']."'";
+    $ofstar="SELECT Eval FROM evaleuation WHERE  numoff ='".$g['idOffer']."'";
             $ofstar_run=mysqli_query($conn,$ofstar);
             if(mysqli_num_rows($ofstar_run)>0){
             $w=$t=$th=$f=$fi=$max=0;
@@ -212,24 +219,24 @@ while($B=mysqli_fetch_assoc($of)){
             <div>
                 <ul class="image_info">
                     <?php
-                    $action="SELECT * FROM userinformation WHERE psudo ='".$g['OfferPoster']."' ";
+                    $action="SELECT * FROM userinformation WHERE email ='".$g['OfferPoster']."' ";
                     $adm = mysqli_query($conn,$action);
                     while($info=mysqli_fetch_assoc($adm)){
                 $pho=$info['image'];
-                
+                $name=$info['psudo'];
                     }
                     ?>
                     <li> <img class="image_profil_etoile"  src="<?php echo $pho?>" alt="profile_img"></li>
                     <?php
-                    if($_SESSION['user']!=$g['OfferPoster']){
+                    if($_SESSION['pseudo']!=$g['OfferPoster']){
                     ?>
-               <li> <a href="../user/userview.php?poster=<?php echo $g['OfferPoster']?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <li> <a href="../user/userview.php?poster=<?php echo $g['OfferPoster']?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $name?></h3></a></li>
                <?php
                }
                else{
                ?>
                
-               <li> <a href="../user/userProfil.php"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <li> <a href="../user/userProfil.php"> <h3><?php echo $name?></h3></a></li>
                
                <?php
             }
@@ -333,10 +340,14 @@ while($B=mysqli_fetch_assoc($of)){
                 </div>
 
                <?php
- }}
+ }}} else{
                ?>
 
+               <h3>Votre favoris est vide</h3>
 
+<?php 
+}
+?>
                 
             
         

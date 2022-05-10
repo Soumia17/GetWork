@@ -6,7 +6,7 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once '../includes/database-linck.php';
 $conn;
-$Poster=$_GET['poster'];
+// $Poster=$_GET['poster'];
 
 /*$_SESSION['Poster']=$_GET['poster'];
 $_SESSION['offerid']=$_GET['idPOS'];
@@ -14,16 +14,21 @@ $Poster=$_SESSION['Poster'];
 $offerid=$_SESSION['offerid'];*/
 if(!empty($_GET['idPOS'])){
 $offerid=$_GET['idPOS'];
+$post="SELECT * FROM offers WHERE idOffer ='".$offerid."'";
+            $post_run=mysqli_query($conn,$post);
+            while($infoPO=mysqli_fetch_assoc($post_run)){
+                $Poster= $infoPO['OfferPoster'];
+            }
 if(!empty($_POST['rating'])&& isset($_POST['yes'])){
     $eval=$_POST['rating'];
     $evalTo=$_SESSION['post'];
-    $evalFrom=$_SESSION['user'];
+    $evalFrom=$_SESSION['pseudo'];
     
-    $ins="INSERT INTO evaleuation(Eval,EvalTo,EvalFrom,numoff)VALUE('$eval','$evalTo','$evalFrom','$offerid')";
+    $ins="INSERT INTO evaleuation(Eval,EvalFrom,numoff)VALUE('$eval','$evalFrom','$offerid')";
     $insr=mysqli_query($conn,$ins);}
 $Offer="SELECT * FROM offers WHERE idOffer ='".$offerid."'";
             $Offer_run=mysqli_query($conn,$Offer);
-$userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
+$userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
             $userInfo_run=mysqli_query($conn,$userInfo);   
             while($info=mysqli_fetch_assoc($userInfo_run)){
                 $pho=$info['image'];
@@ -33,13 +38,16 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                 $date=$info['userDate'];
                 
                     }   
-                    $_SESSION['post']=$psudo;
+                    $_SESSION['post']=$email;
                     
                     $ofnum="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
             $ofnum_run=mysqli_query($conn,$ofnum); 
+           
 
-            $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$Poster."' AND numoff='".$offerid."' " ;
+            $ofstar="SELECT Eval FROM evaleuation WHERE  numoff='".$offerid."' " ;
             $ofstar_run=mysqli_query($conn,$ofstar);
+            
+          
             if(mysqli_num_rows($ofstar_run)>0){
             $w=$t=$th=$f=$fi=$max=0;
             while($star=mysqli_fetch_assoc($ofstar_run)){
@@ -292,12 +300,12 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
             else{
                 ?>
                 <div class="main">
-                    <form action="" metod="POST">
+                    <!-- <form action="" metod="POST">
               <button class="save" > <i id="" class="fas fa-bookmark  " ></i> Enregistrer</button>
-              </form>
+              </form> -->
               <div class="Evaleuer">
                     <?php
-                     $ofstarFrom="SELECT Eval FROM evaleuation WHERE EvalTo ='".$Poster."' AND EvalFrom ='".$_SESSION['user']."' AND numoff	='".$offerid."'";
+                     $ofstarFrom="SELECT Eval FROM evaleuation WHERE  numoff='".$offerid."'";
                      $ofstarFrom_run=mysqli_query($conn,$ofstarFrom);
                      if(mysqli_num_rows($ofstarFrom_run)==0){
                     ?>

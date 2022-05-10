@@ -32,9 +32,9 @@ $conn;
         if(isset($_POST['saveOff'])){
            
             $fav=$_GET['fav'];
-            $favof=$_GET['favof'];
-            $favfor=$_SESSION['user'];
-            $rqFav="INSERT INTO favori(idOffer,saveof,saveforH) VALUE('$fav','$favof','$favfor')";
+            
+            $favfor=$_SESSION['pseudo'];
+            $rqFav="INSERT INTO favori(idOffer,saveforH) VALUE('$fav','$favfor')";
             mysqli_query($conn,$rqFav);
             
 
@@ -43,13 +43,12 @@ $conn;
 
         if(isset($_POST['NOsaveOff'])){
             
-            $us=$_SESSION['user'];
+          
             $fav=$_GET['fav'];
-            $favof=$_GET['favof'];
-            $favfor=$_SESSION['user'];
+            
 
            
-            $rqFav="DELETE from favori where idOffer='".$fav."' AND saveforH ='$us'";
+            $rqFav="DELETE from favori where idOffer='".$fav."'";
             mysqli_query($conn,$rqFav);
 
         }
@@ -189,7 +188,7 @@ $conn;
     ?>
     
 
-    </dive>
+    </div>
 
   </section>
 
@@ -199,7 +198,7 @@ $conn;
 <?php
 if(mysqli_num_rows($offr)>0){
  while($g=mysqli_fetch_assoc($offr)){
-    $ofstar="SELECT Eval FROM evaleuation WHERE EvalTo ='".$g['OfferPoster']."' and numoff='".$g['idOffer']."'";
+    $ofstar="SELECT Eval FROM evaleuation WHERE  numoff='".$g['idOffer']."'";
     $ofstar_run=mysqli_query($conn,$ofstar);
     if(mysqli_num_rows($ofstar_run)>0){
     $w=$t=$th=$f=$fi=$max=0;
@@ -248,24 +247,25 @@ $max=0;
             <div>
                 <ul class="image_info">
                     <?php
-                    $action="SELECT * FROM userinformation WHERE psudo ='".$g['OfferPoster']."' ";
+                    $action="SELECT * FROM userinformation WHERE email ='".$g['OfferPoster']."' ";
                     $adm = mysqli_query($conn,$action);
                     while($info=mysqli_fetch_assoc($adm)){
                 $pho=$info['image'];
+                $name=$info['psudo'];
                 
                     }
                     ?>
                     <li> <img class="image_profil_etoile"  src=" ../user/<?php  echo $pho?>" alt="profile_img"></li>
                     <?php
-                    if($_SESSION['user']!=$g['OfferPoster']){
+                    if($_SESSION['pseudo']!=$g['OfferPoster']){
                     ?>
-               <li> <a href="../user/userview.php?poster=<?php echo $g['OfferPoster']?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <li> <a href="../user/userview.php?idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $name?></h3></a></li>
                <?php
                }
                else{
                ?>
                
-               <li> <a href="../user/userProfil.php"> <h3><?php echo $g['OfferPoster']?></h3></a></li>
+               <li> <a href="../user/userProfil.php"> <h3><?php echo $name?></h3></a></li>
                
                <?php
             }
@@ -355,21 +355,23 @@ $max=0;
                     <ul>
                         <?php
                         //saveof='".$g['OfferPoster']."' AND
-                        $us=$_SESSION['user'];
+                        $us=$_SESSION['pseudo'];
                         //echo $us;
-                        $S="SELECT * from favori where saveof='".$g['OfferPoster']."' AND saveforH ='$us' and idOffer='".$g['idOffer']."'";
+                        $S="SELECT * from favori where  saveforH ='$us' and idOffer='".$g['idOffer']."'";
                         $rqST=mysqli_query($conn,$S);
                        // echo mysqli_num_rows($rqST);
+                     
+
                         if(mysqli_num_rows($rqST)==0){
 
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST" id="myform">
+                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST" id="myform">
                         <li> <button id="insert" name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
                         </form>
                         <?php
                         }else{
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?>&favof=<?php echo $g['OfferPoster']?> " method="POST">
+                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST">
                         <li> <button type="submit" name="NOsaveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark red " ></i></button></li>
                         </form>
                         

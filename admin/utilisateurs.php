@@ -44,14 +44,22 @@ $util=mysqli_query($conn,$action);
               <span>Accueil</span>
             </a>
           </li>
-          <li>
-          <a href="http://localhost/PFFE/admin/lesAdmin.php">
-            
-            <i class="fas fa-user-shield"></i>
-            
-            <span>Administrateurs</span>
-          </a>
-        </li>
+          <?php
+                if ($_SESSION['admn']==0) {
+                  
+                
+                ?>
+                <li>
+                <a href="http://localhost/PFFE/admin/lesAdmin.php">
+                  
+                  <i class="fas fa-user-shield"></i>
+                  
+                  <span>Administrateurs</span>
+                </a>
+              </li>
+              <?php
+              }
+              ?>
         <li>
           <a href="http://localhost/PFFE/admin/utilisateurs.php">
             <i class="fas fa-users"></i>

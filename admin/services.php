@@ -54,6 +54,11 @@ $del="";
                     <span>Accueil</span>
                   </a>
                 </li>
+                <?php
+                if ($_SESSION['admn']==0) {
+                  
+                
+                ?>
                 <li>
                 <a href="http://localhost/PFFE/admin/lesAdmin.php">
                   
@@ -62,6 +67,9 @@ $del="";
                   <span>Administrateurs</span>
                 </a>
               </li>
+              <?php
+              }
+              ?>
               <li>
                 <a href="http://localhost/PFFE/admin/utilisateurs.php">
                   <i class="fas fa-users"></i>
@@ -150,20 +158,20 @@ $del="";
                       <p><?php echo ($g['serviceDescription'])?>
                       </p> 
                     </div>
-                    <button  id="but_card"  onclick="document.getElementById('<?php echo $g['id'] ?>').style.display='block'" > supprime le service</button>
+                    <button  id="but_card"  onclick="document.getElementById('<?php echo $g['serviceName'] ?>').style.display='block'" > supprime le service</button>
                     
 
 
-                    <div id="<?php echo $g['id'] ?>" class="modal">
+                    <div id="<?php echo $g['serviceName'] ?>" class="modal">
                      
                      <div class="modalContent">
-                     <span onclick="document.getElementById('<?php echo $g['id'] ?>').style.display='none'" class="close">×</span>
+                     <span onclick="document.getElementById('<?php echo $g['serviceName'] ?>').style.display='none'" class="close">×</span>
                      <div class="icon">
           <i class="fas fa-exclamation"></i>
         </div>
                      <p>Êtes-vous sûr de vouloir supprimer le service</p>
                      
-                     <a name="delet" href="isertServis.php?del=<?php echo $g['id']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                     <a name="delet" href="isertServis.php?del=<?php echo $g['serviceName']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
                     
                      <button type="button"  class="cancel" onclick="hideModal()">Annuler</button>
                      </div> 
