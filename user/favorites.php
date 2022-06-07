@@ -42,7 +42,7 @@ $conn;
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <title>Document</title>
+    <title>getWork</title>
 
 
 
@@ -55,16 +55,11 @@ $conn;
         <div class="logo">
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
-            <div>
-            <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
-                <div class="box-recherch">
-              <i class="fa fa-search" aria-hidden="true"></i>
-                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
-                <button id="button-Rechercher">Rechercher</button>
-              </div>
-                
-            </form>
-        </div>
+                <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
+" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
             <div class="nav_right">
                 <ul>
                     <li class="nr_li">
@@ -78,7 +73,7 @@ $conn;
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php" id="shield">  <i  class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield">entre à l'administraction<i  class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }

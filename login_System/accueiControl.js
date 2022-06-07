@@ -95,3 +95,49 @@ function toggleMenu(){
   
   menuToggle.classList.toggle('active');
 }
+
+var validityEmail=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
+let mySForm=document.getElementById('form1');
+let email = document.getElementById('email');
+
+let nom= document.getElementById('nom');
+let message= document.getElementById('msg');
+let alert =document.getElementById('alert');
+mySForm.addEventListener('submit',function(e){
+
+    if(email.value==""){
+        
+        
+        email.style.border="2px solid red";
+        alert.style.display="block";
+       //mySForm.style.height="450px";
+        e.preventDefault();
+
+    }else
+    if(validityEmail.test(email.value)==false){
+      alert.style.display="block";
+        email.style.border="2px solid red";
+        alert.innerHTML="verifier votre email" ;
+
+        e.preventDefault();
+
+    }
+
+  
+    if(nom.value==""){
+      alert.style.display="block";
+        nom.style.border="2px solid red";
+        e.preventDefault();
+        
+
+
+    }
+    if(message.value==""){
+      alert.style.display="block";
+      message.style.border="2px solid red";
+      e.preventDefault();
+
+
+  }
+
+} );

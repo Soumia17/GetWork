@@ -48,7 +48,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
    
 </head>
 <body >
@@ -60,16 +60,11 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
             <div class="logo">
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
-                <div>
-                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
-                <div class="box-recherch">
-              <i class="fa fa-search" aria-hidden="true"></i>
-                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
-                <button id="button-Rechercher">Rechercher</button>
-              </div>
-                
-            </form>
-            </div>
+                <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
+" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
                 <div class="nav_right">
                     <ul>
                         <li class="nr_li">
@@ -84,7 +79,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php">  <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -125,7 +120,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                                 </div>
                             </div>
                         </li>
-                      
+                        <?php echo  $_SESSION['user'] ?>
                     </ul>
                 </div>
             </div>
@@ -172,7 +167,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                                
                                 <p class="text-muted">Membre depuis : <?php  echo $date ;?></p>
                                 <hr>
-                                <p class="text-muted m-t-15">Utile de communication :</p>
+                                <p class="text-muted m-t-15">Contactez moi par :</p>
                                 <div class="email details">
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>

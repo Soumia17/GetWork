@@ -73,6 +73,32 @@ if(isset($_POST['up'])){
     $_SESSION['user']=$_POST['newPseudo'];
 }
 }}
+if(isset($_GET['del'])){
+    $OffMO=$_GET['del'];
+   
+           $re="DELETE from offers WHERE idOffer='".$OffMO."'";
+           $res = mysqli_query($conn,$re);
+           if($res){
+               ?>
+               <!DOCTYPE html>
+               <html lang="en">
+               <head>
+                   <meta charset="UTF-8">
+                   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                   <title>Document</title>
+               </head>
+               <body>
+               <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>swal( "","Supprimé avec succès", "success");</script>
+
+               </body>
+               </html>
+               <?php
+           }
+         
+  
+}
 
 $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
             $Offer_run=mysqli_query($conn,$Offer);
@@ -118,7 +144,9 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
         //     }
         // }
         // else
-        // $max=0;   
+        // $max=0; 
+        
+       
            
             
 ?>
@@ -136,7 +164,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
    
 </head>
 <body >
@@ -148,7 +176,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                 <div class="logo">
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
-                <div>
+                <!-- <div class="serch">
                 <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
                 <div class="box-recherch">
               <i class="fa fa-search" aria-hidden="true"></i>
@@ -157,7 +185,12 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
               </div>
                 
             </form>
-            </div>
+            </div> -->
+            <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
+" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
                 <div class="nav_right">
                     <ul>
                         <li class="nr_li">
@@ -172,7 +205,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php">  <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -212,6 +245,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                                     </ul>
                                 </div>
                             </div>
+                            <span><?php echo  $_SESSION['user'] ?></span>
                         </li>
                       
                     </ul>
@@ -273,7 +307,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                                
                                 <p class="text-muted">Membre depuis : <?php  echo $_SESSION['dat'] ;?></p>
                                 <hr>
-                                <p class="text-muted m-t-15">Utile de communication :</p>
+                                <p class="text-muted m-t-15">Contactez moi par :</p>
                                 <div class="email details">
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>
@@ -409,8 +443,9 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                    </div>
                    <div class="des">
                     <span class="spn">Description :</span>
+                    <div class="OfferDescription">
                     <p><?php echo $g['OfferDescription']?></p>
-                   
+                    </div>
                    </div>
 
                    <div class="titl">
@@ -491,17 +526,40 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                     <span class="spn">prix: <?php echo $g['OfferPrix']?> DZ</span>
                    
  
-                   </div>
+                   </div class="userBTN">
                    
                    
-                  <a href="modifierOffer.php?OffMO=<?php echo $g['idOffer'];?>"> <button class="des_btn">Modifier</button></a>
+                
+                   
+                   <a href="modifierOffer.php?OffMO=<?php echo $g['idOffer'];?>"> <button id="des_btn">Modifier</button></a>
+                   
+                   <button onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='block'" name="dellet" id="des_btnS">Supprimer</button>
+                   
+
                    </div>
                    <!--cards -->
                    
                    
+                   
+                   <div id="<?php echo $g['idOffer'] ?>" class="modal">
+                     
+                     <div class="modalContent">
+                     <span onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='none'" class="close">×</span>
+                     <div class="icon">
+          <i class="fas fa-exclamation"></i>
+        </div>
+                     <p>Êtes-vous sûr de vouloir supprimer le service</p>
+                     
+                     <a  href="userProfil.php?del=<?php echo $g['idOffer']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                    
+                     <button onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='none'" type="button"  class="cancel" onclick="hideModal()">Annuler</button>
+                     </div>
+                     </div> 
                   <?php
                   
-                  }}
+                  }
+                
+                }
                   
                   ?>
 

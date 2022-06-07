@@ -39,7 +39,7 @@ $action="SELECT * FROM messages where idemail='".$msg."'";
     while($email=mysqli_fetch_assoc($offr)){
 
 $eml=$email['emailEmeteur'];
-
+$sender=$email['emetteur'];
     }
 
  
@@ -106,7 +106,7 @@ $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16p
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" .
 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" .
 "        \n" .
-"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">merci de nous contacter " .$msg. "  ,</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">  ".$message. " </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"></p></blockquote> <p>À bientôt</p>" .
+"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">merci de nous contacter " .$sender. "  ,</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">  ".$message. " </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"></p></blockquote> <p>À bientôt</p>" .
 "        \n" .
 "      </td>\n" .
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" .

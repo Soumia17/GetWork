@@ -101,11 +101,11 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
    <!-- <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>"> -->
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
    
 </head>
 <body >
@@ -117,7 +117,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
             <div class="logo">
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
-                <div>
+                <!-- <div>
                 <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
                 <div class="box-recherch">
               <i class="fa fa-search" aria-hidden="true"></i>
@@ -126,7 +126,12 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
               </div>
                 
             </form>
-            </div>
+            </div> -->
+            <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
+" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
                 <div class="nav_right">
                     <ul>
                         <li class="nr_li">
@@ -141,7 +146,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php">  <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -181,6 +186,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                                     </ul>
                                 </div>
                             </div>
+                            <span><?php echo  $_SESSION['user'] ?></span>
                         </li>
                       
                     </ul>
@@ -229,7 +235,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                                
                                 <p class="text-muted">Membre depuis : <?php  echo $date ;?></p>
                                 <hr>
-                                <p class="text-muted m-t-15">Utile de communication :</p>
+                                <p class="text-muted m-t-15">Contactez moi par :</p>
                                 <div class="email details">
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>
@@ -305,7 +311,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
               </form> -->
               <div class="Evaleuer">
                     <?php
-                     $ofstarFrom="SELECT Eval FROM evaleuation WHERE  numoff='".$offerid."'";
+                     $ofstarFrom="SELECT Eval FROM evaleuation WHERE  numoff='".$offerid."' and EvalFrom='".$_SESSION['pseudo']."' ";
                      $ofstarFrom_run=mysqli_query($conn,$ofstarFrom);
                      if(mysqli_num_rows($ofstarFrom_run)==0){
                     ?>

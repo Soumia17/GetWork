@@ -5,23 +5,23 @@ let motPasseCo= document.getElementById('Copassword');
 let numval=/^(00213|\+213|0)(5|6|7)[0-9]{8}$/;
 var validityEmail=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
 mySForm.addEventListener('submit',function(e){
-    if(numval.test(num.value)==false){
-        document.getElementById('sptl').innerHTML=" ";
+    if(numval.test(num.value)==false && num.value!=""){
+        document.getElementById('sptl').innerHTML="entre un numero valide";
 
         e.preventDefault();
 
     }
     
-    else if(validityEmail.test(email.value)==false){
-        document.getElementById('spem').innerHTML=" ";
+    // else if(validityEmail.test(email.value)==false){
+    //     document.getElementById('spem').innerHTML=" ";
         
         
 
-        e.preventDefault();
+    //     e.preventDefault();
 
-    }
+    // }
 
-   else if(validityEmail.test(email.value)==false){
+   else if(validityEmail.test(email.value)==false && email.value!=""){
         document.getElementById('spem').innerHTML="entre un email valide";
         
         
@@ -30,7 +30,7 @@ mySForm.addEventListener('submit',function(e){
 
     }
 
-    if(motPasse.value.length<6){
+    if(motPasse.value.length<6 && motPasse.value!=""){
         document.getElementById('pass').innerHTML=" ";
         document.getElementById('copass').innerHTML="Entrez au moins 6 characters";
         
@@ -41,7 +41,7 @@ mySForm.addEventListener('submit',function(e){
 
     }
 
-    if(motPasseCo.value==""){
+    if(motPasseCo.value=="" && motPasse.value!=""){
         document.getElementById('pass').innerHTML=" ";
         document.getElementById('copass').innerHTML="confirmer le mote de passe";
         e.preventDefault();

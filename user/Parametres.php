@@ -6,6 +6,7 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once '../includes/database-linck.php';
 $conn;
+ 
 if(isset($_POST['confirme'])){
     $del="DELETE FROM userinformation WHERE email='".$_SESSION['pseudo']."' and  DATE_SUB(NOW(), INTERVAL 30 DAY)
     ";
@@ -24,7 +25,7 @@ if(isset($_POST['up'])){
              <meta charset="UTF-8">
              <meta http-equiv="X-UA-Compatible" content="IE=edge">
              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-             <title>Document</title>
+             <title>getWork</title>
          </head>
          <body>
          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -41,6 +42,13 @@ if(isset($_POST['up'])){
         $up="UPDATE userinformation set email='".$_POST['email']."' WHERE email='".$_SESSION['pseudo']."'";
 
         mysqli_query($conn,$up);
+        $up="UPDATE messages set emailEmeteur='".$_POST['email']."' WHERE emailEmeteur='".$_SESSION['pseudo']."'";
+
+        mysqli_query($conn,$up);
+        // echo $_SESSION['pseudo'];
+        // if(mysqli_query($conn,$up)){
+        //     echo "yes";
+        // }
         $_SESSION['pseudo']=$_POST['email'];
            }
     }
@@ -127,7 +135,7 @@ if(isset($_POST['confirme'])){
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <title>Document</title>
+    <title>getWork</title>
    
 </head>
 <body >
@@ -139,16 +147,11 @@ if(isset($_POST['confirme'])){
             <div class="logo">
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
-                <div>
-                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
-                <div class="box-recherch">
-              <i class="fa fa-search" aria-hidden="true"></i>
-                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
-                <button id="button-Rechercher">Rechercher</button>
-              </div>
-                
-            </form>
-            </div>
+                <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
+" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
                 <div class="nav_right">
                     <ul>
                         <li class="nr_li">
@@ -163,7 +166,7 @@ if(isset($_POST['confirme'])){
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php">  <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -375,7 +378,9 @@ if(isset($_POST['confirme'])){
 <script src="../admin/Control-Administration.js"></script>
 <script src="Control_profil.js"></script>
 <script src="https://kit.fontawesome.com/6f2f9c8fbf.js" ></script>
-<script src="control_par.js"></script>
+<script src="control_par.js?v=<?php echo time();?>"></script>
+
+
 </body>
 </html>
 

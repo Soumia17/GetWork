@@ -44,7 +44,19 @@ if(mysqli_num_rows($email_query_run)>0 || mysqli_num_rows($psudo_suery_run)>0 ){
 <script  >
    //alert("email existe deja");
    swal("email existe deja!").then(function(){
-       window.location= "http://localhost/PFFE/login_System/regester.php"
+    <?php
+
+if(isset($_GET['Slike'])){ ?>
+ window.location= "http://localhost/PFFE/login_System/regester.php?idPOS=<?php echo $_GET['Slike'] ?>"
+<?php 
+}else{
+ 
+ ?>
+ window.location= "http://localhost/PFFE/login_System/regester.php"
+<?php 
+}
+?>
+      
    });
 </script>
        </body>
@@ -68,7 +80,18 @@ if(mysqli_num_rows($email_query_run)>0 || mysqli_num_rows($psudo_suery_run)>0 ){
 <script  >
    //alert("email existe deja");
    swal("pseudo existe deja!").then(function(){
-       window.location= "http://localhost/PFFE/login_System/regester.php"
+    <?php
+
+if(isset($_GET['Slike'])){ ?>
+   window.location= "http://localhost/PFFE/login_System/regester.php?idPOS=<?php echo $_GET['Slike'] ?>"
+<?php 
+}else{
+ 
+ ?>
+ window.location= "http://localhost/PFFE/login_System/regester.php"<?php 
+}
+?>
+       
    });
 </script>
        </body>
@@ -99,7 +122,11 @@ $_SESSION['dat']=$info['userDate'];
 $_SESSION['phone']=$info['phone'];
 
     }
-    header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
+    if(isset($_GET['Slike'])){ 
+        header('location: http://localhost/PFFE/user/userview.php?idPOS='.$_GET['Slike'].'');
+     }else{
+        header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
+     }
 
 }
 }

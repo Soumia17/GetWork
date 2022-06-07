@@ -13,7 +13,7 @@ include_once 'includes/database-linck.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleFormulair.css">
+    <link rel="stylesheet" href="styleFormulair.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
@@ -23,13 +23,13 @@ include_once 'includes/database-linck.php';
 <div class="logo">
 <a href="../login_System/accueil.php">getWork</a>
                 </div>
-  <form action="formulair.php" method="POST">
+  <!-- <form action="formulair.php" method="POST">
   <ul class="navbar">
     <li><input placeholder="entre pseudo ou email" name="pseudo" class="inpForgotPass"  type="text"></li>
     <li><input name="passW" placeholder="mot de passe" class="inpForgotPass"  type="password"></li>
     <button class="btn-Connexion">Connexion</button>
   </ul>
-  </form>
+  </form> -->
     
     
     
@@ -46,8 +46,18 @@ include_once 'includes/database-linck.php';
     <div id="jsT">
     <img id="img" src="">
         <label id="jsTest"></label></div>
-    <form  action="inscrire.php" method="POST" onmouseover="onmous()"  id="form2" >
-       
+    
+    <?php if(isset($_GET['Slike'])){  ?>
+     
+            <form  action="inscrire.php?Slike=<?php echo $_GET['Slike']?>" method="POST" onmouseover="onmous()"  id="form2" >
+      <?php
+        }else{?>
+        
+        <form  action="inscrire.php" method="POST" onmouseover="onmous()"  id="form2" >
+        
+        <?php
+        }
+        ?>
        
 
         <div class="user-detail">
@@ -134,7 +144,15 @@ include_once 'includes/database-linck.php';
 
     <div class="or">ou</div>
     <div class="conn" >
-        <span >Vous avez déjà un compte ?<a href="Formulaire.html"> <u>Connexion! </u> </a></span>
+    <?php if(isset($_GET['Slike'])){  ?>
+        <span >Vous avez déjà un compte ?<a href="Connexion.php?Slike=<?php echo $_GET['Slike']?>"> <u>Connexion! </u> </a></span>
+        <?php
+    }else{
+        ?>
+         <span >Vous avez déjà un compte ?<a href="Connexion.php"> <u>Connexion! </u> </a></span>
+        <?php
+    }
+        ?>
     </div>
 </div>
 

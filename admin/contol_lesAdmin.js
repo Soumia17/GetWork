@@ -48,3 +48,5 @@ function CpasswordToggle() {
 		Cpassword_toggle.classList.add('fa-eye-slash')
 	}
 }
+
+

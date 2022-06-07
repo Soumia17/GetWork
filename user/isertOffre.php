@@ -9,16 +9,37 @@ $conn;
 
 
 if(isset($_POST['save'])){
-    $OfferDescription=$_POST['OfferDescription'];
+    $OfferDescription=addslashes($_POST['OfferDescription']);
     $OfferCategore=$_POST['OfferCategore'];
     $OfferPrix=$_POST['OfferPrix'];
     //$OfferImage=$_POST['OfferImage'];
     $file=$_FILES['OfferImage']['name'];
     $OfferPoster=$_SESSION['pseudo'];
+   
     $req="INSERT INTO offers(OfferDescription,OfferCategore,OfferPrix,OfferImage,OfferPoster) values('$OfferDescription','$OfferCategore','$OfferPrix','$file','$OfferPoster')";
-    mysqli_query($conn,$req);
+    $res=mysqli_query($conn,$req);
     move_uploaded_file($_FILES['OfferImage']['tmp_name'],$file);
-    header('location: http://localhost/PFFE/user/addOffer.php');
+   
+
+    if($res){
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>swal( "","Supprimé avec succès", "success");</script>
+
+        </body>
+        </html>
+        <?php
+    }
+    
 }
 
 }

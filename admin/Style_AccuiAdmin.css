@@ -14,7 +14,7 @@
 .navbar{
 	background: #fff;
 	width: 100%;
-	height: 60px;
+	height: 80px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -89,11 +89,13 @@
 
 .navbar .dd_menu .dd_right{
 	padding: 15px 20px;
+	
 }
 
 .navbar .dd_menu li{
 	margin-bottom: 10px;
 	color: #868686;
+	
 }
 .navbar .dd_right li:hover{
 	color: black;
@@ -109,8 +111,12 @@
 }
 
 .navbar .dd_main.active .dd_menu{
-	display: flex;	
+	display: flex;
+
 }
+/* .dd_main:hover{
+color: #000;
+} */
 
 .box-recherch{
  
@@ -177,22 +183,24 @@ margin-right: 500px;
 /*etoileSection*/
    
 .etoile{
-  
+ 
 }
 .box-etoile{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
   gap:1.5rem;
-  
+  margin-top: 40px;
  margin-left: 2rem;
+
 
 }
 .box{
-  height: 18rem;
-  width: 14rem;
-  
+  height: 21rem;
+  width: 18rem;
+  /* height: auto; */
+ 
     background:#fff;
-   
+   margin-right:10px ;
     border:.1rem solid rgba(0,0,0,.2);
     box-shadow: var(--box-shadow);
     position: relative;
@@ -213,6 +221,7 @@ margin-right: 500px;
 .image_profil{
 	height: 35px;
 	width: 	35px;
+	border: 0.5px solid gray;
 }
 
 .image-etoile img{
@@ -229,9 +238,19 @@ margin-right: 500px;
 	/*background-color: #000;*/
 	background-color: transparent;
 	color: #000;
+	text-decoration: none;
+	border: 1px solid black;
+	padding: 4px;
+	border-radius: 6px;
+	background-color: #f0ecec;
 }
 #shield:hover{
 	color: #8a068f;
+}
+
+.box .description{
+	padding-top: 4px;
+	height:80px ;
 }
 
 .image_info {
@@ -244,6 +263,25 @@ margin-right: 500px;
 	
 	
 	position: relative;
+}
+
+.stars span{
+	font-size: 20px;
+}
+.echoService{
+	
+	height: 100px;
+	padding: 30px;
+	width: 100%;
+
+	
+
+
+}
+.echoService span{
+font-weight: bold;
+	font-size: 30px;
+	
 }
 
 /*etoile*/
@@ -265,7 +303,7 @@ margin-right: 500px;
 
 .center{
 	width: 100%; 
-  height:2.5rem;
+  /* height:2.5rem; */
 	margin: auto;
   
 }
@@ -283,6 +321,7 @@ margin-right: 500px;
 
 position: absolute;
 width: 100%;
+height: 3rem;
 
 }
 
@@ -355,8 +394,14 @@ width: 100%;
 
 .Bien_venu{
  
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
+ display: flex;
+ width: 100%;
+ 
+ padding: 30px;
+
+
  
   
   
@@ -462,3 +507,577 @@ font-size: 35px;
 
 	}
 
+/*Style sreach*/
+
+.example{
+	width: 50%;
+	
+}
+form.example input[type=text] {
+	padding: 10px;
+	font-size: 17px;
+	border: 1px solid grey;
+	float: left;
+	width: 80%;
+	background: transparent;
+  }
+  
+  form.example button{
+	float: left;
+	width: 10%;
+	padding: 10px;
+	background: black;
+	color: white;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+  }
+  
+  form.example button:hover {
+	background: #0b7dda;
+  }
+  
+  form.example::after {
+	content: "";
+	clear: both;
+	display: table;
+  }
+
+  /*Slider*/
+      
+
+
+label{cursor:pointer} /*on rend cliquable tous les labels*/  
+    
+/************************debut sildeshow****************************/ 
+.slideshow > ul,.cache{max-height:90vh}
+.slide ,.pause ,:checked {
+	display: none;
+}
+
+.slideshow {
+/* position:relative; */
+height: 300px;
+margin-left: 10;
+margin-right: auto;
+/* max-width:80%; */
+width: 100%;
+border:10px solid hsla(0,0%,100%,.9);
+box-shadow:0 2px 6px hsla(0,0%,0%,.4);
+}
+   
+.slideshow > ul {
+position:relative;
+z-index:0;
+margin:auto;
+overflow:hidden;
+height: 100%;
+width: 100%;
+
+}
+.slideshow > ul img{
+	height: 100%;
+	width: 100%;
+
+
+}   
+.slideshow > ul > li{
+position:absolute;
+display:flex;
+width:100%;
+height:100%;
+transform:translate3d(0,0,0);/*accelere l'animation / optionnel*/
+top:0;
+left:0;
+transition:transform 2s cubic-bezier(.4,1,.2,1)
+}
+
+.img1{
+	
+	background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.5)),  url(https://cdn.ttgtmedia.com/visuals/German/article/work-from-home-laptop-cat-adobe.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 20px;
+	
+	
+}
+.impp {
+	padding: 20px;
+	
+	}
+.imss{
+	width: 100%;
+	height: 80px;
+	
+	font-size: 40px;
+color: #ddd;
+	
+}
+.imss {
+
+/* margin-right: 100%;
+width: 100%; */
+}
+.imss2{
+	width: 100%;
+	height: 40px;
+	font-size: 40px;
+color: #ddd;
+	
+}
+.imss2 {
+
+/* margin-right: 100%;
+width: 100%; */
+}
+
+.img2{
+	
+	background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.5)),  url(https://www.campusfrance.org/sites/default/files/Recrutement%20Fotolia_102165071_Subscription_Monthly_M.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+
+}
+.img3{
+	
+	background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.5)),  url(/imageService/64-Créer-un-logo-gratuit-DesignEvo-cover.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 20px;
+	
+	
+}
+.img4{
+	
+	background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.5)),  url(/imageService/64-Créer-un-logo-gratuit-DesignEvo-cover.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 20px;
+	
+	
+}
+      
+.slideshow > ul > li.img1{left:0%}
+.slideshow > ul > li.img2{left:100%}
+.slideshow > ul > li.img3{left:200%}
+.slideshow > ul > li.img4{left:300%}
+    
+    
+.slideshow > #slide_img1:checked ~ ul > li,
+.slideshow > #pause_img1:checked ~ ul > li{transform:translatex(0%)}
+    
+    
+.slideshow > #slide_img2:checked ~ ul > li,
+.slideshow > #pause_img2:checked ~ ul > li {transform: translatex(-100%)}
+    
+    
+.slideshow > #slide_img3:checked ~ ul > li,
+.slideshow > #pause_img3:checked ~ ul > li {transform: translatex(-200%)}
+    
+    
+.slideshow > #slide_img4:checked ~ ul > li,
+.slideshow > #pause_img4:checked ~ ul > li {transform: translatex(-300%)}
+
+/*******************animation slide********************/
+@keyframes slide {
+0%, 13%{transform:translatex(0)}
+25%, 38%{transform:translatex(-100%)}
+50%, 63%{transform:translatex(-200%)}
+75%, 88%{transform:translatex(-300%)}
+}  
+    
+/******************fleches**************************/
+    
+.slideshow > .precedent,
+.slideshow > .suivant{position:absolute;top:50%;z-index:1}
+.slideshow > .precedent{left:2rem}
+.slideshow > .suivant{right:2rem}
+
+.slideshow > .precedent > label,
+.slideshow > .suivant > label{
+position:absolute;
+opacity:0;
+z-index:-1;
+margin-top:-22px; 
+margin-left:-22px; 
+width:45px;
+height:45px;
+border-radius:50%;
+background-color:hsl(0,0%,15%);
+transition:transform .3s ease}   
+        
+.slideshow > .precedent > label:after{content:'←'}
+.slideshow > .suivant > label:after{content:'→'}
+    
+.slideshow > .precedent > label:after,
+.slideshow > .suivant > label:after {
+display:block;
+text-align:center;
+line-height:42px;
+font-size:2rem;
+color:hsl(0,0%,100%);
+transition:.3s ease}   
+    
+    
+.slideshow > .slide:checked ~ .precedent > label,
+.slideshow > .slide:checked ~ .suivant > label{opacity:0;z-index:-1}
+
+.slideshow > #slide_img1:checked ~ .precedent > label.img4,
+.slideshow > #pause_img1:checked ~ .precedent > label.img4,
+.slideshow > #slide_img1:checked ~ .suivant > label.img2,
+.slideshow > #pause_img1:checked ~ .suivant > label.img2, 
+.slideshow > #slide_img2:checked ~ .precedent > label.img1,
+.slideshow > #pause_img2:checked ~ .precedent > label.img1,
+.slideshow > #slide_img2:checked ~ .suivant > label.img3,
+.slideshow > #pause_img2:checked ~ .suivant > label.img3, 
+.slideshow > #slide_img3:checked ~ .precedent > label.img2,
+.slideshow > #pause_img3:checked ~ .precedent > label.img2,
+.slideshow > #slide_img3:checked ~ .suivant > label.img4,
+.slideshow > #pause_img3:checked ~ .suivant > label.img4, 
+.slideshow > #slide_img4:checked ~ .precedent > label.img3,
+.slideshow > #pause_img4:checked ~ .precedent > label.img3,
+.slideshow > #slide_img4:checked ~ .suivant > label.img1,
+.slideshow > #pause_img4:checked ~ .suivant > label.img1{opacity:1;z-index:1}
+
+
+
+.slideshow > #play_img1:checked ~ .precedent > label.img4,
+.slideshow > #play_img1:checked ~ .suivant > label.img2 {animation:anim_fleches 17.2s infinite -2s}
+    
+    
+.slideshow > #play_img1:checked ~ .precedent > label.img1,
+.slideshow > #play_img1:checked ~ .suivant > label.img3 {animation:anim_fleches 17.2s infinite 2.3s}
+    
+    
+.slideshow > #play_img1:checked ~ .precedent > label.img2,
+.slideshow > #play_img1:checked ~ .suivant > label.img4 {animation:anim_fleches 17.2s infinite 6.6s}
+    
+    
+.slideshow > #play_img1:checked ~ .precedent > label.img3,
+.slideshow > #play_img1:checked ~ .suivant > label.img1 {animation:anim_fleches 17.2s infinite 10.9s}
+
+
+/* stop */
+.slideshow > .slide:checked ~ .precedent > label,
+.slideshow > .slide:checked ~ .suivant > label,
+.slideshow > .pause:checked ~ .precedent > label,
+.slideshow > .pause:checked ~ .suivant > label{animation-play-state:paused}
+
+/*********************************animation fleches*************************************************/
+@keyframes anim_fleches {0%,24.99%{opacity:1;z-index:1}25%,100%{ opacity:0;z-index:-1}}
+
+    
+    .slideshow:hover{animation-play-state:paused    }
+    
+/********************bouton play/pause*************************/
+.slideshow > .play_pause,.slideshow > .play_pause > label{position:absolute}
+    
+.slideshow > .play_pause {top:50%;left:50%;z-index:1}
+    
+
+.slideshow > #play_img1:checked ~ .play_pause > .pause,
+.slideshow > .slide:checked ~ .play_pause > .play,
+.slideshow > .pause:checked ~ .play_pause > .play{display:block;
+z-index:1}
+    
+    
+.slideshow > #play_img1:checked ~ .play_pause > .play,
+.slideshow > .slide:checked ~ .play_pause > .pause,
+.slideshow > .pause:checked ~ .play_pause > .pause{display:none;
+z-index:-1}
+
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img1,
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img2,
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img3,
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img4{
+opacity:0;
+z-index:-1}
+    
+    
+    
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img1 {animation:anim_fleches 17.2s infinite -2s}
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img2{animation:anim_fleches 17.2s infinite 2.3s}
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img3{animation:anim_fleches 17.2s infinite 6.6s}
+.slideshow > #play_img1:checked ~ .play_pause > .pause.img4 {animation:anim_fleches 17.2s infinite 10.9s}
+
+    
+    
+/* stop */
+.slideshow > .slide:checked ~ .play_pause > .pause,
+.slideshow > .pause:checked ~ .play_pause > .pause{animation-play-state:paused}
+
+
+.slideshow  > #play_img1:checked ~ ul > li {animation:slide 17.2s infinite}
+
+
+.slideshow > #play_img1:checked ~ ul > li,
+.slideshow > .pause:checked ~ ul > li{transition:none}
+
+.slideshow > .play_pause {transition: .4s 0s ease}
+.slideshow > .precedent {transition: .4s .15s ease}
+.slideshow > .suivant {transition: .4s .3s ease}
+    
+  
+/*apparition/disparition des fleches + bouton play/pause*/
+.slideshow > .precedent,
+.slideshow > .suivant,
+.slideshow > .play_pause{opacity:0}
+    
+
+.slideshow:hover > .precedent,
+.slideshow:hover > .suivant,
+.slideshow:hover > .play_pause{opacity:1}
+    
+
+.slideshow > .play_pause > label {
+margin-left:-22px;
+margin-top:-22px; 
+width:45px;
+height:45px;
+border-radius:50%;
+background-color:hsl(0,0%,15%);
+transition:.3s ease}
+    
+    
+.slideshow > .play_pause > .play:after{content:'▶'}
+.slideshow > .play_pause > .pause:after{content:'∥'}
+    
+.slideshow > .play_pause > label:after{
+display:block;
+text-align:center;
+font-size:2rem;
+color:hsl(0,0%,100%)}
+
+
+/***************************navigation puces bas********************************/
+.slideshow > .puces {
+position:absolute;
+left:0;
+width:100%;
+z-index:1;
+font-size: 0;
+text-align:center;
+bottom:.3125rem;
+margin-bottom:.3125rem}
+    
+.slideshow > .puces > label{
+position:relative;
+display:inline-flex;
+margin:0 .625rem;
+padding:.5rem;
+border-radius:50%;
+background-color:hsla(0,0%,0%,.6)}
+
+/********************simulation lien actif sur les puces******************************/
+.slideshow > .puces > label > .actif_puces {
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border-radius:50%;
+z-index:1;
+background-color:hsl(0,0%,100%);
+transition:.3s ease;
+transform:scale(0)}
+
+
+.slideshow > #slide_img1:checked ~ .puces > label.img1 > .actif_puces,
+.slideshow > #pause_img1:checked ~ .puces > label.img1 > .actif_puces,
+.slideshow > #slide_img2:checked ~ .puces > label.img2 > .actif_puces,
+.slideshow > #pause_img2:checked ~ .puces > label.img2 > .actif_puces,
+.slideshow > #slide_img3:checked ~ .puces > label.img3 > .actif_puces,
+.slideshow > #pause_img3:checked ~ .puces > label.img3 > .actif_puces,
+.slideshow > #slide_img4:checked ~ .puces > label.img4 > .actif_puces,
+.slideshow > #pause_img4:checked ~ .puces > label.img4 > .actif_puces{transform:scale(1)}
+
+
+
+/* bouton play -  puces */
+
+.slideshow > #play_img1:checked ~ .puces > label.img1 > .actif_puces{animation:anim_puces 17.2s infinite -2s}
+    
+.slideshow > #play_img1:checked ~ .puces > label.img2 > .actif_puces{animation:anim_puces 17.2s infinite 2.3s}
+    
+.slideshow > #play_img1:checked ~ .puces > label.img3 > .actif_puces{animation:anim_puces 17.2s infinite 6.6s}
+    
+.slideshow > #play_img1:checked ~ .puces > label.img4 > .actif_puces{animation:anim_puces 17.2s infinite 10.9s}
+
+
+@keyframes anim_puces{0%,24.99%{transform:scale(1);background-color:hsl(0,0%,100%)}25%,100%{transform:scale(0);background:transparent}}
+
+.slideshow > #play_img1:checked ~ .puces > label > .actif_puces,
+.slideshow > .pause:checked ~ .puces > label > .actif_puces{transition:none}
+    
+ /* stop */
+
+.slideshow > .slide:checked ~ .puces > label > .actif_puces,
+.slideshow > .pause:checked ~ .puces > label > .actif_puces{animation-play-state:paused}   
+/********************************navigation puces bas****************************/
+
+ @media screen and (min-width:41.5rem){
+     .slideshow{max-width:61.5rem}
+   .precedent,.suivant{display:block}
+    }
+
+	.bien-v{
+		height: 300px;
+		width: 270px;
+		background-color: antiquewhite;
+		text-align: center;
+		padding-top: 7%;
+		padding-left: 1%;
+		padding-right: 1%;
+		
+	}
+	.bien-v span{
+		font-size: 1.5rem;
+		
+		font-weight: bold;
+		font-family:cursive;
+		
+	}
+	.bien-v p{
+		margin-top: 20px ;
+		font-size : 1.2rem ;
+	}
+
+	.Concerts{
+		width: 100%;
+		background-color: #0b7dda;
+	}
+.autreTy{
+	float: right;
+	margin-right: 3%;
+}
+.autreTy a{
+	color: #9a52c0;
+	font-size: 18px;
+	text-decoration: none;
+		}
+	.seeAll{
+		float: right;
+		padding: 30px;
+	}
+	.seeAll a{
+color: #528fc0;
+font-size: 18px;
+text-decoration: none;
+	}
+	.seeAll a:hover{
+		text-decoration: underline;
+		color: #66aae2;
+	}
+/* NOresult*/
+	.noResult{
+		padding: 10%;
+		/* background-color: aqua; */
+		height: 350px;
+		
+		
+	   }
+	   .verif span{
+		font-size: 20px;
+	   margin-left: 7%;
+	  margin-bottom: 10%;
+	  
+	  
+	  }   
+	  .verif{
+		/* background-color: aqua; */
+		
+		
+	  } 
+
+	.search-message-empty-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 11.5em;
+		
+		
+		/* background-color: rgb(154, 31, 84); */
+		
+		
+		
+		}
+		
+		.search-message-empty-decal {
+		margin-right: 2rem;
+		font-size: 6rem;
+		transform: rotate(90deg);
+		}
+		
+		.search-message-empty-message {
+		font-size: 1.5em;
+		text-rendering: optimizeLegibility;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		color: #868686;
+		}
+		.hrr{
+		padding-top: 2%;
+		
+		
+		
+		}
+		.util {
+		 
+		 
+		}
+		.util h2{
+		  color: #000;
+		  margin-left: 50px;
+		}
+		.util span{
+		margin-left: 40px;
+		font-size: 20px;
+		}
+		.hrr hr{
+		
+		
+		/* border: none; */
+		height: 3px;
+		width: 1100px;
+		/* Set the hr color */
+		margin-left: 4%;
+		
+		
+		}
+		
+		.box-etoil{
+		  display:grid;
+		  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+		  gap:0.5rem;
+		  margin-top: 40px;
+		 /* margin-left: 7rem; */
+		 margin-right: 7rem;
+		 font-weight: bold;
+		 text-decoration: none;
+		}
+		.box-etoil a{
+			text-decoration: none;
+		}
+		.ser{
+		border: 2px solid black;
+		width: 170px;
+		padding: 19px;
+		
+		  font-size: 15px;
+		  margin-top: 3px;
+		border-radius: 3px;
+			text-align: center;
+			text-decoration: none;
+		}
+		.ser span{
+		  margin-left: -10px;
+		}
+
+		.trou{
+			margin-left: 10%;
+			margin-top: 10%;
+			color: #000;
+		}

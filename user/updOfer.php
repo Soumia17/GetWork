@@ -22,9 +22,31 @@ if(isset($_POST['save'])){
     SET  OfferImage= '".$OfferImage."'
     WHERE idOffer='".$_SESSION['off']."'";
     $res = mysqli_query($conn,$re);
+    if($res){
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>swal( "L'offre a été modifie avec succès","", "success").then(function(){
+       window.location= "../user/userProfil.php"
+   });</script>
+
+        </body>
+        </html>
+        <?php
+    }
+    
     }
 
- //  header('location: http://localhost/PFFE/user/modifierOffer.php?OffMO='.$_SESSION['off'].'');
+
+  header('location: http://localhost/PFFE/user/modifierOffer.php?OffMO='.$_SESSION['off'].'');
 
 }
 

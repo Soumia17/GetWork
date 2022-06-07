@@ -699,7 +699,7 @@ textarea{
   }
   
   .boxx::before {
-    content: "\f13a";
+    /* content: "\f13a"; */
     font-family: FontAwesome;
     position: absolute;
     top: 0;
@@ -764,6 +764,7 @@ textarea{
 .main{
 
   margin: 2%;
+  
  }
  .mainD{
 
@@ -776,6 +777,7 @@ textarea{
  
  .card{
       width: 20%;
+      /* height: 400px; */
       display: inline-block;
       box-shadow: 2px 2px 20px black;
       border-radius: 5px; 
@@ -809,7 +811,8 @@ textarea{
   
    text-align: center;
    padding: 10px;
-   width: 70%;
+   width: 100%;
+   
    
   }
   .titl{
@@ -833,15 +836,38 @@ textarea{
  }
 
  .des_btn{
-  margin-top: 30px;
+  /* margin-top: 30px; */
   
   background-color: #2ecc71;
   border: 1px solid transparent;
   border-radius: 6px;
   padding:10px;
-  width: 100%;
+  width: 50%;
   color: white;
 
+ }
+ #des_btn{
+  background-color: #2ecc71;
+  padding:10px;
+  color: white;
+  width: 50%;
+  border: 1px solid transparent;
+  
+ }
+ #des_btnS{
+  background-color: #f44336;
+  float: right;
+  padding:10px;
+  color: white;
+  width: 50%;
+  border: 1px solid transparent;
+
+}
+#des_btnS:hover{
+  background-color: #f7392c;
+ }
+ #des_btn:hover{
+  background-color: #27ae60;
  }
  .cardd .des_btn{
    background-color: #f44336;
@@ -926,7 +952,7 @@ textarea{
 
 .stars i{
 
-font-size: 2.75em;
+font-size: 2.6em;
 
 }
 
@@ -954,3 +980,110 @@ font-size: 2.75em;
   color: #8a068f;
 }
 
+
+/* .serch{
+  width: 600px;
+  
+} */
+
+
+.addOfer{
+  height: 200px;
+  width: 100%;
+  background-color: #d2c9ea;
+  
+  display: flex;
+  justify-content: space-between;
+}
+.nouOfer{
+ 
+ margin-left:5%;
+  margin-top: 5%;
+/* background-color: #00b9eb; */
+width: 800px;
+}
+.nouOfer span{
+ font-size: 20px;
+ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+.nouOfer h2{
+  font-family: cursive;
+  left: 27%;
+}
+ .imgg1{
+  height: 190px;
+  width: 190px;
+  
+  margin-top: 10px;
+  
+  
+
+
+}
+
+
+.addOfer .imgg2{
+  /* float: right;
+  font-size: 100px;
+  position: absolute; */
+}
+
+.userBTN{
+  display: flex;
+}
+
+/*Modal*/
+.modal {
+  text-align: center;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+
+}
+.modalContent {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 60px;
+  border: 1px solid #888;
+  width: 50%;
+}
+.modalContent button {
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+}
+.icon{
+  height: 100px;
+  width: 100px;
+  color: #f23b26;
+  border: 3px solid #f23b26;
+  border-radius: 50%;
+  line-height: 97px;
+  font-size: 50px;
+  margin-left: 40%;
+}
+
+.del {
+  background-color: rgb(255, 65, 65);
+  color: #fff;
+}
+.del:hover {
+  background-color: rgb(255, 7, 7);
+}
+.cancel:hover {
+  background-color: rgb(167, 167, 167);
+}
+
+.OfferDescription{
+  height: 35px;
+}

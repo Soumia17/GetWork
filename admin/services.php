@@ -147,6 +147,7 @@ $del="";
             
 
            while($g=mysqli_fetch_assoc($res)){
+             if($g['serviceName']!="Autre"){
                ?>
        
             <article>
@@ -181,7 +182,7 @@ $del="";
             
             <?php
 
-           }
+           }}
            
                  
          

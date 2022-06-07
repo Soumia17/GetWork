@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleFormulair.css">
+    <link rel="stylesheet" href="styleFormulair.css?v=<?php echo time()?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>Document</title>
@@ -19,11 +19,11 @@
             <a href="../login_System/accueil.php">getWork</a>
         </div>
         
-        <ul class="navbar">
+        <!-- <ul class="navbar">
           
           <a href=" http://localhost/PFFE/login_System/regester.php" class="btn-Connexion-conex" id="">S'inscrire  </a>
          
-        </ul>
+        </ul> -->
           
           
           
@@ -34,8 +34,16 @@
     <div  class="for2">
         <div class="a">
         <a  href="http://localhost/PFFE/login_System/forgetPassword.php">  Mot de passe oublié ?</a></div>
-    <form   id="form1" method="POST" action="http://localhost/PFFE/login_System/formulair.php" >
-      
+        <?php if(isset($_GET['Slike'])){  ?>
+        <form   id="form1" method="POST" action="http://localhost/PFFE/login_System/formulair.php?Slike=<?php echo $_GET['Slike']?>" >
+      <?php
+        }else{?>
+        
+        
+        <form   id="form1" method="POST" action="http://localhost/PFFE/login_System/formulair.php" >
+        <?php
+        }
+        ?>
         <div class="inputDiv2">
             <img class="iconF2" src="https://img.icons8.com/material-outlined/24/000000/name.png"/>
         <input name="pseudo" onclick="onC()" type="text" id="pseudo"  class="inpForm" placeholder="entre pseudo ou email" >
@@ -70,8 +78,18 @@
     <hr class="hr2">
 
     <div class="orHr">ou</div>
-    <p class="compte"> Pas encore de compte ? <a href=" http://localhost/PFFE/login_System/regester.php">  S'inscrire!</a></p>
+    <p class="compte"> Pas encore de compte ?
+        <?php if(isset($_GET['Slike'])){ ?>
+    <a href=" http://localhost/PFFE/login_System/regester.php?Slike=<?php echo $_GET['Slike'] ?>">  S'inscrire!</a>
+   <?php
+        }else {
+           ?>
+            <a href=" http://localhost/PFFE/login_System/regester.php">  S'inscrire!</a>
+           <?php
+        }
    
+   ?>
+   </p>
 </div>
 
 

@@ -14,7 +14,7 @@ $admin_del=$_GET['del_ad'];
    else echo("non");
    $req="UPDATE userinformation
    SET Theadmin =2
-   WHERE psudo= '$admin_del'";
+   WHERE 	email = '$admin_del'";
    $res = mysqli_query($conn,$req);
 
 

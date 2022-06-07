@@ -330,3 +330,132 @@
       .jsT span{
         margin-top: 10%;
       }
+.nosServi{
+  padding-top: 40px;
+  padding-left: 60px;
+}
+      .addOfer{
+        margin-top: 7%;
+        height: 240px;
+        width: 97%;
+       background-color: rgb(37,66,0);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/42593ecc6f1e40fd735892b99f001ea4-1631622804535/writing%20_%20translation%20mobile.png);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/42593ecc6f1e40fd735892b99f001ea4-1631622804534/writing%20_%20translation.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: space-between;
+       border-radius: 6px;
+      }
+      .addOfer2{
+        margin-top: 7%;
+        height: 240px;
+        width: 97%;
+       background-color: rgb(77,23,39);;
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415212/music-audio-mobile.png);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415210/music-audio-desktop.png); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: space-between;
+       border-radius: 6px;
+      }
+      .addOfer3{
+        margin-top: 7%;
+        height: 240px;
+        width: 97%;
+       background-color: rgb(11,58,35);;
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415227/graphics-design-mobile.png);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415203/graphics-design-desktop.png); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: space-between;
+       border-radius: 6px;
+      }
+      .addOfer4{
+        margin-top: 7%;
+        height: 240px;
+        width: 97%;
+       background-color: rgb(47,13,5);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415219/programming-tech-mobile.png);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415213/programming-tech-desktop.png); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: space-between;
+       border-radius: 6px;
+      }
+      .addOfer5{
+        margin-top: 7%;
+        height: 240px;
+        width: 97%;
+       background-color: rgb(77,23,39);;
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/dfda78b6f6a73b6a9994070c056c0271-1631623279968/Business%20mobile.png);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/dfda78b6f6a73b6a9994070c056c0271-1631623279971/Business.png); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: space-between;
+       border-radius: 6px;
+      }
+      .addOfer6{
+        margin-top: 7%;
+        height: 240px;
+        width: 97%;
+       background-color: rgb(190,82,114);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415224/digital-marketing-mobile.png);
+    background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415207/digital-marketing-desktop.png); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: space-between;
+       border-radius: 6px;
+      }
+      .nouOfer{
+       
+
+       margin-left:5%;
+        margin-top: 5%;
+      /* background-color: #00b9eb; */
+      width: 800px;
+      text-align: center;
+      
+      
+      
+      }
+      .nouOfer span{
+        color: #fff;
+        margin-top: 5%;
+       font-size: 30px;
+       font-weight: bold;
+       font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+      }
+      .nouOfer h2{
+        font-family: cursive;
+       /* margin-left: 20%; */
+color: #fff;
+font-weight: bolder;
+font-size: 40px;
+      }
+       .imgg1{
+        height: 190px;
+        width: 190px;
+        
+        margin-top: 10px;
+        
+        
+      
+      
+      }
+      
+      
+      .addOfer .imgg2{
+        /* float: right;
+        font-size: 100px;
+        position: absolute; */
+      }
+      
+      .userBTN{
+        display: flex;
+      }

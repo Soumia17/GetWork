@@ -23,6 +23,8 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
 
             }
 
+          
+
 
 ?>
 
@@ -36,7 +38,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
     <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>
     <header class="header">
@@ -46,16 +48,11 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
             <div class="logo">
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
-                <div>
-                <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
-                <div class="box-recherch">
-              <i class="fa fa-search" aria-hidden="true"></i>
-                <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
-                <button id="button-Rechercher">Rechercher</button>
-              </div>
-                
-            </form>
-            </div>
+                <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
+" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
                 <div class="nav_right">
                     <ul>
                         <li class="nr_li">
@@ -70,7 +67,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php">  <i class="fas fa-user-shield hii"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield hii"></i></a>
                     </li>
                     <?php
                     }
@@ -110,6 +107,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                                     </ul>
                                 </div>
                             </div>
+                            <span><?php echo  $_SESSION['user'] ?></span>
                         </li>
                       
                     </ul>
@@ -146,9 +144,10 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
 
            </div>
            
-          <form action="updOfer.php" method="POST">
+          <!-- <form action="" method="POST">
           <button name="dellet" class="des_btn">Supprimer</button>
-          </form>
+          
+          </form> -->
            </div>
         </div>
         <div class="offe" id="down" >

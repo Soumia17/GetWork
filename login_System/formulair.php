@@ -51,7 +51,7 @@ $conn;
          <script  >
             //alert("email existe deja");
             swal("le compte spécifié n’existe pas!").then(function(){
-                window.location= "http://localhost/PFFE/login_System/Formulaire.html"
+                window.location= "http://localhost/PFFE/login_System/Connexion.php"
             });
          </script>
                 </body>
@@ -77,7 +77,11 @@ $_SESSION['dat']=$info['userDate'];
 $_SESSION['phone']=$info['phone'];
 
     }
+     if(isset($_GET['Slike'])){ 
+        header('location: http://localhost/PFFE/user/userview.php?idPOS='.$_GET['Slike'].'');
+     }else{
         header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
+     }
         echo"yesssss";
         exit();
         }
@@ -97,7 +101,11 @@ $_SESSION['dat']=$info['userDate'];
 $_SESSION['phone']=$info['phone'];
 
     }
+    if(isset($_GET['Slike'])){ 
+        header('location: http://localhost/PFFE/user/userview.php?idPOS='.$_GET['Slike'].'');
+     }else{
         header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
+     }
         echo"yesssss";
         exit();
     }}
@@ -119,7 +127,18 @@ $_SESSION['phone']=$info['phone'];
  <script  >
     //alert("email existe deja");
     swal("le compte spécifié n’existe pas!").then(function(){
-        window.location= "http://localhost/PFFE/login_System/Formulaire.html"
+<?php
+
+        if(isset($_GET['Slike'])){ ?>
+            window.location= "http://localhost/PFFE/login_System/Connexion.php?idPOS=<?php echo $_GET['Slike'] ?>"
+     <?php 
+     }else{
+         
+         ?>
+        window.location= "http://localhost/PFFE/login_System/Connexion.php"
+       <?php 
+     }
+       ?>
     });
  </script>
         </body>
@@ -129,7 +148,7 @@ $_SESSION['phone']=$info['phone'];
     <?php
     }
 
-      //  header('location: http://localhost/PFE/Formulaire.html');
+      //  header('location: http://localhost/PFE/Connexion.php');
     /*
     $raw =mysqli_fetch_array($result);
     

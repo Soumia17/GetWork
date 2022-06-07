@@ -6,6 +6,43 @@ if(!isset($_SESSION['pseudo'])){
 include_once '../includes/database-linck.php';
 $conn;
 
+
+if(isset($_POST['save'])){
+    $OfferDescription=addslashes($_POST['OfferDescription']);
+    $OfferCategore=$_POST['OfferCategore'];
+    $OfferPrix=$_POST['OfferPrix'];
+    //$OfferImage=$_POST['OfferImage'];
+    $file=$_FILES['OfferImage']['name'];
+    $OfferPoster=$_SESSION['pseudo'];
+   
+    $req="INSERT INTO offers(OfferDescription,OfferCategore,OfferPrix,OfferImage,OfferPoster) values('$OfferDescription','$OfferCategore','$OfferPrix','$file','$OfferPoster')";
+    $res=mysqli_query($conn,$req);
+    move_uploaded_file($_FILES['OfferImage']['tmp_name'],$file);
+   
+
+    if($res){
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>swal( "L'offre a été ajoutée avec succès","", "success").then(function(){
+       window.location= "../user/userProfil.php"
+   });</script>
+
+        </body>
+        </html>
+        <?php
+    }
+    
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +51,10 @@ $conn;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
+     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>"> 
     <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>
    
@@ -28,21 +65,16 @@ $conn;
       <div class="logo">
               <a href="../admin/Acceui_Admin.php">getWork</a>
           </div>
-          <div>
-          <form action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
-          <div class="box-recherch">
-        <i class="fa fa-search" aria-hidden="true"></i>
-          <input name="search" placeholder="trouver des services" id="input-Rechercher" type="text">
-          <button id="button-Rechercher">Rechercher</button>
-        </div>
-          
-      </form>
-      </div>
+          <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
+  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
+" name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
           <div class="nav_right">
               <ul>
-                  <li class="nr_li">
-                      <!--<i class="fas fa-plus"></i>-->
-                  </li>
+                  <!-- <li class="nr_li">
+                      <i class="fas fa-plus"></i>
+                  </li> -->
                  
 
                   <?php
@@ -52,7 +84,7 @@ $conn;
              
 
               <li class="nr_li">
-                <a href="../admin/Administration.php">  <i class="fas fa-user-shield"></i></a>
+                <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
               </li>
               <?php
               }
@@ -105,12 +137,24 @@ $conn;
 
       <section id="newService_Formulair" class="newService_Formulair">
             
+      <div class="addOfer">
+          <div class="">
+      <img class="imgg1" src="../imageService/png-transparent-thinking-woman-thinking-woman-image-idea-creative-advertising-removebg-preview.png" alt="">
+      </div>
+      <div class="nouOfer">
+     <h2>Ajouter un nouveau Offre</h2>
+     <span>Quelle est l'idée de votre nouveau projet ? Faites-le savoir et obtenez le plus grand nombre de commandes.</span>
+     </div> 
+    <div>
+    <img class="imgg2" src="../imageService/images-removebg-preview (1).png" alt="">
+    </div>
+</div>
               
-        <form id="enviar" action="isertOffre.php" method="POST" enctype="multipart/form-data" >
+        <form id="enviar" action="" method="POST" enctype="multipart/form-data" >
 
          
          
-          <h2>Ajouter un nouveau Offre</h2>
+          
 
          <div class="alert" id="alert" >
 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -133,17 +177,20 @@ $conn;
                       $req="SELECT serviceName  FROM services";
                       $res = mysqli_query($conn,$req);
                       while($resul=mysqli_fetch_assoc($res)){
+                          if($resul['serviceName']!="Autre"){
 
                       ?>
                       <option value="<?php echo ($resul['serviceName'])?>"><?php echo ($resul['serviceName'])?></option>
                       <?php
-                      }
+                      }}
                       ?>
+                       <option value="Autre">Autre type...</option>
                     </select>  
                     
-                    
+                   
                   </div>
-                  
+                  <span>Si vous n'arrivez pas a trouver le type approprié ,merci de nous <a href="../user/Parametres.php">contacte</a>. </span>
+<br>
                     <label >Le prix:</label><br>
                     <div id="prix">
                     <input id="prixx" type="text" class="inpPrix" placeholder="donne un prix" name="OfferPrix"  ><span>DZ</span>

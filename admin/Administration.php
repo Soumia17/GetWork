@@ -39,6 +39,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
             <ul class="admin-menu">
               <!--<a href="">LOGO</a>-->
               <center> <div class="left">
+              <span class="greeting">Administration</span><br>
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
                   <img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
@@ -220,20 +221,22 @@ $max=0;
                     <?php
                     if($_SESSION['pseudo']!=$g['OfferPoster']){
                     ?>
-               <li> <a href="../user/usrVBA.php?poster=<?php echo $poster?>& idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $poster?></h3></a></li>
+               <li> <a href="../user/usrVBA.php?poster=<?php echo $poster?>& idPOS=<?php echo $g['idOffer']?>" target="_blank"> <h3><?php echo $poster?></h3></a></li>
                <?php
                }
                else{
                ?>
                
-               <li> <a href="../user/userProfil.php"> <h3><?php echo $poster?></h3></a></li>
+               <li> <a href="../user/userProfil.php" target="_blank"> <h3><?php echo $poster?></h3></a></li>
                
                <?php
             }
                ?>
      
              </ul>
-            <p><?php echo $g['OfferDescription']?></p>                 
+             <div class="OfferDescription">
+            <p><?php echo $g['OfferDescription']?></p> 
+            </div>                
                     <div class="center">
                     <?php
                     if($max==0){
@@ -307,8 +310,10 @@ $max=0;
                     <ul>
                         
                         <li>
+                          <div class="prix">
                             le prix <label for=""><?php echo $g['OfferPrix']?> DZ</label>
-                        </li>
+                            </div>
+                          </li>
                     </ul>
                 </div>
                  <hr>

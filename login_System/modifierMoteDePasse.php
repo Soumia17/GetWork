@@ -96,7 +96,7 @@ if(isset($email)==''|| $exprim <= $Dexprim ) {
   button: "d'accord!",
   
 }).then(function(){
-   window.location = " http://localhost/PFFE/login_System/Formulaire.html";
+   window.location = " http://localhost/PFFE/login_System/Connexion.php";
 });
 
  
@@ -126,7 +126,7 @@ if(isset($_POST['suub'])){
 
 
    // $emailPass = $_POST['emailPass'];
-    $Pass = $_POST['passW']; 
+    $Pass =md5( $_POST['passW']); 
 
     $sqlQ="UPDATE userinformation
     SET passwor='$Pass'
@@ -155,7 +155,7 @@ if(isset($_POST['suub'])){
   
   
 }).then(function(){
-   window.location = " http://localhost/PFFE/login_System/Formulaire.html";
+   window.location = " http://localhost/PFFE/login_System/Connexion.php";
 });
 
 
