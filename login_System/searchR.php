@@ -15,7 +15,7 @@ $conn;
     <link rel="stylesheet" href="../admin/Style_Administrateur.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <title>Document</title>
+    <title>getWork</title>
     <style>
         .header{
     position: fixed;
@@ -61,8 +61,9 @@ $conn;
    border-radius: 6px;
    position: relative;
    height: 40px;
-   /* background-color:#8a068f ; */
+   background-color:#8a068f ;
    right: 10px;
+  
    font-size: 15px;
    
 }
@@ -143,7 +144,7 @@ if(isset($_GET['Sevice'])){
         $action="SELECT * FROM offers WHERE OfferPoster='".$p."' OR OfferCategore LIKE '%".$q."%' ";
     }
     else{
-        $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$q."%' ";
+        $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$q."%' OR OfferDescription LIKE '%".$q."%' ";
     }
 
 }

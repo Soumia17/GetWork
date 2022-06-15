@@ -11,7 +11,7 @@ include_once 'includes/database-linck.php';
     <link rel="stylesheet" href="styleFormulair.css">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>
     <div  class="for2">
@@ -53,8 +53,8 @@ include_once 'includes/database-linck.php';
    
 
 </div>
-<script src="forgetpassM.js"></script>
-
+<!-- <script src="forgetpassM.js?v=<?php echo time();?>"></script> -->
+<script src="TestModifier.js?v=<?php echo time();?>"></script>
 <?php
 //$conn= mysqli_connect('localhost','root','','forminscription') or die(mysqli_error());
 $conn;
@@ -84,7 +84,7 @@ if(isset($email)==''|| $exprim <= $Dexprim ) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>getWork</title>
     </head>
     <body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

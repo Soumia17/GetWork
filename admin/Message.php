@@ -34,7 +34,7 @@ $mess = mysqli_query($conn,$mess);
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="style_messages.css?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>   
         <header class="page-header">

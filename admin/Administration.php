@@ -25,7 +25,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
-    <title>Document</title>
+    <title>getWork</title>
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
@@ -221,7 +221,7 @@ $max=0;
                     <?php
                     if($_SESSION['pseudo']!=$g['OfferPoster']){
                     ?>
-               <li> <a href="../user/usrVBA.php?poster=<?php echo $poster?>& idPOS=<?php echo $g['idOffer']?>" target="_blank"> <h3><?php echo $poster?></h3></a></li>
+               <li> <a href="../user/usrVBA.php?poster=<?php echo $poster?>&idPOS=<?php echo $g['idOffer']?>" target="_blank"> <h3><?php echo $poster?></h3></a></li>
                <?php
                }
                else{
@@ -323,7 +323,7 @@ $max=0;
                     <div class="button-delete">
                        
                         <button onclick="document.getElementById('<?php echo $g['idOffer'] ?>').style.display='block'"  class="but-1">supprimer l'offre</button>
-                         <button onclick="document.getElementById('<?php echo $g['idOffer'] ?>h').style.display='block'" class="but-2">bloqué client</button>
+                         <button onclick="document.getElementById('<?php echo $g['idOffer'] ?>h').style.display='block'" class="but-2">bloqué utilisateur</button>
                      </div>
 
                      <?php

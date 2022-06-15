@@ -73,7 +73,7 @@ $conn;
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php" id="shield">entre à l'administraction<i  class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield">entre à l'administration<i  class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }

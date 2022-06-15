@@ -89,7 +89,7 @@ if(isset($_POST['envoyer'])){
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
+            <title>getWork</title>
         </head>
         <body>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -166,7 +166,7 @@ if(isset($_POST['confirme'])){
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administration <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }

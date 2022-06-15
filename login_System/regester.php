@@ -16,7 +16,7 @@ include_once 'includes/database-linck.php';
     <link rel="stylesheet" href="styleFormulair.css?v=<?php echo time(); ?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body >
 <header class="header">
@@ -68,7 +68,7 @@ include_once 'includes/database-linck.php';
                 Nom
             </span>
             <img class="iconF" src="https://img.icons8.com/material-outlined/24/000000/name.png"/>
-            <input name="nom"  onclick="onNpne()" id="nom" type="text" class="inpP" placeholder="votre nom" >
+            <input name="nom" onkeyup='saveValue(this)' onclick="onNpne()" id="nom" type="text" class="inpP" placeholder="votre nom" >
             
            <!--<span id="SpNom"></span>--> 
         </div>
@@ -77,7 +77,7 @@ include_once 'includes/database-linck.php';
                 Prenom
             </span>
             <img class="iconF" src="https://img.icons8.com/material-outlined/24/000000/name.png"/>
-            <input onclick="onNpne()"name="prenom"  id="prenom" type="text"  placeholder="votre prénom" >
+            <input onclick="onNpne()" onkeyup='saveValue(this)' name="prenom"  id="prenom" type="text"  placeholder="votre prénom" >
            <!-- <span id="SpPrenom"></span>-->
         </div>
        
@@ -87,7 +87,7 @@ include_once 'includes/database-linck.php';
             </span>
             <div >
             <img class="iconF" src="https://img.icons8.com/material-outlined/24/000000/name.png"/>
-            <input onclick="onNpne()"  name="userName"  id="pseudo1" type="text" placeholder="votre pseudo" >
+            <input onclick="onNpne()" onkeyup='saveValue(this)' name="userName"  id="pseudo1" type="text" placeholder="votre pseudo" >
         </div>
            <!-- <span id="SpPseu"></span>-->
         </div>
@@ -96,7 +96,7 @@ include_once 'includes/database-linck.php';
                 email
             </span>
             <img class="iconF" src="https://img.icons8.com/material-outlined/24/000000/filled-message.png"/>
-            <input onclick="onNpne()"  name="email"  id="email" type="text" placeholder="votre email" >
+            <input onclick="onNpne()" onkeyup='saveValue(this)'  name="email"  id="email" type="text" placeholder="votre email" >
            <!--<span id="SpEmail"></span>--> 
         </div>
         <div class="inputDiv">
@@ -161,7 +161,7 @@ include_once 'includes/database-linck.php';
 
 
 
-<script src="testInscription.js"></script>
+<script src="testInscription.js?v=<?php echo time()?>"></script>
  
   
 </body>

@@ -11,7 +11,7 @@ if(isset($_POST['save'])){
     $OfferCategore=$_POST['OfferCategore'];
     $OfferPrix=$_POST['OfferPrix'];
     $OfferImage=$_POST['OfferImage'];
-
+echo $OfferCategore ;
     $re="UPDATE offers
     SET  OfferDescription= '".$OfferDescription."',OfferCategore= '".$OfferCategore."',OfferPrix= '".$OfferPrix."'
     WHERE idOffer='".$_SESSION['off']."'";
@@ -23,6 +23,7 @@ if(isset($_POST['save'])){
     WHERE idOffer='".$_SESSION['off']."'";
     $res = mysqli_query($conn,$re);
     if($res){
+        echo "hello";
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -30,7 +31,7 @@ if(isset($_POST['save'])){
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
+            <title>getWork</title>
         </head>
         <body>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -46,7 +47,7 @@ if(isset($_POST['save'])){
     }
 
 
-  header('location: http://localhost/PFFE/user/modifierOffer.php?OffMO='.$_SESSION['off'].'');
+//   header('location: http://localhost/PFFE/user/modifierOffer.php?OffMO='.$_SESSION['off'].'');
 
 }
 

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styleFormulair.css?v=<?php echo time()?>">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>
 
@@ -126,6 +126,6 @@
     
     </script>
 
-
+<script>window.localStorage.clear();</script>
 </body>
 </html>

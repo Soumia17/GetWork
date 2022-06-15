@@ -42,7 +42,7 @@ if(mysqli_num_rows($emailPass_suery_run) >0 ){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>
     <div><h1>check your email , please!</h1></div>
@@ -64,7 +64,7 @@ $mail->addAddress($emailPass);
 $mail->isHTML(true); 
  
 // Mail subject 
-$mail->Subject = 'Email from Localhost by soumia'; 
+$mail->Subject = 'Email from Localhost by Administration'; 
  
 // Mail body content 
 $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" .
@@ -152,7 +152,7 @@ if(!$mail->send()) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>getWork</title>
     <style>
  
     </style>

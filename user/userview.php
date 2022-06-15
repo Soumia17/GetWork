@@ -146,7 +146,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administration <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -202,7 +202,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
        
       </header>
 
-    <div class="cont">
+      <div class="cont">
         <div class="roww profile">
             <div class="col-md-3">
                 <div class="profile-sidebar">
@@ -235,7 +235,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                                
                                 <p class="text-muted">Membre depuis : <?php  echo $date ;?></p>
                                 <hr>
-                                <p class="text-muted m-t-15">Contactez moi par :</p>
+                                <p class="text-muted m-t-15"> Pour plus d'information contactez moi par :</p>
                                 <div class="email details">
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>
@@ -314,9 +314,67 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                      $ofstarFrom="SELECT Eval FROM evaleuation WHERE  numoff='".$offerid."' and EvalFrom='".$_SESSION['pseudo']."' ";
                      $ofstarFrom_run=mysqli_query($conn,$ofstarFrom);
                      if(mysqli_num_rows($ofstarFrom_run)==0){
+                      if(mysqli_num_rows($ofstar_run)>0){
+                          
                     ?>
-                    
-                <p >Donner une Evaleuation </p>
+                   <div class="note">
+                    <span><span class="pns"><?php echo mysqli_num_rows($ofstar_run)?></span> personne pense que cette offre deserve <span class="pns"><?php echo $max; ?></span> étoiles</span>
+                    <span>, que pensez vous ?</span>
+                </div>
+
+                <form action="" method="POST">
+               
+               <div class="center">
+             
+                       
+                       <fieldset class="rating">
+                           <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
+                          
+                           <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
+                        
+                           <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
+                          
+                           <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
+                        
+                           <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
+
+                       </fieldset>
+
+                       
+                   </div>
+                   <button name="yes" class="yes"> confirmer</button>
+                   </form>
+                   <?php }else{
+                      ?>
+                      <div class="note">
+                      <span >Soyez le premier à noter cette offre .</span>
+                      <span>Selon vous, combien d'étoiles vaut ?</span>
+                      <form action="" method="POST">
+               
+               <div class="center">
+             
+                       
+                       <fieldset class="rating">
+                           <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
+                          
+                           <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
+                        
+                           <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
+                          
+                           <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
+                        
+                           <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
+
+                       </fieldset>
+
+                       
+                   </div>
+                   <button name="yes" class="yes"> confirmer</button>
+                   </form>
+                      </div>
+                  
+                      <?php }?>
+                <!-- <p >Donner une Evaleuation </p>
                 <form action="" method="POST">
                
                 <div class="center">
@@ -324,33 +382,51 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                         
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
-                            <!--<input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>-->
+                           
                             <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
-                           <!-- <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>-->
+                         
                             <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
-                           <!-- <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>-->
+                           
                             <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
-                           <!-- <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>-->
+                         
                             <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
-                           <!-- <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>-->
+
                         </fieldset>
 
                         
                     </div>
                     <button name="yes" class="yes"> confirmer</button>
-                    </form>
+                    </form> -->
                     <?php
-                     }else{
+                     
+                     }else {
                         while($sta=mysqli_fetch_assoc($ofstarFrom_run)){
                             $st=$sta['Eval'];
                         }
+                        if(mysqli_num_rows($ofstar_run)>1){
 
                          ?>
-                         <p >Votre Evaleuation </p>
+                     
+                         <div class="note">
+                    <span> vous et <span class="pns"><?php echo mysqli_num_rows($ofstar_run)-1?></span> autre personne pense que cette offre deserve <span class="pns"><?php echo $max; ?></span> étoiles</span>
+                       <!-- <p >Votre Evaleuation </p> -->
+                </div>
+                <?php
+                        }else{
+                ?>
+                  <div class="note">
+                    <!-- <span> vous  pensez que cette offre deserve <span class="pns"><?php //echo $max; ?></span> étoiles</span> -->
+                       <!-- <p >Votre Evaleuation </p> -->
+                </div>
+                <?php
+                        }
+                ?>
+                   <p class="p">Votre Evaleuation: </p>
                           <?php
+
                     if($st==0){
                     ?>
-                        
+                         <!-- <p >Votre Evaleuation </p> -->  
                     <div class="stars">
             <i class="lar la-star " data-value="1"></i>
             <i class="lar la-star " data-value="2"></i>
@@ -516,11 +592,11 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                   
  
                    </div>
-                   <div class="des">
-                    <span class="spn">Le type: <?php echo $g['OfferCategore']?></span>
+                   <!-- <div class="des">
+                    <span class="spn">Le type: <?php //echo $g['OfferCategore']?></span>
                    
  
-                   </div>
+                   </div> -->
                    <div class="des">
                     <span class="spn">prix: <?php echo $g['OfferPrix']?> DZ</span>
                    
@@ -544,11 +620,11 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                   
                   $Offer="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
             $Offer_run=mysqli_query($conn,$Offer);
-            if(mysqli_num_rows($Offer_run)>0){
+            if(mysqli_num_rows($Offer_run)>1){
                   ?>
                    <hr>
                    <div class="main">
-                       <h1>Autre offres</h1>
+                       <h1 class="h1">Tu pourrais aussi aimer</h1>
                 
                 <?php
                 
@@ -607,7 +683,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                     <!--cards -->
                    
                    <div class="card">
-                   
+                   <a href="?idPOS=<?php echo $g['idOffer']?>">
                    <div class="image">
                       <img src="../user/<?php echo $g['OfferImage'] ?>">
                    </div>
@@ -616,7 +692,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
                     <p><?php echo $g['OfferDescription']?></p>
                    
                    </div>
-
+                   </a>
                    <div class="title">
                        
                     <span class="spn">Evaluation :</span>
@@ -686,11 +762,11 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
         ?>
  
                    </div>
-                   <div class="des">
-                    <span class="spn">Le type: <?php echo $g['OfferCategore']?></span>
+                   <!-- <div class="des">
+                    <span class="spn">Le type: <?php //echo $g['OfferCategore']?></span>
                    
  
-                   </div>
+                   </div> -->
                    <div class="des">
                     <span class="spn">prix: <?php echo $g['OfferPrix']?> DZ</span>
                    
@@ -721,6 +797,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
     
     <br>
     <br>
+
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -729,7 +806,7 @@ $userInfo="SELECT * FROM userinformation WHERE email ='".$Poster."'";
 <script src="../admin/Control-Administration.js"></script>
 <script src="Control_profil.js"></script>
 <script src="https://kit.fontawesome.com/6f2f9c8fbf.js" ></script>
-
+<script>window.localStorage.clear();</script>
 
 </body>
 </html>

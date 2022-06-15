@@ -24,7 +24,7 @@ $admin = mysqli_query($conn,$searsh);
         
 
         
-        <title>Document</title>
+        <title>getWork</title>
     </head>
     <body onload="document.getElementById('new_admin').style.display='block';" >   
             <header class="page-header">

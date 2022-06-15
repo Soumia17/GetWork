@@ -17,7 +17,10 @@ $offerid=$_SESSION['offerid'];*/
 
 
 $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
-            $userInfo_run=mysqli_query($conn,$userInfo);   
+            $userInfo_run=mysqli_query($conn,$userInfo); 
+            if(mysqli_num_rows($userInfo_run)<1){ 
+                header("Location:../error.html"); 
+             }
             while($info=mysqli_fetch_assoc($userInfo_run)){
                 $pho=$info['image'];
                 $psudo=$info['psudo'];
@@ -79,7 +82,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administration <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -167,7 +170,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                                
                                 <p class="text-muted">Membre depuis : <?php  echo $date ;?></p>
                                 <hr>
-                                <p class="text-muted m-t-15">Contactez moi par :</p>
+                                <p class="text-muted m-t-15">Pour plus d'information contactez moi par :</p>
                                 <div class="email details">
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>
@@ -217,6 +220,11 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
 
                 
                  <?php 
+                  $Offer="SELECT email FROM userinformation WHERE psudo ='".$Poster."'";
+                  $Offer_run=mysqli_query($conn,$Offer);
+                  while($g=mysqli_fetch_assoc($Offer_run)  ){
+                  $Poster=$g['email'];
+                }
                   $Offer="SELECT * FROM offers WHERE OfferPoster ='".$Poster."'";
             $Offer_run=mysqli_query($conn,$Offer);
             if(mysqli_num_rows($Offer_run)>0){

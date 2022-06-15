@@ -46,7 +46,7 @@ if(isset($_POST['up'])){
          <meta charset="UTF-8">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Document</title>
+         <title>getWork</title>
      </head>
      <body>
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -86,7 +86,7 @@ if(isset($_GET['del'])){
                    <meta charset="UTF-8">
                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                   <title>Document</title>
+                   <title>getWork</title>
                </head>
                <body>
                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -205,7 +205,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administration <i class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -307,7 +307,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                                
                                 <p class="text-muted">Membre depuis : <?php  echo $_SESSION['dat'] ;?></p>
                                 <hr>
-                                <p class="text-muted m-t-15">Contactez moi par :</p>
+                                <p class="text-muted m-t-15">Pour plus d'information contactez moi par :</p>
                                 <div class="email details">
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>

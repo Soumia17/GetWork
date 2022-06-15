@@ -104,7 +104,7 @@ $conn;
                    
 
                     <li class="nr_li">
-                      <a href="Administration.php" id="shield"> entre à l'administraction <i  class="fas fa-user-shield"></i></a>
+                      <a href="Administration.php" id="shield"> entre à l'administration <i  class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -173,7 +173,7 @@ $conn;
   <section class="etoile" id="etoile">
   
   <?php $servic= "SELECT serviceName FROM services" ;
-   if((isset($_GET['search']) and !empty($_GET['search']))|| isset($_GET['Sevice']) ){
+   if((isset($_GET['search']) and !empty($_GET['search']))|| isset($_GET['Sevice'])){
     ?>
     
     
@@ -196,7 +196,7 @@ if(isset($_GET['Sevice'])){
         $action="SELECT * FROM offers WHERE OfferPoster='".$p."' OR OfferCategore LIKE '%".$q."%' ";
     }
     else{
-        $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$q."%' ";
+        $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$q."%' OR OfferDescription LIKE '%".$q."%'";
     }
 
 }
@@ -480,12 +480,12 @@ $max=0;
   <input name="slideshow" id=slide_img1 type="radio" class=slide>
   <input name="slideshow" id=slide_img2 type="radio" class=slide>
   <input name="slideshow" id=slide_img3 type="radio" class=slide>
-  <input name="slideshow" id=slide_img4 type="radio" class=slide> 
+  <!-- <input name="slideshow" id=slide_img4 type="radio" class=slide>  -->
   <input name="slideshow" id=play_img1 type="radio" checked>  
   <input name="slideshow" id=pause_img1 type="radio" class=pause>
   <input name="slideshow" id=pause_img2 type="radio" class=pause>
   <input name="slideshow" id=pause_img3 type="radio" class=pause>
-  <input name="slideshow" id=pause_img4 type="radio" class=pause>
+  <!-- <input name="slideshow" id=pause_img4 type="radio" class=pause> -->
   <ul>
   <!-- <img class=cache src="1.jpg"> -->
   <li class=img1>
@@ -496,14 +496,24 @@ $max=0;
   <!-- <img src=https://www.achievers.com/wp-content/uploads/2020/03/03-18-20-2-1.jpg alt> -->
   </li>
   <li class=img2>
+  <div class="impp">
   <!--<img src=codeur-outil-videos-animees.jpg alt>-->
+  <div class="imss">dans getWork vous Obtenez </div>
+  <div class="imss2">les meilleures offres pour votre projet
+</div>
+    
   </li>
   <li class=img3>
   <!-- <img src=codeur-outil-videos-animees.jpg alt> -->
+  <div class="impp">
+  <div class="imss">Investissez votre talent</div>
+      <div class="imss2">  et travaillez à domicile </div>
+     
+     </div>
   </li>
-  <li class=img4>
-  <!-- <img src=codeur-outil-videos-animees.jpg alt> -->
-  </li>
+  <!-- <li class=img4>
+  <img src=codeur-outil-videos-animees.jpg alt>
+  </li> -->
   </ul>
   
       </div>
@@ -521,7 +531,7 @@ $max=0;
         //   $action="SELECT * FROM offers ORDER BY idOffer DESC ";
         $action="SELECT * FROM offers where OfferCategore='".$NOMser."' LIMIT 4";
         $offr = mysqli_query($conn,$action);
-          if(mysqli_num_rows($offr)>0){
+          if(mysqli_num_rows($offr)>0 && $NOMser!="Autre"){
               ?>
               
               <div class="echoService"> <span ><?php echo $NOMser?></span></div>
@@ -707,7 +717,7 @@ $max=0;
                         if(mysqli_num_rows($rqST)==0){
 
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST" id="myform">
+                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST" id="myform" onsubmit="return submitForm();">
                         <li> <button id="insert" name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
                         </form>
                         <?php
@@ -732,7 +742,9 @@ $max=0;
                 </div>
 
                <?php
- }}
+ }
+
+}
 
      ?>
      <!-- <h1 class="noResult">aucun resultat trouver</h1> -->
@@ -750,6 +762,223 @@ $max=0;
    </div>
    <?php
           }
+          $action="SELECT * FROM offers where OfferCategore='Autre'";
+          $offr = mysqli_query($conn,$action);
+            if(mysqli_num_rows($offr)>0){
+                ?>
+                
+                <div class="echoService"> <span >Tu pourrais aussi aimer</span></div>
+  <div class="box-etoile">
+              
+              
+  <?php
+  
+   while($g=mysqli_fetch_assoc($offr)){
+      $ofstar="SELECT Eval FROM evaleuation WHERE  numoff='".$g['idOffer']."'";
+      $ofstar_run=mysqli_query($conn,$ofstar);
+      if(mysqli_num_rows($ofstar_run)>0){
+      $w=$t=$th=$f=$fi=$max=0;
+      while($star=mysqli_fetch_assoc($ofstar_run)){
+          if($star['Eval']==1)
+          $w=$w+1;
+          else
+          if($star['Eval']==2)
+          $t=$t+1;
+          else
+          if($star['Eval']==3)
+          $th=$th+1;
+          else
+          if($star['Eval']==4)
+          $f=$f+1;
+          else
+          if($star['Eval']==5)
+          $fi=$fi+1;
+  
+  
+  
+      } 
+      if($w>=$t && $w>=$th && $w>=$f && $w>=$fi){
+          $max=1;
+      }
+       else if($t>=$w && $t>=$th && $t>=$f && $t>=$fi){
+          $max=2;
+      }
+     else if($th>=$t && $th>=$w && $th>=$f && $th>=$fi){
+          $max=3;
+      }
+      else if($f>=$t && $f>=$th && $f>=$w && $f>=$fi){
+          $max=4;
+      }
+      else if($fi>=$t && $fi>=$th && $fi>=$w && $fi>=$w){
+          $max=5;
+      }
+  }
+  else
+  $max=0;
+  ?>
+  
+          <div class="box">
+              <div class="image-etoile">
+                  <img src="<?php echo "../user/".$g['OfferImage'] ?>"alt="">
+              </div>
+              <div>
+                  <ul class="image_info">
+                      <?php
+                      $action="SELECT * FROM userinformation WHERE email ='".$g['OfferPoster']."' ";
+                      $adm = mysqli_query($conn,$action);
+                      while($info=mysqli_fetch_assoc($adm)){
+                  $pho=$info['image'];
+                  $name=$info['psudo'];
+                  
+                      }
+                      ?>
+                      <li> <img class="image_profil_etoile"  src=" ../user/<?php  echo $pho?>" alt="profile_img"></li>
+                      <?php
+                      if($_SESSION['pseudo']!=$g['OfferPoster']){
+                      ?>
+                 <li> <a href="../user/userview.php?idPOS=<?php echo $g['idOffer']?>"> <h3><?php echo $name?></h3></a></li>
+                 <?php
+                 }
+                 else{
+                 ?>
+                 
+                 <li> <a href="../user/userProfil.php"> <h3><?php echo $name?></h3></a></li>
+                 
+                 <?php
+              }
+                 ?>
+       
+               </ul>
+               <div class="description">
+              <p><?php echo $g['OfferDescription']?></p>
+              </div>
+  
+              
+                  
+              <div class="center">
+                          
+              <?php
+                      if($max==0){
+                      ?>
+                          
+                      <div class="stars">
+              <i class="lar la-star " data-value="1"></i>
+              <i class="lar la-star " data-value="2"></i>
+              <i class="lar la-star " data-value="3"></i>
+              <i class="lar la-star" data-value="4"></i>
+              <i class="lar la-star" data-value="5"></i>
+              
+          </div>
+          <?php
+          } else if($max==1){
+          ?>
+                  <div class="stars">
+              <i class="lar la-star star" data-value="1"></i>
+              <i class="lar la-star " data-value="2"></i>
+              <i class="lar la-star " data-value="3"></i>
+              <i class="lar la-star" data-value="4"></i>
+              <i class="lar la-star" data-value="5"></i>
+              <span>(<?php echo mysqli_num_rows($ofstar_run)?>)</span>
+          </div>
+          <?php
+          } else if($max==2){
+          ?>
+                  <div class="stars">
+              <i class="lar la-star star" data-value="1"></i>
+              <i class="lar la-star star" data-value="2"></i>
+              <i class="lar la-star " data-value="3"></i>
+              <i class="lar la-star" data-value="4"></i>
+              <i class="lar la-star" data-value="5"></i>
+              <span>(<?php echo mysqli_num_rows($ofstar_run)?>)</span>
+          </div>
+          <?php
+          } else if($max==3){
+          ?>
+                  <div class="stars">
+              <i class="lar la-star star" data-value="1"></i>
+              <i class="lar la-star star" data-value="2"></i>
+              <i class="lar la-star star" data-value="3"></i>
+              <i class="lar la-star" data-value="4"></i>
+              <i class="lar la-star" data-value="5"></i>
+              <span>(<?php echo mysqli_num_rows($ofstar_run)?>)</span>
+          </div>
+          <?php
+          } else if($max==4){
+          ?>
+                  <div class="stars">
+              <i class="lar la-star star" data-value="1"></i>
+              <i class="lar la-star star" data-value="2"></i>
+              <i class="lar la-star star" data-value="3"></i>
+              <i class="lar la-star star" data-value="4"></i>
+              <i class="lar la-star" data-value="5"></i>
+              <span>(<?php echo mysqli_num_rows($ofstar_run)?>)</span>
+          </div>
+          <?php
+          } else if($max==5){
+          ?>
+                  <div class="stars">
+              <i class="lar la-star star" data-value="1"></i>
+              <i class="lar la-star star" data-value="2"></i>
+              <i class="lar la-star star" data-value="3"></i>
+              <i class="lar la-star star" data-value="4"></i>
+              <i class="lar la-star star" data-value="5"></i>
+              <span>(<?php echo mysqli_num_rows($ofstar_run)?>)</span>
+              
+          </div>
+          <?php
+          } 
+          ?>
+           
+  
+                          
+                      </div>
+          
+                  </div>
+    <hr>
+  
+                  <div class="etoil-favorit">
+                      <ul>
+                          <?php
+                          //saveof='".$g['OfferPoster']."' AND
+                          $us=$_SESSION['pseudo'];
+                          //echo $us;
+                          $S="SELECT * from favori where  saveforH ='$us' and idOffer='".$g['idOffer']."'";
+                          $rqST=mysqli_query($conn,$S);
+                         // echo mysqli_num_rows($rqST);
+                       
+  
+                          if(mysqli_num_rows($rqST)==0){
+  
+                          ?>
+                          <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST" id="myform" onsubmit="return submitForm();">
+                          <li> <button id="insert" name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
+                          </form>
+                          <?php
+                          }else{
+                          ?>
+                          <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST">
+                          <li> <button type="submit" name="NOsaveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark red " ></i></button></li>
+                          </form>
+                          
+  
+                          <?php
+                          }
+                          ?>
+                          <li>
+                              le prix <label for=""><?php echo $g['OfferPrix']?> DZ</label>
+                          </li>
+                      </ul>
+                  </div>
+  
+  
+  
+                  </div>
+  
+                 <?php
+   }
+  
+  }
+  
   }
    ?>
 </section>
@@ -758,6 +987,20 @@ $max=0;
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <script src="Control-Administration.js"></script>
 
+<!-- <script>
+  function submitForm() {
+    var http = new XMLHttpRequest();
+    http.open("POST", "<<whereverTheFormIsGoing>>", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    var params = "search=" + <<get search value>>; // probably use document.getElementById(...).value
+    http.send(params);
+    http.onload = function() {
+        alert(http.responseText);
+    }
+    return false;
+}
+</script> -->
+<script>window.localStorage.clear();</script>
 </html>
 
 <?php

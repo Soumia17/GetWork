@@ -17,7 +17,7 @@ if(isset($_POST['sub'])){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>getWork</title>
     </head>
     <body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -34,6 +34,34 @@ button: "Dacord",
     </body>
     </html>
     <?php
+}else{?>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>getWork</title>
+      <style>
+   
+      </style>
+  </head>
+  <body>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script>
+          swal({
+    title: "Le message n'a pas pu être envoyé!",
+    text: "réessaye à nouveau!",
+    icon: "error",
+    button: "d'accord!",
+    
+  });
+  
+   
+      </script>
+  </body>
+  </html>
+    <?php  
 }
 }
 
@@ -65,7 +93,7 @@ button: "Dacord",
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../login_System/css/util.css?v=<?php echo time()?>">
 	<link rel="stylesheet" type="text/css" href="../login_System/css/main.css?v=<?php echo time()?>">
-    <title>Document</title>
+    <title>getWork</title>
 
    
 </head>
@@ -322,7 +350,7 @@ Fondée en 2022 par Ait belkacem Soumia et Bouchakour Sara , getWork a parcouru 
 
 			<form class="contact1-form validate-form" method="post" id="form1">
 				<span class="contact1-form-title">
-					Get in touch
+				Entrer en contact
 				</span>
  
         <div class="wrap-input1 validate-input" id="alert" data-validate = "Name is required">
@@ -354,7 +382,7 @@ Fondée en 2022 par Ait belkacem Soumia et Bouchakour Sara , getWork a parcouru 
 				<div class="container-contact1-form-btn">
 					<button class="contact1-form-btn" name="sub" type="submit">
 						<span>
-							Send Email 
+            Envoyer un e-mail
 							<!-- <i class="fa fa-long-arrow-right" aria-hidden="true"></i> -->
               <i class="fa fa-send mr-1"></i>
 						</span>
@@ -380,7 +408,7 @@ Fondée en 2022 par Ait belkacem Soumia et Bouchakour Sara , getWork a parcouru 
 
 <script src="accueiControl.js?v=<?php echo time();?>"></script>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-
+<script>window.localStorage.clear();</script>
     
 </body>
 </html>

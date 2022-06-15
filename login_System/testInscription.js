@@ -58,7 +58,7 @@ mySForm.addEventListener('submit',function(e){
         jsT.style.border="1px solid red";
         jsT.style.backgroundColor="#FFCCCC";
         document.getElementById('img').src="icons8-xbox-x-50.png";
-        jsTest.innerHTML="Entrez une combinaison d'au moins d'au moins six character";
+        jsTest.innerHTML="Entrez une combinaison d'au moins six character";
         motPasse.style.border="2px solid red";
         motPasseCo.style.border="2px solid red";
         e.preventDefault();
@@ -241,7 +241,26 @@ function onNpne(){
 
 }
 
+var  text3=document.getElementById('nom');
+text3.value=getSavedValue("nom");
+var  prenom=document.getElementById('prenom');
+prenom.value=getSavedValue("prenom");
+// var  pseudo1=document.getElementById('pseudo1');
+// pseudo1.value=getSavedValue("pseudo1");
+// var  email=document.getElementById('email');
+// email.value=getSavedValue("email");
+function saveValue(e){
+    var id = e.id;  // get the sender's id to save it . 
+    var val = e.value; // get the value. 
+    localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override . 
+}
 
+function getSavedValue  (v){
+    if (!localStorage.getItem(v)) {
+        return "";// You can change this to your defualt value. 
+    }
+    return localStorage.getItem(v);
+}
 
 //function animation(){
   //  jsT.style.display="block";

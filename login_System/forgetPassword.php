@@ -12,7 +12,7 @@ include_once 'includes/database-linck.php';
     <link rel="stylesheet" href="styleFormulair.css">
     <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>
 <header class="header">
@@ -74,8 +74,8 @@ $mail->Username = 'mustapha.stambouli29m@gmail.com';
 $mail->Password = 'aqomztvlzlvldtjm';
 $mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted 
 $mail->Port = 587;    
-$mail->setFrom('sender@soumia.com', 'soumia'); 
-$mail->addReplyTo('reply@soumia.com', 'soumia'); 
+$mail->setFrom('sender@soumia.com', 'administration'); 
+$mail->addReplyTo('reply@soumia.com', 'administration'); 
  
 
 /* le code php de formulair cree un compte*/ 
@@ -84,7 +84,7 @@ $conn;
 if(isset($_POST['suub'])){
 $emailPass = $_POST['emailPass'];
 $emailPass_suery="SELECT * FROM userinformation WHERE email ='$emailPass'";
-$user=  "SELECT nom FROM userinformation WHERE email ='$emailPass'";
+$user=  "SELECT psudo FROM userinformation WHERE email ='$emailPass'";
 $res= mysqli_query($conn,$user);
 $userName=mysqli_fetch_row($res);
 $emailPass_suery_run=mysqli_query($conn,$emailPass_suery);
@@ -176,7 +176,7 @@ $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16p
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" .
 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" .
 "        \n" .
-"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " . implode('|',$userName)  . "  ,</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Veuillez cliquer sur le lien ci-dessous pour modifier le mots de passe : </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"http://localhost/PFFE/login_System/modifierMoteDePasse.php?token=".$token."\"" . "\">modifier les mote de passe</a> </p></blockquote> <p>See you soon</p>" .
+"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Salut " . implode('|',$userName)  . "  ,</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Veuillez cliquer sur le lien ci-dessous pour modifier le mots de passe : </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"http://localhost/PFFE/login_System/modifierMoteDePasse.php?token=".$token."\"" . "\">modifier les mote de passe</a> </p></blockquote> <p>Merci de nous avoir contactés</p>" .
 "        \n" .
 "      </td>\n" .
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" .
@@ -206,7 +206,7 @@ if(!$mail->send()) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>getWork</title>
     <style>
  
     </style>
@@ -250,7 +250,7 @@ else{
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>getWork</title>
     <style>
  
     </style>

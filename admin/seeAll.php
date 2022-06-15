@@ -104,7 +104,7 @@ $conn;
             </form>
         </div> -->
      
-        <form class="example" action="">
+        <form class="example" action="Acceui_Admin.php">
   <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
 " name="search">
   <button type="submit"><i class="fa fa-search"></i></button>
@@ -127,7 +127,7 @@ $conn;
                    
 
                     <li class="nr_li">
-                      <a href="Administration.php" id="shield"> entre à l'administraction <i  class="fas fa-user-shield"></i></a>
+                      <a href="Administration.php" id="shield"> entre à l'administration <i  class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }

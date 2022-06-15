@@ -22,7 +22,7 @@ if(isset($_GET['Sevice'])){
     <link rel="stylesheet" href="../admin/Style_Administrateur.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <title>Document</title>
+    <title>getWork</title>
     <style>
         .header{
     position: fixed;
@@ -126,6 +126,9 @@ if(isset($_GET['Sevice'])){
     
      $sql="SELECT * FROM services where serviceName='".$Sevice."'";
      $res = mysqli_query($conn,$sql);
+     if(mysqli_num_rows($res)<1){
+        header("Location:../error.html"); 
+     }
      while($g=mysqli_fetch_assoc($res)){
          $serviceName=$g['serviceName'];
          $serviceDescription=$g['serviceDescription'];

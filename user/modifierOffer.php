@@ -9,11 +9,60 @@ if(!empty($_GET['OffMO'])){
 $id=$_GET['OffMO'];
 $_SESSION['off']=$id;
 //$id= $_SESSION['off'];
-//echo $_SESSION['off'];
 
-$Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
+
+
+
+            
+            if(isset($_POST['save'])){
+                
+              $OfferDescription=$_POST['OfferDescription'];
+              $OfferCategore=$_POST['OfferCategore'];
+              $OfferPrix=$_POST['OfferPrix'];
+              $OfferImage=$_POST['OfferImage'];
+          
+              $re="UPDATE offers
+              SET  OfferDescription= '".$OfferDescription."',OfferCategore= '".$OfferCategore."',OfferPrix= '".$OfferPrix."'
+              WHERE idOffer='".$_SESSION['off']."'";
+              $res = mysqli_query($conn,$re);
+        
+              if($OfferImage!=""){
+                  $re="UPDATE offers
+              SET  OfferImage= '".$OfferImage."'
+              WHERE idOffer='".$_SESSION['off']."'";
+              $res = mysqli_query($conn,$re);
+              }
+              if($res){
+                //   echo "hello";
+                  ?>
+                  <!DOCTYPE html>
+                  <html lang="en">
+                  <head>
+                      <meta charset="UTF-8">
+                      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                      <title>getWork</title>
+                  </head>
+                  <body>
+                  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+          <script>swal( "L'offre a été modifie avec succès","", "success")</script>
+          
+                  </body>
+                  </html>
+                  <?php
+              }
+              
+              
+          
+          
+         
+          
+          }
+          $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
             $Offer_run=mysqli_query($conn,$Offer);
-
+if(mysqli_num_rows($Offer_run)<1){
+  header("Location:../error.html"); 
+}
             while($g=mysqli_fetch_assoc($Offer_run)){
              $OfferCategore= $g['OfferCategore'];
              $OfferDescription=$g['OfferDescription'];
@@ -22,9 +71,6 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
 
 
             }
-
-          
-
 
 ?>
 
@@ -67,7 +113,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                    
 
                     <li class="nr_li">
-                      <a href="../admin/Administration.php" id="shield"> entre à l'administraction <i class="fas fa-user-shield hii"></i></a>
+                      <a href="../admin/Administration.php" id="shield"> entre à l'administration <i class="fas fa-user-shield hii"></i></a>
                     </li>
                     <?php
                     }
@@ -170,7 +216,7 @@ $Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
                </form>
       </div> -->
               
-        <form id="enviar" action="updOfer.php" method="POST" >
+        <form id="enviar" action="" method="POST" >
 
          
          

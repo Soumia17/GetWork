@@ -17,7 +17,7 @@ $util=mysqli_query($conn,$action);
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="Style_Administrateur.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>   
   <header class="page-header">
@@ -172,7 +172,7 @@ $util=mysqli_query($conn,$action);
                 <img src="../user/<?php echo($info['image'])?>" alt="Avatar" style="width:100%">
                 </div>
                 <div class="card-container">
-                 <a href="../user/usrVBA.php?poster=<?php echo $info['psudo']?>"> <h4><b><?php echo($info['psudo'])?></b></h4> </a>
+                 <a href="../user/usrVBA.php?poster=<?php echo $info['psudo']?>" target="_blank"> <h4><b><?php echo($info['psudo'])?></b></h4> </a>
                    
                 </div>
                 <button id="but_card" onclick="document.getElementById('<?php echo $info['psudo'] ?>').style.display='block'">bloqué utilisateur</button>

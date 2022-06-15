@@ -23,7 +23,7 @@ $del="";
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     
 
-    <title>Document</title>
+    <title>getWork</title>
 </head>
 <body>  
   
