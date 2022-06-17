@@ -82,8 +82,16 @@ $conn;
         </div> -->
      
         <form class="example" action="">
-  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
-" name="search">
+            <?php
+        if((isset($_GET['search']) and !empty($_GET['search']))){ ?>
+  <input type="text" value="<?php echo $_GET['search'] ?> " placeholder="quel service recherchez-vous aujourd'hui ?" name="search">
+<?php
+        }else{
+?>
+<input type="text" placeholder="quel service recherchez-vous aujourd'hui ?" name="search">
+<?php
+        }
+?>
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
@@ -104,7 +112,7 @@ $conn;
                    
 
                     <li class="nr_li">
-                      <a href="Administration.php" id="shield"> entre à l'administraction <i  class="fas fa-user-shield"></i></a>
+                      <a href="Administration.php" id="shield"> entre à l'administration <i  class="fas fa-user-shield"></i></a>
                     </li>
                     <?php
                     }
@@ -114,6 +122,45 @@ $conn;
                     <!-- <li class="nr_li">
                         <i class="fas fa-envelope-open-text"></i>
                     </li> -->
+                    <li class="nr_li not">
+                        <div class="nutification" onclick="toggleNotifi()">
+                        <?php $not="SELECT * From notification where la_Persones ='".$_SESSION['pseudo']."' or la_Persones='ALL' ";
+                   $res_em=mysqli_query($conn,$not);
+                   if(mysqli_num_rows($res_em)>0){
+                   ?>
+                   
+                        <span class="badge"><?php echo mysqli_num_rows($res_em)?></span>
+                        <?php
+                   }
+                        ?>
+                   <img  src="../admin/images_Admin/bell-solid.svg" alt="" class="nutif" >
+                   </div>
+                  
+                   <div class="notifi-box" id="box">
+                  
+			<h2>Notifications <span><?php echo mysqli_num_rows($res_em)?></span></h2>
+            <?php  if(mysqli_num_rows($res_em)>0){
+                   
+                   while($eml=mysqli_fetch_assoc($res_em)){
+                       
+                   ?>
+			<div class="notifi-item">
+				<img src="../admin/images_Admin/<?php echo $eml['icon'] ?>" alt="img">
+				<div class="text">
+				   <h4><?php echo $eml['Subject'] ?></h4>
+				   <p><?php echo $eml['text'] ?></p>
+			    </div> 
+			</div>
+
+		<?php  }}?>
+
+
+
+			
+			</div>
+            </div>         
+
+                    </li>
                     
                     <li class="nr_li dd_main">
                     <?php
@@ -179,14 +226,15 @@ $conn;
     
         <?php
 if(isset($_GET['Sevice'])){
-    $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$_GET['Sevice']."%' ";
+    $string = trim($_GET['Sevice']);
+    $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$string."%' ";
     $q=$_GET['Sevice'];
 }else{
     ?>
    
     <?php
-    $q = htmlspecialchars($_GET['search']);
-    
+    // $q = htmlspecialchars($_GET['search']);
+    $q = trim($_GET['search']);
     $action="SELECT email FROM userinformation WHERE psudo LIKE '%".$q."%' ";
     $offr = mysqli_query($conn,$action);
     if(mysqli_num_rows($offr)>0){
@@ -290,7 +338,7 @@ $max=0;
      
              </ul>
              <div class="description">
-            <p><?php echo $g['OfferDescription']?></p>
+            <p><?php echo substr($g['OfferDescription'],0,140)?></p>
             </div>
 
             
@@ -524,14 +572,23 @@ $max=0;
 <div class="seeAll"><a href="../admin/seeAll.php" target="_blank">regarder tout nos offres ></a></div>
 <?php
          $Rservice=mysqli_query($conn,$servic);
+         $p=$a=$t=$m=$d=$au=4;
           while($S=mysqli_fetch_assoc($Rservice)){
 
             $NOMser=$S['serviceName'];
 
         //   $action="SELECT * FROM offers ORDER BY idOffer DESC ";
-        $action="SELECT * FROM offers where OfferCategore='".$NOMser."' LIMIT 4";
+        $action="SELECT * FROM offers where OfferCategore='".$NOMser."' ORDER BY idOffer DESC  LIMIT 4";
         $offr = mysqli_query($conn,$action);
           if(mysqli_num_rows($offr)>0 && $NOMser!="Autre"){
+            if(isset($_GET['v'])){
+            if($_GET['v']=='Affaires'){
+               
+                $a=$a+4;
+                $action="SELECT * FROM offers where OfferCategore='".$NOMser."' ORDER BY idOffer DESC  LIMIT $p";
+        $offr = mysqli_query($conn,$action);
+        
+            }}
               ?>
               
               <div class="echoService"> <span ><?php echo $NOMser?></span></div>
@@ -617,7 +674,7 @@ $max=0;
      
              </ul>
              <div class="description">
-            <p><?php echo $g['OfferDescription']?></p>
+            <p><?php echo substr($g['OfferDescription'],0,140)?></p>
             </div>
 
             
@@ -740,10 +797,15 @@ $max=0;
 
 
                 </div>
+               
 
                <?php
- }
-
+ }?>
+ <div>
+                    <a href="?v=<?php echo
+                    $NOMser ?>">afficher plus</a>
+                </div>
+                <?php
 }
 
      ?>
@@ -850,7 +912,7 @@ $max=0;
        
                </ul>
                <div class="description">
-              <p><?php echo $g['OfferDescription']?></p>
+              <p><?php echo substr($g['OfferDescription'],0,140)?></p>
               </div>
   
               
@@ -950,10 +1012,9 @@ $max=0;
                           if(mysqli_num_rows($rqST)==0){
   
                           ?>
-                          <form onsubmit="return submitCouponCode(); action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST" id="myform" onsubmit="return submitForm();">
+                          <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST" id="myform" onsubmit="return submitForm();">
                           <li> <button id="insert" name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
-                         
-                        </form>
+                          </form>
                           <?php
                           }else{
                           ?>
@@ -981,35 +1042,12 @@ $max=0;
   }
   
   }
-  if ( window.history.replaceState ) {
-    window.history.replaceState( null, null, window.location.href );
-}
    ?>
 </section>
-<script type="text/JavaScript">
-<script>
-
-</script>
-function submitCouponCode()
-{
-    // var textbox = document.getElementById("couponCode");
-    var url =
-        "https://www.example.com/script.php?couponCode=" + encodeURIComponent(textbox.value);
-
-    // get the URL
-    http = new XMLHttpRequest(); 
-    http.open("GET", url, true);
-    http.send(null);
-
-    // prevent form from submitting
-    return false;
-}
-
-</script>
 
 </body>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-<script src="Control-Administration.js"></script>
+<script src="Control-Administration.js?v=<?php echo time();?>"></script>
 
 <!-- <script>
   function submitForm() {

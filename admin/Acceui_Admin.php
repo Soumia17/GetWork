@@ -82,8 +82,16 @@ $conn;
         </div> -->
      
         <form class="example" action="">
-  <input type="text" placeholder="quel service recherchez-vous aujourd'hui ?
-" name="search">
+            <?php
+        if((isset($_GET['search']) and !empty($_GET['search']))){ ?>
+  <input type="text" value="<?php echo $_GET['search'] ?> " placeholder="quel service recherchez-vous aujourd'hui ?" name="search">
+<?php
+        }else{
+?>
+<input type="text" placeholder="quel service recherchez-vous aujourd'hui ?" name="search">
+<?php
+        }
+?>
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
@@ -179,14 +187,15 @@ $conn;
     
         <?php
 if(isset($_GET['Sevice'])){
-    $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$_GET['Sevice']."%' ";
+    $string = trim($_GET['Sevice']);
+    $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$string."%' ";
     $q=$_GET['Sevice'];
 }else{
     ?>
    
     <?php
-    $q = htmlspecialchars($_GET['search']);
-    
+    // $q = htmlspecialchars($_GET['search']);
+    $q = trim($_GET['search']);
     $action="SELECT email FROM userinformation WHERE psudo LIKE '%".$q."%' ";
     $offr = mysqli_query($conn,$action);
     if(mysqli_num_rows($offr)>0){
@@ -290,7 +299,7 @@ $max=0;
      
              </ul>
              <div class="description">
-            <p><?php echo $g['OfferDescription']?></p>
+            <p><?php echo substr($g['OfferDescription'],0,140)?></p>
             </div>
 
             
@@ -617,7 +626,7 @@ $max=0;
      
              </ul>
              <div class="description">
-            <p><?php echo $g['OfferDescription']?></p>
+            <p><?php echo substr($g['OfferDescription'],1,140)?></p>
             </div>
 
             
@@ -850,7 +859,7 @@ $max=0;
        
                </ul>
                <div class="description">
-              <p><?php echo $g['OfferDescription']?></p>
+              <p><?php echo substr($g['OfferDescription'],0,140)?></p>
               </div>
   
               

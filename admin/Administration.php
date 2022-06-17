@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['pseudo'])){
+if(!isset($_SESSION['pseudo']) || ( $_SESSION['admin']!=1) ){
   header('location:http://localhost/PFFE/login_System/regester.php');
 }else{
 include_once 'includes/database-linck.php';
@@ -39,7 +39,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
             <ul class="admin-menu">
               <!--<a href="">LOGO</a>-->
               <center> <div class="left">
-              <span class="greeting">Administration</span><br>
+              
                 <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
                   <img class="image_profil"  src="../user/<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   </div></center>
@@ -115,6 +115,9 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
         </header>
         <section class="page-content">
           <section class="search-and-user">
+          <div class="Admini">
+            <h1>Administration</h1>
+            </div>
                   <!-- <form action="GET">
                   <input type="search" placeholder="Chercher...">
                   <button type="submit" aria-label="submit form">
@@ -130,6 +133,7 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
               <div class="notifications">
                <!-- <span class="badge">1</span>-->
                 <svg>
+                  
                   <use xlink:href="#users"></use>
                 </svg>
               </div>

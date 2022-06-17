@@ -129,11 +129,12 @@ $conn;
    if((isset($_GET['search']) and !empty($_GET['search']))|| isset($_GET['Sevice']) ){
    
 if(isset($_GET['Sevice'])){
-    $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$_GET['Sevice']."%' ";
+    $string = trim($_GET['Sevice']);
+    $action="SELECT * FROM offers WHERE OfferCategore LIKE '%". $string."%' ";
     $q=$_GET['Sevice'];
 }else{
   
-    $q = htmlspecialchars($_GET['search']);
+    $q = trim($_GET['search']);
     
     $action="SELECT email FROM userinformation WHERE psudo LIKE '%".$q."%' ";
     $offr = mysqli_query($conn,$action);
@@ -334,7 +335,18 @@ $max=0;
     <span>(</span>
   </span>
   <h2 class="search-message-empty-message">
-   Aucun resultat trouver pour "<?php echo $_GET['search']?>" .
+    <?php if (isset($_GET['Sevice'])) {
+      ?>
+       Aucun resultat trouver pour "<?php echo $_GET['Sevice']?>" .
+      <?php
+    }else{
+    
+    ?>
+ Aucun resultat trouver pour "<?php echo $_GET['search']?>" .
+    <?php
+    }
+    ?>
+  
   </h2>
 </div>
 

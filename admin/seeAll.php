@@ -192,37 +192,46 @@ $conn;
  <section class="Bien_venu">
    
  <div class=slideshow>
-<input name="slideshow" id=slide_img1 type="radio" class=slide>
-<input name="slideshow" id=slide_img2 type="radio" class=slide>
-<input name="slideshow" id=slide_img3 type="radio" class=slide>
-<input name="slideshow" id=slide_img4 type="radio" class=slide> 
-<input name="slideshow" id=play_img1 type="radio" checked>  
-<input name="slideshow" id=pause_img1 type="radio" class=pause>
-<input name="slideshow" id=pause_img2 type="radio" class=pause>
-<input name="slideshow" id=pause_img3 type="radio" class=pause>
-<input name="slideshow" id=pause_img4 type="radio" class=pause>
-<ul>
-<!-- <img class=cache src="1.jpg"> -->
-<li class=img1>
-    <div class="impp">
-    <div class="imss"> Bienvenue à getWork </div>
-   <div class="imss2"> Vous êtes à un pas de votre premier projet</div>
-   </div>
-<!-- <img src=https://www.achievers.com/wp-content/uploads/2020/03/03-18-20-2-1.jpg alt> -->
-</li>
-<li class=img2>
-<!--<img src=codeur-outil-videos-animees.jpg alt>-->
-</li>
-<li class=img3>
-<!-- <img src=codeur-outil-videos-animees.jpg alt> -->
-</li>
-<li class=img4>
-<!-- <img src=codeur-outil-videos-animees.jpg alt> -->
-</li>
-</ul>
-
-    </div>
-
+  <input name="slideshow" id=slide_img1 type="radio" class=slide>
+  <input name="slideshow" id=slide_img2 type="radio" class=slide>
+  <input name="slideshow" id=slide_img3 type="radio" class=slide>
+  <!-- <input name="slideshow" id=slide_img4 type="radio" class=slide>  -->
+  <input name="slideshow" id=play_img1 type="radio" checked>  
+  <input name="slideshow" id=pause_img1 type="radio" class=pause>
+  <input name="slideshow" id=pause_img2 type="radio" class=pause>
+  <input name="slideshow" id=pause_img3 type="radio" class=pause>
+  <!-- <input name="slideshow" id=pause_img4 type="radio" class=pause> -->
+  <ul>
+  <!-- <img class=cache src="1.jpg"> -->
+  <li class=img1>
+  <div class="impp">
+      <div class="imss"> Bienvenue à getWork </div>
+     <div class="imss2"> Vous êtes à un pas de votre premier projet</div>
+     </div>
+  <!-- <img src=https://www.achievers.com/wp-content/uploads/2020/03/03-18-20-2-1.jpg alt> -->
+  </li>
+  <li class=img2>
+  <div class="impp">
+  <!--<img src=codeur-outil-videos-animees.jpg alt>-->
+  <div class="imss">dans getWork vous Obtenez </div>
+  <div class="imss2">les meilleures offres pour votre projet
+</div>
+    
+  </li>
+  <li class=img3>
+  <!-- <img src=codeur-outil-videos-animees.jpg alt> -->
+  <div class="impp">
+  <div class="imss">Investissez votre talent</div>
+      <div class="imss2">  et travaillez à domicile </div>
+     
+     </div>
+  </li>
+  <!-- <li class=img4>
+  <img src=codeur-outil-videos-animees.jpg alt>
+  </li> -->
+  </ul>
+  
+      </div>
     <div class="bien-v"><span>Bien venu <?php echo $_SESSION['user'] ?>,</span><p>Recevez des offres de vendeurs pour votre projet.
 </p> </div>
  </section>
@@ -309,7 +318,7 @@ $max=0;
      
              </ul>
              <div class="description">
-            <p><?php echo $g['OfferDescription']?></p>
+            <p><?php echo substr($g['OfferDescription'],0,140)?></p>
             </div>
 
             
@@ -409,13 +418,13 @@ $max=0;
                         if(mysqli_num_rows($rqST)==0){
 
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST" id="myform">
+                        <form action="?fav=<?php echo $g['idOffer']?> " method="POST" id="myform">
                         <li> <button id="insert" name="saveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark  " ></i></button></li>
                         </form>
                         <?php
                         }else{
                         ?>
-                        <form action="Acceui_admin.php?fav=<?php echo $g['idOffer']?> " method="POST">
+                        <form action="?fav=<?php echo $g['idOffer']?> " method="POST">
                         <li> <button type="submit" name="NOsaveOff" ><i id="<?php echo $g['idOffer']?>" class="fas fa-bookmark red " ></i></button></li>
                         </form>
                         

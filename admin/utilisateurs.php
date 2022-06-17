@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['pseudo'])){
+if(!isset($_SESSION['pseudo']) || ( $_SESSION['admin']!=1) ){
   header('location:http://localhost/PFFE/login_System/regester.php');
 }else{
 include_once 'includes/database-linck.php';
@@ -17,6 +17,7 @@ $util=mysqli_query($conn,$action);
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="Style_Administrateur.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>getWork</title>
 </head>
 <body>   
@@ -103,6 +104,9 @@ $util=mysqli_query($conn,$action);
   </header>
         <section class="page-content">
           <section class="search-and-user">
+            <div class="Admini">
+            <h1>Administration</h1>
+            </div>
                    <!-- <form action="GET">
                   <input type="search" placeholder="Chercher...">
                   <button type="submit" aria-label="submit form">

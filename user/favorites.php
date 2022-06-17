@@ -117,6 +117,7 @@ $conn;
                                 </ul>
                             </div>
                         </div>
+                        <span><?php echo  $_SESSION['user'] ?></span>
                     </li>
                   
                 </ul>
@@ -139,7 +140,11 @@ $us=$_SESSION['pseudo'];
  $of = mysqli_query($conn,$action);
  
  if(mysqli_num_rows($of)>0){?>
-  <h1 class="yourf" >Votre favoris :</h1>
+ <div class="yourf">
+  <h1>ma favorite</h1>
+  <span>Organisez vos freelances et services préférés dans Vos Favoris auxquels vous pouvez facilement accéder et partager avec votre équipe.
+</span>
+</div>
   <?php
  }
 ?>
@@ -338,7 +343,13 @@ while($B=mysqli_fetch_assoc($of)){
  }}} else{
                ?>
 
-               <h3>Votre favoris est vide</h3>
+<div class="yourf">
+  <h1>Votre favoris est vide</h1>
+  <span>Organisez vos freelances et services préférés dans Vos Favoris auxquels vous pouvez facilement accéder et partager avec votre équipe.
+</span>
+</div>
+
+               
 
 <?php 
 }

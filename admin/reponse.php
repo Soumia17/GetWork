@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['pseudo']) || ( $_SESSION['admin']!=1 )){
+  header('location:http://localhost/PFFE/login_System/regester.php');
+}
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'PHPMailer/Exception.php';
@@ -121,7 +124,9 @@ $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16p
 ; 
 
 $mail->Body    = $bodyContent; 
-if($mail->send()) { ?>
+if($mail->send()) { 
+ 
+  ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -148,6 +153,7 @@ if($mail->send()) { ?>
     </body>
     </html>
     <?php
+
 }
 }
 ?>
@@ -160,7 +166,7 @@ if($mail->send()) { ?>
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="style_messages.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-   
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
 
 
     <title>getWork</title>
@@ -270,7 +276,11 @@ if($mail->send()) { ?>
               </div>
             </div>
           </section>
+          <div class="Admini">
+            <h1>Administration</h1>
+            </div>
           <div class=" shadow-none mt-3 border border-light">
+          
                <div class="card-body">
                  <div class="media mb-3">
                  <?php

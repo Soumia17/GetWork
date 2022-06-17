@@ -54,6 +54,7 @@ if(isset($_POST['save'])){
      <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>"> 
     <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
+    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
     <title>getWork</title>
 </head>
 <body>

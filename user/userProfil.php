@@ -297,7 +297,7 @@ $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
                                <center> <button id="icon_change_pseudo" onclick="document.getElementById('btn_new_pseudo').style.display='block'; document.getElementById('new_pseudo').style.display='block';document.getElementById('icon_change_pseudo').style.display='none';" > <img src="https://img.icons8.com/ios-glyphs/30/000000/pencil--v1.png"/></button></center>
                                <div id="anulle">
                                    <form action="userProfil.php" method="POST">
-                               <center> <input name="newPseudo" style="display: none;" type="text" id="new_pseudo" placeholder="entre le neveu pseudo" ></center><br>
+                               <center> <input value=<?php echo ($_SESSION['user']); ?> name="newPseudo" style="display: none;" type="text" id="new_pseudo" placeholder="entre le neveu pseudo" ></center><br>
                                 <div class="btn_new_pseudo" id="btn_new_pseudo" style="display: none;">
                                 <button  id="cancel" onclick="document.getElementById('btn_new_pseudo').style.display='none'; document.getElementById('new_pseudo').style.display='none';document.getElementById('icon_change_pseudo').style.display='block';">Annuler</button>
                                 <button name="up" id="update">Modifier</button>

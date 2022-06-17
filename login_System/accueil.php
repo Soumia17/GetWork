@@ -293,7 +293,7 @@ button: "Dacord",
                 <h2>Propos De Nous</h2>
                 <span><!-- line here --></span>
                 <p>Bienvenue sur getWork, votre source numéro un pour trouver des offres. Nous nous engageons à vous offrir le meilleur des offres , en mettant l'accent sur le service express.
-Fondée en 2022 par Ait belkacem Soumia et Bouchakour Sara , getWork a parcouru un long chemin depuis ses débuts à l'Université Mustapha Stambouli. Quand le binôme a débuté, leurs passion pour le freelancer l'a poussé à faire des tonnes de recherches pour que getWork puisse vous proposer des offreqs intéressantes. Nous servons maintenant des clients partout dans l'Algérie et nous sommes ravis de pouvoir transformer notre passion en notre propre site Web.nous espérons que vous apprécierez nos services autant que nous aimons vous les offrir. Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter.</p>
+Fondée en 2022 par Ait belkacem Soumia et Bouchakour Sara , getWork a parcouru un long chemin depuis ses débuts à l'Université Mustapha Stambouli. Quand le binôme a débuté, leurs passion pour le freelancer l'a poussé à faire des tonnes de recherches pour que getWork puisse vous proposer des offres intéressantes. Nous servons maintenant des clients partout dans l'Algérie et nous sommes ravis de pouvoir transformer notre passion en notre propre site Web.nous espérons que vous apprécierez nos services autant que nous aimons vous les offrir. Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter.</p>
                 <ul class = "links">
                     <li><a href = "Connexion.php">Rejoignez-nous</a></li>
                     <div class = "vertical-line"></div>

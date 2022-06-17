@@ -19,18 +19,20 @@ $_SESSION['off']=$id;
               $OfferDescription=$_POST['OfferDescription'];
               $OfferCategore=$_POST['OfferCategore'];
               $OfferPrix=$_POST['OfferPrix'];
-              $OfferImage=$_POST['OfferImage'];
+            //   $OfferImage=$_POST['OfferImage'];
           
               $re="UPDATE offers
               SET  OfferDescription= '".$OfferDescription."',OfferCategore= '".$OfferCategore."',OfferPrix= '".$OfferPrix."'
               WHERE idOffer='".$_SESSION['off']."'";
               $res = mysqli_query($conn,$re);
         
-              if($OfferImage!=""){
+              if($_FILES['OfferImage']['name']!=""){
+                $file=$_FILES['OfferImage']['name'];
                   $re="UPDATE offers
-              SET  OfferImage= '".$OfferImage."'
+              SET  OfferImage= '".$file."'
               WHERE idOffer='".$_SESSION['off']."'";
               $res = mysqli_query($conn,$re);
+              move_uploaded_file($_FILES['OfferImage']['tmp_name'],$file);
               }
               if($res){
                 //   echo "hello";
@@ -216,7 +218,7 @@ if(mysqli_num_rows($Offer_run)<1){
                </form>
       </div> -->
               
-        <form id="enviar" action="" method="POST" >
+        <form id="enviar" action="" method="POST"  enctype="multipart/form-data">
 
          
          

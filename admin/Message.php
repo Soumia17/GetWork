@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['pseudo'])){
+if(!isset($_SESSION['pseudo']) || ( $_SESSION['admin']!=1 )){
   header('location:http://localhost/PFFE/login_System/regester.php');
 }else{
 include_once 'includes/database-linck.php';
@@ -121,6 +121,9 @@ $mess = mysqli_query($conn,$mess);
         </header>
         <section class="page-content">
           <section class="search-and-user">
+          <div class="Admini">
+            <h1>Administration</h1>
+            </div>
                   <!-- <form action="GET">
                   <input type="search" placeholder="Chercher...">
                   <button type="submit" aria-label="submit form">

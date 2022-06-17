@@ -206,6 +206,7 @@ if(isset($_POST['confirme'])){
                                     </ul>
                                 </div>
                             </div>
+                            <span><?php echo  $_SESSION['user'] ?></span>
                         </li>
                       
                     </ul>
