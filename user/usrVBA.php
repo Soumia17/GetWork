@@ -6,6 +6,10 @@ if(!isset($_SESSION['pseudo'])){
 }else{
 include_once '../includes/database-linck.php';
 $conn;
+if(isset($_GET['seen'])){
+    $req="UPDATE notification SET seen=1 where la_Persones ='".$_SESSION['pseudo']."'";
+$res = mysqli_query($conn,$req);
+}
 if(!empty($_GET['poster'])){
 $Poster=$_GET['poster'];
 
@@ -48,9 +52,9 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
    <!-- <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="style_profil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../admin/StyleService.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="../login_System/logoStyle.css">
+    <link rel="stylesheet" href="../login_System/logoStyle.css?v=<?php echo time();?>">
     <title>getWork</title>
    
 </head>
@@ -61,6 +65,7 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
         <div class="wrapper">
             <div class="navbar">
             <div class="logo">
+            <img src="../imageService/business-2684758__340.webp" alt="">
                     <a href="../admin/Acceui_Admin.php">getWork</a>
                 </div>
                 <form class="example" action="http://localhost/PFFE/admin/Acceui_Admin.php" method="GET">
@@ -93,7 +98,51 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
                         <!-- <li class="nr_li">
                             <i class="fas fa-envelope-open-text"></i>
                         </li> -->
-                        
+                        <li class="nr_li not">
+                        <div class="nutification" onclick="toggleNotifi()" >
+                        <?php $not="SELECT * From notification where la_Persones ='".$_SESSION['pseudo']."' ";
+                   $res_em=mysqli_query($conn,$not);
+                   if(mysqli_num_rows($res_em)>0){
+                   while($e=mysqli_fetch_assoc($res_em)){
+                    $m=$e['seen'];
+                   }}
+                   if(mysqli_num_rows($res_em)>0){
+                   if($m==0 ){
+                   ?>
+                   
+                        <span class="badge"><?php echo mysqli_num_rows($res_em)?></span>
+                        <?php
+                   }} 
+                        ?>
+                   <img  src="../admin/images_Admin/bell-solid.svg" alt="" class="nutif" >
+                   </div>
+                  
+                   <div class="notifi-box" id="box">
+                  
+			<h2>Notifications <span><?php echo mysqli_num_rows($res_em)?></span></h2>
+            <?php  if(mysqli_num_rows($res_em)>0){
+                     $not="SELECT * From notification where la_Persones ='".$_SESSION['pseudo']."' ";
+                    $res_em=mysqli_query($conn,$not);
+                   while($eml=mysqli_fetch_assoc($res_em)){
+                       
+                   ?>
+			<div class="notifi-item">
+				<img src="../admin/images_Admin/<?php echo $eml['icon'] ?>" alt="img">
+				<div class="text">
+				   <h4><?php echo $eml['Subject'] ?></h4>
+				   <p><?php echo $eml['text'] ?></p>
+			    </div> 
+			</div>
+
+		<?php  }}?>
+
+
+
+			
+			</div>
+            </div>         
+
+                    </li>
                         <li class="nr_li dd_main">
                   
     
@@ -424,8 +473,8 @@ $userInfo="SELECT * FROM userinformation WHERE psudo ='".$Poster."'";
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
 <!--<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>-->
-<script src="../admin/Control-Administration.js"></script>
-<script src="Control_profil.js"></script>
+<script src="../admin/Control-Administration.js?V=<?php echo time()?>"></script>
+<script src="Control_profil.js?V=<?php echo time()?>"></script>
 <script src="https://kit.fontawesome.com/6f2f9c8fbf.js" ></script>
 
 

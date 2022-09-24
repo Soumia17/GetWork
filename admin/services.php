@@ -20,7 +20,7 @@ $del="";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="StyleService.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     
 
@@ -220,7 +220,7 @@ $del="";
                         <textarea id="textarea" name="serviceDescription" class="field"></textarea>
                         <span>Entrez une description précise du service qui inclut toutes les informations et conditions</span>
                         <br>
-                        <label for="">Ajoute une image  .png</label>
+                        <label for="">Ajoute une image </label>
                         <div class="drop-zone">
                             <span class="drop-zone__prompt">cliquez pour télécharger</span>
                             <input name="serviceIcon" id="fileUpload" type="file" name="myFile" class="drop-zone__input">

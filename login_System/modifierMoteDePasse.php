@@ -9,7 +9,7 @@ include_once 'includes/database-linck.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleFormulair.css">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
     <title>getWork</title>
 </head>
@@ -43,7 +43,7 @@ include_once 'includes/database-linck.php';
                    
                     
                 </div>
-                <div class="imgSR2"><h3>neveau mote de passe</h3></div>
+                <div class="imgSR2"><h3>Nouveau mot de passe</h3></div>
             </div>
 
             <dive class="but">

@@ -7,6 +7,23 @@ include_once 'includes/database-linck.php';
 $conn;
 $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     $offr = mysqli_query($conn,$action);
+    if(isset($_GET['search']) and !empty($_GET['search'])){
+      $q = trim($_GET['search']);
+      $action="SELECT email FROM userinformation WHERE  psudo LIKE '%".$q."%' ";
+      $offr = mysqli_query($conn,$action);
+      if(mysqli_num_rows($offr)>0){
+          while($g=mysqli_fetch_assoc($offr)){
+              $p=$g['email'];
+          } 
+          $action="SELECT * FROM offers WHERE OfferPoster='".$p."' OR OfferCategore LIKE '%".$q."%' ";
+      }
+      else{
+          $action="SELECT * FROM offers WHERE OfferCategore LIKE '%".$q."%' OR OfferDescription LIKE '%".$q."%'";
+      }
+      // $q = htmlspecialchars($_GET['search']);
+      // $action="SELECT * FROM userinformation WHERE theadmin =2 AND  block =0 and psudo LIKE '%".$q."%'  ";
+    }
+    $offr = mysqli_query($conn,$action);
     $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."' ";
                     $adm = mysqli_query($conn,$action);
                     while($info=mysqli_fetch_assoc($adm)){
@@ -24,9 +41,10 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
     <title>getWork</title>
     <link rel="stylesheet" href="../login_System/logoStyle.css">
+    
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 <body>   
@@ -158,6 +176,16 @@ $action="SELECT * FROM offers ORDER BY idOffer DESC ";
             
           </section>
           <section class="etoile" id="etoile">
+          <form  action="" method="GET">
+<div class="search-box">
+       
+         <button name="onSub"  class="btn-search"><i class="fas fa-search"></i></button>
+         
+       <input type="search"  name="search" class="input-search" placeholder="Chercher un utilisateur...">
+       
+         
+     </div>
+     </form>
             <div class="box-etoile">
             <?php
  while($g=mysqli_fetch_assoc($offr)){
@@ -205,6 +233,7 @@ $max=0;
 
 ?>
         <div class="box">
+          
             <div class="image-etoile">
                 <img src="<?php echo "../user/".$g['OfferImage'] ?>"alt="">
             </div>
@@ -239,7 +268,7 @@ $max=0;
      
              </ul>
              <div class="OfferDescription">
-            <p><?php echo $g['OfferDescription']?></p> 
+            <p><?php echo substr($g['OfferDescription'],0,90)?></p> 
             </div>                
                     <div class="center">
                     <?php
@@ -444,6 +473,7 @@ $max=0;
         </section>
 
 </body>
+
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <script src="Control-Administration.js"></script>
 <script src="Control_Admin.js"></script>

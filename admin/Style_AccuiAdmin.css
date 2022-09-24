@@ -98,7 +98,7 @@
 .navbar .dd_menu li{
 	margin-bottom: 10px;
 	color: #868686;
-	
+	font-size: 20px;/*PLUS*/
 }
 .navbar .dd_right li:hover{
 	color: black;
@@ -112,9 +112,15 @@
 	border: 10px solid;
 	border-color: transparent transparent #fff transparent;
 }
+.pseudo{
+	/* margin-top: -10%; */
+	font-size: 17px;
 
+}
 .navbar .dd_main.active .dd_menu{
 	display: flex;
+	z-index: 1;
+
 	
 
 }
@@ -1111,6 +1117,9 @@ text-decoration: none;
 			margin-left: 10%;
 			margin-top: 10%;
 			color: #000;
+		}
+		.not{
+			/* margin-right: -95px; */
 		}
 .nutification span{
 	display: flex;

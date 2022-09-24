@@ -63,6 +63,7 @@ function onmous(){
 
 function eyes(){
     document.getElementById('inputDiv3').style.display="block";
+
     document.getElementById('eye').style.display="none";
     document.getElementById('eyOP3').style.display="block";
     document.getElementById('eyOP3').addEventListener("click",()=>{

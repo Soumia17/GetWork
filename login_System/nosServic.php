@@ -16,8 +16,8 @@ if(isset($_GET['Sevice'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
-    <link rel="stylesheet" href="../login_System/logoStyle.css">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../login_System/logoStyle.css?v=<?php echo time();?>">
     <link rel="stylesheet" href=".css">
     <link rel="stylesheet" href="../admin/Style_Administrateur.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css?v=<?php echo time(); ?>">
@@ -96,6 +96,7 @@ if(isset($_GET['Sevice'])){
 <body>
 <header class="header">
         <div class="logo">
+        <img src="../imageService/business-2684758__340.webp" alt="">
             <a href="../login_System/accueil.php">getWork</a>
         </div>
         <div class="search-box">

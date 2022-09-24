@@ -125,7 +125,15 @@ $bodyContent ="<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16p
 
 $mail->Body    = $bodyContent; 
 if($mail->send()) { 
- 
+  $emai="SELECT emailEmeteur FROM messages where idemail='".$msg."'";
+  $res_em=mysqli_query($conn,$emai);
+  if(mysqli_num_rows($res_em)>0){
+    while($eml=mysqli_fetch_assoc($res_em)){
+     $res=$eml['emailEmeteur'];
+    }
+    $req="INSERT INTO notification(la_Persones,icon,Subject,text) values('$res','images__3_-removebg-preview.png','Reponse','Administrateur a Repondu a votre Message Verifier Votre boite email')";
+    $res = mysqli_query($conn,$req);
+  }
   ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -166,7 +174,7 @@ if($mail->send()) {
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="style_messages.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
 
 
     <title>getWork</title>

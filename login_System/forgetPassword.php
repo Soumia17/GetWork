@@ -10,13 +10,14 @@ include_once 'includes/database-linck.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleFormulair.css">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
-    <link rel="stylesheet" href="../login_System/logoStyle.css">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../login_System/logoStyle.css?V=<?php echo time();?>">
     <title>getWork</title>
 </head>
 <body>
 <header class="header">
 <div class="logo">
+<img src="../imageService/business-2684758__340.webp" alt="">
 <a href="../login_System/accueil.php">getWork</a>
                 </div>
   <form action="formulair.php" method="POST">
@@ -55,7 +56,7 @@ include_once 'includes/database-linck.php';
 
 </div>
 
-<script src="email.js"></script>
+<script src="email.js?v=<?php echo time();?>"></script>
 
 <?php
 use PHPMailer\PHPMailer\PHPMailer;

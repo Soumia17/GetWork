@@ -17,7 +17,7 @@ $util=mysqli_query($conn,$action);
     <link rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="Style_Administrateur.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../login_System/logoStyle.css">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
     <title>getWork</title>
 </head>
 <body>   
@@ -164,7 +164,7 @@ $util=mysqli_query($conn,$action);
             <?php
             $action="SELECT * FROM userinformation WHERE theadmin =2 and block =0";
             if(isset($_GET['search']) and !empty($_GET['search'])){
-              $q = htmlspecialchars($_GET['search']);
+              $q = trim($_GET['search']);
               $action="SELECT * FROM userinformation WHERE theadmin =2 AND  block =0 and psudo LIKE '%".$q."%'  ";
             }
             $adm = mysqli_query($conn,$action);

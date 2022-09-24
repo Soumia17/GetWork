@@ -1,3 +1,7 @@
+.logo{
+  display: flex;
+  margin-left: -20px;
+}
 .logo a{
     text-decoration: none;
     font-size: 30px;
@@ -12,4 +16,9 @@
 	letter-spacing: 2.5px;
 	
 	text-transform:capitalize;
+ 
+}
+.logo img{
+  height: 40px;
+  width: 40px;
 }

@@ -14,13 +14,14 @@ include_once 'includes/database-linck.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleFormulair.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
-    <link rel="stylesheet" href="../login_System/logoStyle.css">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../login_System/logoStyle.css?v=<?php echo time();?>">
     <title>getWork</title>
 </head>
 <body >
 <header class="header">
 <div class="logo">
+<img src="../imageService/business-2684758__340.webp" alt="">
 <a href="../login_System/accueil.php">getWork</a>
                 </div>
   <!-- <form action="formulair.php" method="POST">
@@ -101,22 +102,22 @@ include_once 'includes/database-linck.php';
         </div>
         <div class="inputDiv">
             <span class="detailINput">
-                mote de passe
+                mot de passe
             </span>
             <img id="eyOP" src="icons/oeil.png" alt="">
             <img id="eyCL" src="icons/eyeC.png" alt="">
             <img id="eye" class="iconFS" src="https://img.icons8.com/windows/50/000000/key-security.png"/>
-            <input onclick="eyes()" name="password"  id="password1" type="password" placeholder="entre un mote de passe" >
+            <input onclick="eyes()" name="password"  id="password1" type="password" placeholder="entre un mot de passe" >
            <!-- <span id="SpMotPasse"></span>-->
         </div>
         <div class="inputDiv">
             <span class="detailINput">
-                confirme le mote de passe
+                confirme le mot de passe
             </span>
             <img id="eyOP2" src="icons/oeil.png" alt="">
             <img id="eyCL2" src="icons/eyeC.png" alt="">
             <img id="eye2" class="iconFS"  src="https://img.icons8.com/windows/50/000000/key-security.png"/>
-            <input onclick="eyes2()" id="Copassword" type="password" placeholder=" confirme votre mote de passe" >
+            <input onclick="eyes2()" id="Copassword" type="password" placeholder=" confirme votre mot de passe" >
            <!-- <span id="SpCoMotPasse"></span>-->
         </div>
     

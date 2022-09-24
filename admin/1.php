@@ -18,7 +18,10 @@ $conn;
 
   
 
-    
+    if(isset($_GET['seen'])){
+        $req="UPDATE notification SET seen=1 where la_Persones ='".$_SESSION['pseudo']."'";
+    $res = mysqli_query($conn,$req);
+    }
         
        
         if(isset($_POST['saveOff'])){
@@ -123,15 +126,20 @@ $conn;
                         <i class="fas fa-envelope-open-text"></i>
                     </li> -->
                     <li class="nr_li not">
-                        <div class="nutification" onclick="toggleNotifi()">
-                        <?php $not="SELECT * From notification where la_Persones ='".$_SESSION['pseudo']."' or la_Persones='ALL' ";
+                        <div class="nutification" onclick="toggleNotifi()" >
+                        <?php $not="SELECT * From notification where la_Persones ='".$_SESSION['pseudo']."' ";
                    $res_em=mysqli_query($conn,$not);
                    if(mysqli_num_rows($res_em)>0){
+                   while($e=mysqli_fetch_assoc($res_em)){
+                    $m=$e['seen'];
+                   }}
+                   if(mysqli_num_rows($res_em)>0){
+                   if($m==0 ){
                    ?>
                    
                         <span class="badge"><?php echo mysqli_num_rows($res_em)?></span>
                         <?php
-                   }
+                   }} 
                         ?>
                    <img  src="../admin/images_Admin/bell-solid.svg" alt="" class="nutif" >
                    </div>
@@ -140,7 +148,8 @@ $conn;
                   
 			<h2>Notifications <span><?php echo mysqli_num_rows($res_em)?></span></h2>
             <?php  if(mysqli_num_rows($res_em)>0){
-                   
+                     $not="SELECT * From notification where la_Persones ='".$_SESSION['pseudo']."' ";
+                    $res_em=mysqli_query($conn,$not);
                    while($eml=mysqli_fetch_assoc($res_em)){
                        
                    ?>
@@ -198,7 +207,7 @@ $conn;
                                 </ul>
                             </div>
                         </div>
-                        <span><?php echo  $_SESSION['user'] ?></span>
+                        <span class="pseudo"><?php echo  $_SESSION['user'] ?></span>
                     </li>
                     
                   

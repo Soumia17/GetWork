@@ -17,7 +17,7 @@ $admin = mysqli_query($conn,$searsh);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="Style_Administration.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="Style_Administrateur.css?v=<?php echo time(); ?>">
-        <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+        <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
         <link rel="stylesheet" href="../login_System/logoStyle.css">
        
         
@@ -334,7 +334,7 @@ $usr=$info['psudo'];
   <?php
                }
   ?>
-               <label for="">Rechercher un utilisateur :</label>
+               <label for="">Rechercher un utilisateur :</label><br>
 <form  action="lesAdmin.php" method="GET">
 <div class="search-box">
        
@@ -371,7 +371,7 @@ $usr=$info['psudo'];
                         </div>
                      
                
-              </div>
+             
                         <?php
        }}
       
@@ -457,11 +457,11 @@ $usr=$info['psudo'];
     
     </body>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <script src="Control-Administration.js"></script>
-    <script src="Control_Admin.js"></script>
-    <script src="/login_System/testRegester.js"></script>
-    <script src="contol_lesAdmin.js"></script>
-    <script src="../login_System/testInscription.js"></script>
+    <script src="Control-Administration.js?v=<?php echo time();?>"></script>
+    <script src="Control_Admin.js?v=<?php echo time();?>"></script>
+    <script src="/login_System/testRegester.js?v=<?php echo time();?>"></script>
+    <script src="contol_lesAdmin.js?v=<?php echo time();?>"></script>
+    <script src="../login_System/testInscription.js?v=<?php echo time();?>"></script>
     </html>
 
     <?php

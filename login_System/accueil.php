@@ -78,7 +78,7 @@ button: "Dacord",
     <link rel="stylesheet" href="stylrAccueil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../login_System/logoStyle.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="https://img.icons8.com/nolan/64/workday.png" type="image/x-icon">
+    <link rel="icon" href="../imageService/business-2684758__340.webp" type="image/x-icon">
     
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -100,6 +100,7 @@ button: "Dacord",
 
 <header class="header">
   <div class="logo">
+    <img src="../imageService/business-2684758__340.webp" alt="">
     <a href="../login_System/accueil.php">getWork</a>
    
   <!-- <div>
@@ -153,7 +154,7 @@ button: "Dacord",
   <span
      class="txt-rotate"
      data-period="2000"
-     data-rotate='[ "besoin.", "travail.", "plaisir.", "passio.","talent!" ]'></span>
+     data-rotate='[ "besoin.", "travail.", "plaisir.", "passion.","talent!" ]'></span>
 </h1>
 <h2>Tout cela et plus dans getWork.</h2>
 </div>
@@ -396,7 +397,7 @@ Fondée en 2022 par Ait belkacem Soumia et Bouchakour Sara , getWork a parcouru 
 </section>
 
 <div class="copyright">
-  <p>copyright 2022 - Universite de Mascara : Mustapha Stambouli -par Ait belkacem soumia et Bouchakor sara</p>
+  <p>copyright 2022 - Universite de Mascara : Mustapha Stambouli -par Ait belkacem soumia et Bouchakour Sara</p>
 </div>
 
 
